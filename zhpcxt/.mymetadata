@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="zhpcxt"
+  id="myeclipse.1390315085063"
+  context-root="/zhpcxt"
+  j2ee-spec="1.4"
+  archive="zhpcxt.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

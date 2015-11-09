@@ -1,0 +1,170 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background-image:url(../images/main_bg.gif);
+	background-attachment:fixed;
+	background-repeat:repeat-y;
+	background-position:center;
+}
+/*
+**main 样式
+*/
+.like{
+	text-decoration:none;
+	display:block;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+	color:#330099;
+	padding:0.3em;
+}
+.like:link {
+	color: #0000FF;
+}
+.like:hover {
+	text-decoration: underline;
+	color: #FF8000;
+}
+.like:active {
+	color: #FF0000;
+}
+#content {
+	margin: 0 auto;
+	height: 122px;
+	width: 960px;
+	background-color:#999;
+}
+#mainColHdr {
+	margin: 0 auto;
+	width: 960px;
+}
+#layou-left {
+	width:350px;
+}
+#layou-right {
+	width:585px;
+}
+.float {
+	float:left;
+	/*float:right;*/
+}
+.shadow {
+ filter:progid:DXImageTransform.Microsoft.Shadow (Color=#333333, Direction=120, strength=3);
+}
+.glow {
+ filter : progid:DXImageTransform.Microsoft.Glow(color=#CCC, Strength=5);
+}
+#layou-left div div.index-title {
+	margin:5px 10px 0 10px;
+	height:32px;
+	background:#fff url(../images/datagrid_title_bg.png) repeat-x;
+	padding-left:15px;
+	border:#6699ff solid 1px;
+	color:#000;
+	font-size:14px;
+	text-align:left;
+	line-height:32px;
+	font-weight:bold;
+}
+#layou-left div div.index-content {
+	margin:0 10px 5px 10px;
+	padding:10px;
+	background-color: #d9e2f2;
+	border:#6699ff solid 1px;
+	border-top:0;
+}
+#layou-right div div.index-title {
+	margin:5px 10px 5px 10px;
+	height:30px;
+	background-color: #ccc;
+	border:#FF8000 solid 1px;
+}
+#layou-right div div.index-content {
+	margin:5px 10px 5px 10px;
+	height:300px;
+	background-color: #ccc;
+	border:#FF8000 solid 1px;
+}
+/*
+**头部login and reg 样式
+*/
+#top_img {
+	background-image: url(../images/header_bg_yl.gif);
+	background-repeat:no-repeat;
+	width:960px;
+	height:122px;
+}
+.click_login_reg {
+	float:right;
+	margin-top:5px;
+	margin-right:10px;
+	background-color:#999;
+	line-height:21px;
+	text-align:center;
+	color:#FFF;
+	border:solid #CCC 1px;
+	width:80px;
+	height:20px;
+	position:relative;
+	right:10px;
+}
+.click_login_reg:hover {
+	font-weight:bolder;
+	background-color:#666;
+	cursor:pointer;
+	color:#F3AB32;
+	border:solid #FFF 1px;
+}
+/*
+**头部导航菜单样式表
+*/
+#menu_left {
+	height:35px;
+	padding-left:24px;
+	background:url(../images/three_0.gif);
+}
+#menu_right {
+	height:35px;
+	padding-right:24px;
+	background:url(../images/three_0.gif) right 0;
+}
+#nav {
+	padding:0;
+	margin:0;
+	list-style:none;
+	height:35px;
+	background:#fff url(../images/three_0.gif) repeat-x;
+	position:relative;
+}
+#nav li.top {
+	display:block;
+	float:left;
+	height:38px;
+}
+#nav li a.top_link {
+	display:block;
+	float:left;
+	height:35px;
+	line-height:33px;
+	color:#ccc;
+	text-decoration:none;
+	font-size:13px;
+	font-weight:bold;
+	padding:0 0 0 12px;
+	cursor:pointer;
+	background: url(../images/three_0.gif);
+}
+#nav li a.top_link span {
+	float:left;
+	display:block;
+	padding:0 24px 0 12px;
+	height:35px;
+	background: url(../images/three_0.gif) right top no-repeat;
+}
+#nav li:hover a.top_link {
+	color:#fff;
+	background: url(../images/three_1.gif) no-repeat;
+}
+#nav li:hover a.top_link span {
+	background:url(../images/three_1.gif) no-repeat right top;
+}
