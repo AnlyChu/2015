@@ -20,9 +20,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td align="right">重复密码：</td>
       <td><input class="easyui-validatebox" type="password" name="repeatpwd" required="true" validType="repeat'#systemusers_pwd'" customize="Customize" /></td>
     </tr>
-    <tr>
-      <td align="right">身份：</td>
-      <td><input class="easyui-validatebox" type="text" name="status" value="辅导员" readonly="readonly" customize="Customize" /></td>
-    </tr>
   </table>
 </form>

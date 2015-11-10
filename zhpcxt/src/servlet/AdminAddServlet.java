@@ -75,8 +75,8 @@ public class AdminAddServlet extends HttpServlet {
 		}
 		String sql = "insert into admin("+row+") values("+val+")";
 		String sql1 = "insert into admin (status) values('¸¨µ¼Ô±')";
-		responseText = ib.insertANDupdateANDdel(sql);
-		
+//		responseText = ib.insertANDupdateANDdel(sql);
+		responseText = ib.insertANDupdateANDdel(sql1);
 		PrintWriter out = response.getWriter();
 		out.print(responseText);
 		out.close();
