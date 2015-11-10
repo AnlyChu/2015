@@ -122,7 +122,7 @@ function adminAdd(path){
 		href:path+'/admin/systemuser_add.jsp',
 		modal:true,
 		closed:false,
-	    title:'添加系统用户',
+	    title:'添加辅导员',
 	    width:300,
 	    height:200,
 	    buttons:[{
@@ -156,6 +156,7 @@ function adminAdd(path){
 	    }]
 	});
 }
+
 //用户注销
 function logout(path){
 	$.ajax({

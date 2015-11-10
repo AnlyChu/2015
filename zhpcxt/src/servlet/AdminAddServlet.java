@@ -63,6 +63,7 @@ public class AdminAddServlet extends HttpServlet {
 		String args[] = {"name","pwd"};
 		String row = "";
 		String val = "";
+		String status = "辅导员";
 		for(int i = 0;i < args.length;i++){
 			if(i == args.length-1){
 				row += args[i];
@@ -73,6 +74,7 @@ public class AdminAddServlet extends HttpServlet {
 			}
 		}
 		String sql = "insert into admin("+row+") values("+val+")";
+		String sql1 = "insert into admin (status) values(辅导员);
 		responseText = ib.insertANDupdateANDdel(sql);
 		
 		PrintWriter out = response.getWriter();

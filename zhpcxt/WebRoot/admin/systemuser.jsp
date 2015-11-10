@@ -57,10 +57,10 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="4" align="center" style="padding:5px;">系统用户管理</td>
+        <td colspan="4" align="center" style="padding:5px;">辅导员管理</td>
       </tr>
       <tr>
-        <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="admin_add">添加系统用户</a></td>
+        <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="admin_add">添加辅导员</a></td>
       </tr>
       <tr class="thead">
         <td align="center">序号</td>
