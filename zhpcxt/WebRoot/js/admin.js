@@ -156,7 +156,47 @@ function adminAdd(path){
 	    }]
 	});
 }
-
+//新增班级
+function classAdd(path){
+	$("body").append("<div id='dlg_class_add' style='padding:20px;'></div>");
+	$('#dlg_class_add').dialog({
+		href:path+'/admin/class_add.jsp',
+		modal:true,
+		closed:false,
+	    title:'新增班级',
+	    width:300,
+	    height:250,
+	    buttons:[{
+	        text:'提交',
+	        iconCls:'icon-ok',
+	        handler:function(){
+	            $('#form_class_add').form('submit',{
+	            	url:path+'/ClassAddServlet',
+	                onSubmit:function(){
+				        return $(this).form('validate');
+				    },
+				    success:function(data){
+				    	if(data == "-1"){
+				    		$.messager.alert('系统消息','用户名已存在','error');
+				    	}else{
+				    		$.messager.alert('系统消息','添加成功','info',function(){
+					    		$('#dlg_login').dialog('refresh');
+					    		$('#dlg_login').dialog('close');
+					    		location.href = path+'/admin/class.jsp';				    			
+				    		},false);
+				    	} 
+				    }  
+	            });
+	        }
+	    },{
+	        text:'重置',
+	        iconCls:'icon-reload',
+	        handler:function(){
+	            $('#dlg_class_add').dialog('refresh');
+	        }
+	    }]
+	});
+}
 //用户注销
 function logout(path){
 	$.ajax({
@@ -164,7 +204,7 @@ function logout(path){
    		url: path+'/RemoveServlet',
    		data: 'mark=admin',
 	   	success: function(msg){
-	     window.location.href(path+'/admin/index.jsp');
+	     window.location = (path+'/admin/index.jsp');
 	   }
 	});
 }

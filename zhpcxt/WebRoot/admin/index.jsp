@@ -64,7 +64,7 @@ $(document).ready(function(){
     <tr>
       <td align="center"> <h2 style="color:#03F">欢迎使用：</h2><br />
         <br />
-        <h1 style="color:#666">计科系学生综合测评系统</h1></td>
+        <h1 style="color:#666">计算机学院学生信息档案管理</h1></td>
     </tr>
   </table>
 </div>

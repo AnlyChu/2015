@@ -5,10 +5,14 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
-ArrayList student = null;
+ArrayList class1 = null;
+ArrayList admin = null;
+ArrayList class2 = null;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getBjs(); 
+	admin = array.getAllAdmin(adminlogin.get(0).toString());
+	class2 = array.getBj(request.getParameter("bjh")); 
+	class1 = array.getBjs(); 
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -42,6 +46,9 @@ $(document).ready(function(){
 	$("#admin_add").click(function(){
 		adminAdd('<%=path %>');
 	});
+	$("#class_add").click(function(){
+		classAdd('<%=path %>');
+	});
 })
 </script>
 </head>
@@ -60,15 +67,18 @@ $(document).ready(function(){
       <tr>
         <td colspan="11" align="center" style="padding:5px;">请选择要查询的班级</td>
       </tr>
-      <form action="<%=basePath %>admin/bj2.jsp" method="post" name="form1">
+      <tr>
+      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="class_add">新建班级</a></td>
+      </tr>
+      <form action="<%=basePath %>admin/bj.jsp" method="post" name="form1">
       <tr class="thead">
-        <td align="center">班级</td>
+        <td colspan="4"  align="center"></td>
         <td>
     <select name=bjh>
-	 <% for(int i=0;i<student.size();i++){
-	    	ArrayList student1 = (ArrayList)student.get(i);	
+	 <% for(int i=0;i<class1.size();i++){
+	    	ArrayList class1bj = (ArrayList)class1.get(i);	
 	 %>
-    <option value=<%=student1.get(0) %>><%=student1.get(0) %>年级</option>
+    <option value=<%=class1bj.get(0) %>><%=class1bj.get(0) %>年级</option>
     <%} %>
     </select>
     </td>
@@ -79,6 +89,50 @@ $(document).ready(function(){
     <tbody class="tbody">
     
     </tbody>
+  </table>
+
+  <table width="100%">
+    <thead>
+      
+      <tr class="thead">
+        <td align="center">班级</td>
+        <td align="center">班级人数</td>
+        <td align="center">辅导员</td>
+        <td align="center">不及格人数</td>
+        <td align="center">变更辅导员</td>
+<!--          <td align="center">变更辅导员</td> -->
+      </tr>
+    </thead>
+    
+    <tbody class="tbody">
+ <%
+	    for(int i=0;i<class2.size();i++){
+	    	ArrayList student2 = (ArrayList)class2.get(i);	
+	 %>
+	<form action="<%=path %>/DelServlet?" method="post" name=nihao<%=student2.get(0)%>>
+    <tr>
+	<td align="center"><%=student2.get(1) %></td>
+	<td align="center"><%=student2.get(2) %></td>
+	<td align="center">
+	<select name=fdy>
+	<option><%=student2.get(3) %></option>
+	<%
+    if(admin != null && admin.size() != 0){
+	    for(int j = 0;j < admin.size();j++){
+	    	ArrayList alRow = (ArrayList)admin.get(j);
+    %>
+		<option><%=alRow.get(2) %></option>
+      <%}} %>
+	</select>
+	</td>
+	<td align="center"><%=student2.get(4) %></td>
+	<td align="center"><input type="submit" value="确定"> </td>
+<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">删除</a></td> --%>
+    </tr>
+    </form>
+      <%} %>
+    </tbody>
+    
   </table>
 </div>
 </body>

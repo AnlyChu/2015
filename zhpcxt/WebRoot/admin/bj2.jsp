@@ -92,7 +92,7 @@ $(document).ready(function(){
 	    for(int j = 0;j < admin.size();j++){
 	    	ArrayList alRow = (ArrayList)admin.get(j);
     %>
-		<option><%=alRow.get(4) %></option>
+		<option><%=alRow.get(2) %></option>
       <%}} %>
 	</select>
 	</td>

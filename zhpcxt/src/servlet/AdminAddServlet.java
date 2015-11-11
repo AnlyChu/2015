@@ -60,23 +60,25 @@ public class AdminAddServlet extends HttpServlet {
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"name","pwd"};
+		String args[] = {"name","pwd","status"};
 		String row = "";
 		String val = "";
 		String status = "辅导员";
 		for(int i = 0;i < args.length;i++){
 			if(i == args.length-1){
-				row += args[i];
-				val += "'"+request.getParameter(args[i])+"'";
+				row += "status";
+				val += "'"+status+"'";
 			}else{
 				row += args[i]+",";
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
 		String sql = "insert into admin("+row+") values("+val+")";
-		String sql1 = "insert into admin (status) values('辅导员')";
-//		responseText = ib.insertANDupdateANDdel(sql);
-		responseText = ib.insertANDupdateANDdel(sql1);
+		System.out.println("sql="+sql);
+//		String sql1 = "insert into admin (status) values('辅导员')";
+		responseText = ib.insertANDupdateANDdel(sql);
+	
+//		responseText = ib.insertANDupdateANDdel(sql1);
 		PrintWriter out = response.getWriter();
 		out.print(responseText);
 		out.close();

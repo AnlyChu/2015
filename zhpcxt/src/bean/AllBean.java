@@ -8,7 +8,7 @@ public class AllBean {
 	
 	public ArrayList getAllAdmin(String id){
 		String sql = "select * from admin where id!=1 and id!="+id+" and status='¸¨µ¼Ô±' order by id desc";
-		String args[] = {"id","name","pwd","status","xm"};
+		String args[] = {"id","name","pwd","status"};
 		al = sb.select(sql, args);
 		return al;
 	}

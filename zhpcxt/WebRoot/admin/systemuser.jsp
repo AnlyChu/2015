@@ -66,7 +66,6 @@ $(document).ready(function(){
         <td align="center">序号</td>
         <td align="center">用户名</td>
         <td align="center">身份</td>
-        <td align="center">姓名</td>
         <td align="center">操作</td>
       </tr>
     </thead>
@@ -80,7 +79,6 @@ $(document).ready(function(){
         <td align="center"><%=i+1 %></td>
         <td align="center"><%=alRow.get(1) %></td>
         <td align="center"><%=alRow.get(3) %></td>
-        <td align="center"><%=alRow.get(4) %></td>
         <td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">删除</a></td>
       </tr>
       <%}} %>
