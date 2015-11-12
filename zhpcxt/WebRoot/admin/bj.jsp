@@ -8,11 +8,13 @@ boolean closed = false;
 ArrayList class1 = null;
 ArrayList admin = null;
 ArrayList class2 = null;
+ArrayList class3 = null;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
 	admin = array.getAllAdmin(adminlogin.get(0).toString());
 	class2 = array.getBj(request.getParameter("bjh")); 
 	class1 = array.getBjs(); 
+	class3 = array.getAllBj(); 
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -106,6 +108,7 @@ $(document).ready(function(){
     
     <tbody class="tbody">
  <%
+ 	if(class2 != null && class2.size() != 0){
 	    for(int i=0;i<class2.size();i++){
 	    	ArrayList student2 = (ArrayList)class2.get(i);	
 	 %>
@@ -130,7 +133,33 @@ $(document).ready(function(){
 <%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">É¾³ý</a></td> --%>
     </tr>
     </form>
-      <%} %>
+      <%}}else { %>
+    <%
+	    for(int i=0;i<class3.size();i++){
+	    	ArrayList student2 = (ArrayList)class3.get(i);	
+	 %>
+	<form action="<%=path %>/DelServlet?" method="post" name=nihao<%=student2.get(0)%>>
+    <tr>
+	<td align="center"><%=student2.get(1) %></td>
+	<td align="center"><%=student2.get(2) %></td>
+	<td align="center">
+	<select name=fdy>
+	<option><%=student2.get(3) %></option>
+	<%
+    if(admin != null && admin.size() != 0){
+	    for(int j = 0;j < admin.size();j++){
+	    	ArrayList alRow = (ArrayList)admin.get(j);
+    %>
+		<option><%=alRow.get(2) %></option>
+      <%}} %>
+	</select>
+	</td>
+	<td align="center"><%=student2.get(4) %></td>
+	<td align="center"><input type="submit" value="È·¶¨"> </td>
+<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">É¾³ý</a></td> --%>
+    </tr>
+    </form>
+      <%}}%>
     </tbody>
     
   </table>

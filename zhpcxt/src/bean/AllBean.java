@@ -100,6 +100,12 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getAllBj(){
+		String sql = "select * from bj ";
+		String args[] = {"id","bj","rs","fdy","bjg"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	
 	public ArrayList getBj(String nj){
 		String sql = "select * from bj where nj="+nj;
