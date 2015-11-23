@@ -69,7 +69,7 @@ public class DelServlet extends HttpServlet {
 		String intellectualgrade = request.getParameter("intellectualgrade");
 		String student = request.getParameter("student");
 		String evaluating = request.getParameter("evaluating");
-		String bj = request.getParameter("bj");
+		String bj = request.getParameter("bjh");
 		System.out.println("°à¼¶="+bj);
 		String fdy = request.getParameter("fdy");
 		if(bj != null && !bj.equals("")){

@@ -114,7 +114,7 @@ $(document).ready(function(){
 	 %>
 	<form action="<%=path %>/DelServlet?" method="post" name=nihao<%=student2.get(0)%>>
     <tr>
-	<td align="center"><%=student2.get(1) %></td>
+<td align="center"><input name=bj value=<%=student2.get(1) %> readOnly="true" ></td>
 	<td align="center"><%=student2.get(2) %></td>
 	<td align="center">
 	<select name=fdy>
@@ -140,7 +140,7 @@ $(document).ready(function(){
 	 %>
 	<form action="<%=path %>/DelServlet?" method="post" name=nihao<%=student2.get(0)%>>
     <tr>
-	<td align="center"><%=student2.get(1) %></td>
+	<td align="center"><input name=bj value=<%=student2.get(1) %> readOnly="true" ></td>
 	<td align="center"><%=student2.get(2) %></td>
 	<td align="center">
 	<select name=fdy>
