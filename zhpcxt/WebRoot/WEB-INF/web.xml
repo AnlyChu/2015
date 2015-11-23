@@ -3,7 +3,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
-          version="3.0">  
+          version="3.0" id="WebApp_1448282801402">  
  
 	
 	
@@ -19,6 +19,18 @@
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>AdminAddServlet</servlet-name>
     <servlet-class>servlet.AdminAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CourseAddServlet</servlet-name>
+    <servlet-class>servlet.CourseAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ClassAddServlet</servlet-name>
+    <servlet-class>servlet.ClassAddServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
@@ -115,6 +127,14 @@
   <servlet-mapping>
     <servlet-name>AdminAddServlet</servlet-name>
     <url-pattern>/AdminAddServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ClassAddServlet</servlet-name>
+    <url-pattern>/ClassAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CourseAddServlet</servlet-name>
+    <url-pattern>/CourseAddServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PwdUpdateServlet</servlet-name>

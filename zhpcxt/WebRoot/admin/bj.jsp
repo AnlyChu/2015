@@ -51,6 +51,9 @@ $(document).ready(function(){
 	$("#class_add").click(function(){
 		classAdd('<%=path %>');
 	});
+	$("#course_add").click(function(){
+		courseAdd('<%=path %>');
+	});
 })
 </script>
 </head>
@@ -71,6 +74,9 @@ $(document).ready(function(){
       </tr>
       <tr>
       <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="class_add">新建班级</a></td>
+      </tr>
+      <tr>
+      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>
       </tr>
       <form action="<%=basePath %>admin/bj.jsp" method="post" name="form1">
       <tr class="thead">

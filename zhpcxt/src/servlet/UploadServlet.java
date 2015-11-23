@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import util.Validate;
 import bean.InsertUpdateDelBean;
 import bean.StuService;
+import bean.studentInfoUpload;
 
 public class UploadServlet extends HttpServlet {
 
@@ -58,14 +59,22 @@ public class UploadServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String path = request.getContextPath();
 		response.setContentType("text/html;charset=gb2312");
 		request.setCharacterEncoding("gb2312");
-        String lujing="D:/"+request.getParameter("fileUpload");
-//        String filepath=new File(lujing).getAbsoluteFile();
-        StuService stu=new StuService();
-        System.out.println("路径="+lujing);
-        stu.upload(lujing);		
+		if(request.getParameter("fileUpload") != null){
+			String lujing=(File)request.getAttribute("fileUpload") + request.getParameter("fileUpload");
+//        	String filepath=new File(lujing).getAbsoluteFile();
+			StuService stu=new StuService();
+			stu.upload(lujing);		
+		}
+		else if(request.getParameter("fileUpload1") != null){
+			String lujing="E:/毕业设计/电子档/"+request.getParameter("fileUpload1");
+			studentInfoUpload stu=new studentInfoUpload();
+			stu.upload(lujing);		
+		}
+        
+        
 
 	}
 

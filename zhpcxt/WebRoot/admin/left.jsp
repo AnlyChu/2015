@@ -18,7 +18,7 @@ if(adminlogin.get(3).equals("辅导员")){ %>
   <li><a href="<%=path %>/admin/verifyexamine.jsp">评测审核</a></li>
   <li><a href="<%=path %>/admin/bj3.jsp">班级管理</a></li>
   <li><a href="<%=path %>/admin/evaluating.jsp">班长管理</a></li>
-  <li><a href="<%=path %>/admin/student.jsp">学生用户管理</a></li>
+  <li><a href="<%=path %>/admin/studentInfoUpload.jsp">学生用户管理</a></li>
 <%}
 if(adminlogin.get(3).equals("学生")){
 %>

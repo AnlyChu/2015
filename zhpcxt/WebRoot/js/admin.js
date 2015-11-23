@@ -182,7 +182,7 @@ function classAdd(path){
 				    		$.messager.alert('系统消息','添加成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/class.jsp';				    			
+					    		location.href = path+'/admin/bj.jsp';				    			
 				    		},false);
 				    	} 
 				    }  
@@ -193,6 +193,47 @@ function classAdd(path){
 	        iconCls:'icon-reload',
 	        handler:function(){
 	            $('#dlg_class_add').dialog('refresh');
+	        }
+	    }]
+	});
+}
+//新建课程
+function courseAdd(path){
+	$("body").append("<div id='dlg_course_add' style='padding:20px;'></div>");
+	$('#dlg_course_add').dialog({
+		href:path+'/admin/createCourse.jsp',
+		modal:true,
+		closed:false,
+	    title:'新建课程',
+	    width:300,
+	    height:250,
+	    buttons:[{
+	        text:'提交',
+	        iconCls:'icon-ok',
+	        handler:function(){
+	            $('#from_course_add').form('submit',{
+	            	url:path+'/CourseAddServlet',
+	                onSubmit:function(){
+				        return $(this).form('validate');
+				    },
+				    success:function(data){
+				    	if(data == "-1"){
+				    		$.messager.alert('系统消息','课程已存在','error');
+				    	}else{
+				    		$.messager.alert('系统消息','添加成功','info',function(){
+					    		$('#dlg_login').dialog('refresh');
+					    		$('#dlg_login').dialog('close');
+					    		location.href = path+'/admin/bj.jsp';				    			
+				    		},false);
+				    	} 
+				    }  
+	            });
+	        }
+	    },{
+	        text:'重置',
+	        iconCls:'icon-reload',
+	        handler:function(){
+	            $('#dlg_course_add').dialog('refresh');
 	        }
 	    }]
 	});

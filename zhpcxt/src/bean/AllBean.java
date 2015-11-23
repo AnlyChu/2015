@@ -141,8 +141,8 @@ public class AllBean {
 	}
 	
 	public ArrayList getStudent(){
-		String sql = "select * from student order by id desc";
-		String args[] = {"id","xh","ksh","truename","sex","xszh","cc","sfzh","xy","zy","dz"};
+		String sql = "select * from student1 order by studentId desc";
+		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
 		al = sb.select(sql, args);
 		return al;
 	}
