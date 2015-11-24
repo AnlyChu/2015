@@ -6,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
+Float i = 1f;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
 	student = array.getStudent();
@@ -76,8 +77,8 @@ $(document).ready(function(){
     <tbody class="tbody">
     <%
     if(student != null && student.size() != 0){
-	    for(int i = 0;i < student.size();i++){
-	    	ArrayList alRow = (ArrayList)student.get(i);
+	    for(int j = 0;j < student.size();j++){
+	    	ArrayList alRow = (ArrayList)student.get(j);
     %>
       <tr>
         <td align="center"><%=i+1 %></td>
@@ -94,7 +95,9 @@ $(document).ready(function(){
       </tr>
       <%}} %>
     </tbody>
+   
   </table>
+  
 </div>
 </body>
 </html>

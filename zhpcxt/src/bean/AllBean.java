@@ -133,15 +133,17 @@ public class AllBean {
 		return al;
 	}
 	
-	public ArrayList getStudent(String id){
-		String sql = "select * from student where id="+id;
-		String args[] = {"id","xh","ksh","truename","sex","xszh","cc","sfzh","xy","zy","dz"};
-		al = sb.selectRow(args, sql);
+	public ArrayList getStudent(String sql){
+//		String sql = "select * from student where id="+id;
+//		String args[] = {"id","xh","ksh","truename","sex","xszh","cc","sfzh","xy","zy","dz"};
+		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
+//		al = sb.selectRow(args, sql);
+		al = sb.select(sql, args);
 		return al;
 	}
 	
 	public ArrayList getStudent(){
-		String sql = "select * from student1 order by studentId desc";
+		String sql = "select top 20 * from student1 where(studentId not in (select top 40 studentId from student1 order by studentId)) order by studentId desc";
 		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
 		al = sb.select(sql, args);
 		return al;

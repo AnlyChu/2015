@@ -6,9 +6,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
+int m = 1;
+String sql = (String)request.getAttribute( "sql");
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getStudent();
+	student = array.getStudent(sql);
 
 }
 String message = (String)request.getAttribute("message");
@@ -110,6 +112,13 @@ $(document).ready(function(){
           <%}} %>
     </tbody>
   </table>
+   <div>
+       	<a href="<%=path %>/studentInfoServlet?sql=<%=0 %>">首页</a>
+   		<span >
+			<a href="<%=path %>/studentInfoServlet?sql=<%=m-- %>">上一页</a>
+		</span>
+			<a href="<%=path %>/studentInfoServlet?sql=<%=m++ %>">下一页</a>
+	</div>
 </div>
 </body>
 </html>
