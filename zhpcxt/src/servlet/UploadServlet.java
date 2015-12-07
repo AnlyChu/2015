@@ -69,7 +69,7 @@ public class UploadServlet extends HttpServlet {
 			stu.upload(lujing);		
 		}
 		else if(request.getParameter("fileUpload1") != null){
-			String lujing="E:/毕业设计/电子档/"+request.getParameter("fileUpload1");
+			String lujing="G:/biyesheji/电子档/"+request.getParameter("fileUpload1");
 			studentInfoUpload stu=new studentInfoUpload();
 			stu.upload(lujing);		
 		}

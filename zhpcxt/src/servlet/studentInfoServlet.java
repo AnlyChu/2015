@@ -70,10 +70,10 @@ public class studentInfoServlet extends HttpServlet {
 			}
 			if(sql.equals("i")){
 				sql = "select top 20 * from student1 where(studentId not in (select top " + n + " studentId from student1 order by studentId)) order by studentId desc";
-				str = "/admin/evaluating.jsp";	
+				str = "/admin/studentInfoUpload.jsp";	
 			}
 		}
-		request.setAttribute( "sql ",sql);
+		request.setAttribute( "sql",sql);
 		request.getRequestDispatcher(str).forward(request, response);
 	}
 

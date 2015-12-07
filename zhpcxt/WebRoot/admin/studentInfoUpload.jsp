@@ -7,7 +7,8 @@ ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
 int m = 1;
-String sql = (String)request.getAttribute( "sql");
+String sql0 = "select  * from student1";
+String sql = (String)request.getAttribute( "sql") != null ? (String)request.getAttribute( "sql") : sql0;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
 	student = array.getStudent(sql);

@@ -32,7 +32,7 @@ public class studentInfoUpload{
 		for(int j=1;j<sheet.getRows();j++){
 			Cell[] row=sheet.getRow(j);
 			String str="'";
-			String val="studentId,name,sex,IDCard,dept,pro,address";
+			String val="studentId,name,sex,class,IDCard,dept,pro,address";
 			for(int i=0;i<row.length;i++){
 				if (i==row.length-1){
 					str+=row[i].getContents()+"'";

@@ -89,14 +89,26 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getMyScore(String student){
-		String sql = "select * from chengji where student="+student+"order by xueqi asc";
+		String sql = "select * from score1 where student="+student+"order by xueqi asc";
 		String args[] = {"student","xueqi","xf","dl","jds","wl","hb","hb2","yy","dl2","sx"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getMyScore(){
-		String sql = "select * from chengji ";
-		String args[] = {"student","xueqi","xf","dl","jds","wl","hb","hb2","yy","dl2","sx"};
+		String sql = "select * from score1 ";
+		String args[] = {"studentId","term","courseId","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getCourse(String courseId){
+		String sql = "select * from course where courseId="+courseId;
+		String args[] = {"courseId","courseName","term"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getCourse(){
+		String sql = "select * from courseId ";
+		String args[] = {"courseId","courseName","term"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -133,11 +145,11 @@ public class AllBean {
 		return al;
 	}
 	
-	public ArrayList getStudent(String sql){
-//		String sql = "select * from student where id="+id;
+	public ArrayList getStudent(String studentId){
+		String sql = "select * from student1 where studentId="+studentId;
 //		String args[] = {"id","xh","ksh","truename","sex","xszh","cc","sfzh","xy","zy","dz"};
 		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
-//		al = sb.selectRow(args, sql);
+		
 		al = sb.select(sql, args);
 		return al;
 	}

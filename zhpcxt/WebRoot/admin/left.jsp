@@ -14,7 +14,7 @@ if(adminlogin.get(3).equals("书记")){ %>
 	<li><a href="<%=path %>/admin/student.jsp">学生信息查询</a></li>
 <%}
 if(adminlogin.get(3).equals("辅导员")){ %>
-	<li><a href="<%=path %>/admin/sportsgradeexamine.jsp">成绩上传</a></li>
+	<li><a href="<%=path %>/admin/classScore.jsp">成绩上传</a></li>
   <li><a href="<%=path %>/admin/verifyexamine.jsp">评测审核</a></li>
   <li><a href="<%=path %>/admin/bj3.jsp">班级管理</a></li>
   <li><a href="<%=path %>/admin/evaluating.jsp">班长管理</a></li>
