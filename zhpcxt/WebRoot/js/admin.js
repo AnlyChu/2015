@@ -21,12 +21,18 @@ function login(path,closed){
 				    success:function(data){
 				    	if(data == "1"){
 				    		$.messager.alert('系统消息','用户名或密码错误','error');
+				    	}else if(data == "3"){
+				    		$.messager.alert('系统消息','登录成功','info',function(){
+					    		$('#dlg_login').dialog('refresh');
+					    		$('#dlg_login').dialog('close');
+				    		location.href = path+'/admin/classSelect.jsp';
+				    		},false);
 				    	}else{
 				    		//window.navigate(path+'/index.jsp');
 				    		$.messager.alert('系统消息','登录成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/index.jsp';				    			
+					    		location.href = path+'/admin/index.jsp';
 				    		},false);
 				    	} 
 				    }
@@ -238,6 +244,41 @@ function courseAdd(path){
 	    }]
 	});
 }
+//选择管理班级
+//function classSelect(path){
+//	$("body").append("<div id='dlg_class_select' style='padding:20px;'></div>");
+//	$('#dlg_class_select').dialog({
+//		href:path+'/admin/classSelect.jsp',
+//		modal:true,
+//		closed:false,
+//	    title:'选择班级',
+//	    width:300,
+//	    height:250,
+//	    buttons:[{
+//	        text:'提交',
+//	        iconCls:'icon-ok',
+//	        handler:function(){
+//	            $('#from_class_select').form('submit',{
+//	            	url:path+'/admin/bj.jsp',
+//	                onSubmit:function(){
+//				        
+//				    },
+//				    success:function(data){
+//				   
+//					    		location.href = path+'/admin/bj.jsp';				    			
+//				    
+//				    }  
+//	            });
+//	        }
+//	    },{
+//	        text:'重置',
+//	        iconCls:'icon-reload',
+//	        handler:function(){
+//	            $('#dlg_class_add').dialog('refresh');
+//	        }
+//	    }]
+//	});
+//}
 //用户注销
 function logout(path){
 	$.ajax({

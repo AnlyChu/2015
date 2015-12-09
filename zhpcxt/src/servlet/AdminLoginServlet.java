@@ -65,16 +65,16 @@ public class AdminLoginServlet extends HttpServlet {
 		String status = request.getParameter("status");
 		String table = "";
 		System.out.print("status="+status);
-		if(status.equals("辅导员")||status.equals("书记")){
+		if(status.equals("辅导员")){
 			table = "admin";
-		}else if(status.equals("评测员")){
-			table = "evaluating";
+		}else if(status.equals("书记")){
+			table = "admin";
 		}else{
 			table = "student";
 		}
 		String sql = "select * from "+table+" where name='"+name+"' and pwd='"+pwd+"'";
 
-		String args[] = {"id","name","pwd","status","xm"};
+		String args[] = {"id","name","pwd","status"};
 		SelectBean sb = new SelectBean();		
 		ArrayList al = sb.selectRow(args, sql);
 
@@ -83,11 +83,15 @@ public class AdminLoginServlet extends HttpServlet {
 		if(al == null || al.size() == 0){
 			responseText = "1";
 //			request.setAttribute("message", responseText);
+		}else if(status.equals("辅导员")){
+			HttpSession session = request.getSession();
+			session.setAttribute("adminlogin", al);
+			responseText = "3";
 		}else{
 			HttpSession session = request.getSession();
 			session.setAttribute("adminlogin", al);
 			responseText = "2";
-//			request.setAttribute("message", responseText);
+//			request.setAttribute("adminName", name);
 		}
 //		response.sendRedirect("/twtweb/users/index.jsp?message="+responseText);
 //		request.getRequestDispatcher("/users/index.jsp").forward(request, response);

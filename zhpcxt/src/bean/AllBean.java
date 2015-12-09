@@ -20,6 +20,13 @@ public class AllBean {
 		return al;
 	}
 	
+	public ArrayList getMgrClass(String name){
+		String sql = "select distinct cDept,cPro,cNo from class1 where cMgr='"+name+"'";
+		String args[] = {"cDept","cPro","cNo"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	
 	public ArrayList getVerify(){
 		String sql = "select * from verify order by id desc";
 		String args[] = {"id","student","name","addsubtract","score","reason","dates","evaluating","state"};
@@ -96,7 +103,7 @@ public class AllBean {
 	}
 	public ArrayList getMyScore(){
 		String sql = "select * from score1 ";
-		String args[] = {"studentId","term","courseId","score"};
+		String args[] = {"studentId","sName","term","courseId","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -107,7 +114,7 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getCourse(){
-		String sql = "select * from courseId ";
+		String sql = "select * from course ";
 		String args[] = {"courseId","courseName","term"};
 		al = sb.select(sql,args);
 		return al;
@@ -125,9 +132,9 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getBj1(String fdy){
-		String sql = "select * from bj where fdy='"+fdy+"'";
-		String args[] = {"id","bj","rs","fdy","bjg"};
+	public ArrayList getBj1(String cMgr){
+		String sql = "select * from class1 where cMgr='"+cMgr+"'";
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -155,7 +162,7 @@ public class AllBean {
 	}
 	
 	public ArrayList getStudent(){
-		String sql = "select top 20 * from student1 where(studentId not in (select top 40 studentId from student1 order by studentId)) order by studentId desc";
+		String sql = "select * from student1";
 		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
 		al = sb.select(sql, args);
 		return al;

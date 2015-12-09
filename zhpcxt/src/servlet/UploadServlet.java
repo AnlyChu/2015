@@ -14,6 +14,7 @@ import util.Validate;
 import bean.InsertUpdateDelBean;
 import bean.StuService;
 import bean.studentInfoUpload;
+import bean.scoreUpload;
 
 public class UploadServlet extends HttpServlet {
 
@@ -66,12 +67,21 @@ public class UploadServlet extends HttpServlet {
 			String lujing=(File)request.getAttribute("fileUpload") + request.getParameter("fileUpload");
 //        	String filepath=new File(lujing).getAbsoluteFile();
 			StuService stu=new StuService();
-			stu.upload(lujing);		
+			stu.upload(lujing);
 		}
 		else if(request.getParameter("fileUpload1") != null){
 			String lujing="G:/biyesheji/电子档/"+request.getParameter("fileUpload1");
 			studentInfoUpload stu=new studentInfoUpload();
-			stu.upload(lujing);		
+			stu.upload(lujing);
+			request.setAttribute("message", "'上传成功！'");
+			request.getRequestDispatcher("/admin/studentInfoUpload.jsp").forward(request, response);
+		}
+		else if(request.getParameter("fileUpload2") != null){
+			String lujing="G:/biyesheji/电子档/"+request.getParameter("fileUpload2");
+			scoreUpload stu=new scoreUpload();
+			stu.upload(lujing);	
+			request.setAttribute("message", "'成绩上传成功！'");
+			request.getRequestDispatcher("/admin/classScore.jsp").forward(request, response);
 		}
         
         

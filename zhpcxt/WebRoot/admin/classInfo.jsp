@@ -5,12 +5,11 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
-ArrayList student = null;
+ArrayList classInfo = null;
 
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getStudent();
-
+	classInfo = array.getBj1(adminlogin.get(1).toString()); 
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -44,12 +43,6 @@ $(document).ready(function(){
 		adminAdd('<%=path %>');
 	});
 })
-
-/* function display_alert()
-  {
-  var lujing=document.form.fileUpload.value;
-  alert("路径="+lujing)
-  } */
 </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no" resizable="false">
@@ -62,56 +55,40 @@ $(document).ready(function(){
   </div>
 </div>
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
-  <table width="100%" >
+  <table width="100%">
     <thead>
-     <tr>
-       
-      </tr>
       <tr>
-        <td><p>上传班级学生信息:</p></td>
-        <td>
-       <form action="<%=path%>/Upload?type=studentInfo" method="post"  >    
-        <input type="file" name="fileUpload1" />  
-    	<input type=submit value="上传文件"  />
-    	</form>
-
-
-    	</td>
-<td colspan="6" align="center" style="padding:5px;">成绩上传</td>
+        <td colspan="11" align="center" style="padding:5px;">班级基本信息</td>
       </tr>
-  <tr class="thead">
-        <td align="center">学号</td>
-        <td align="center">姓名</td>
-        <td align="center">性别</td>
-        <td align="center">班级</td>
-        <td align="center">身份证号</td>
-        <td align="center">学院</td>
+       <tr>
+      <td colspan="4" style="padding:5px;"><a href="<%=basePath %>admin/classSelect.jsp">更换班级</a></td>
+      </tr>
+      <tr class="thead">
+        <td align="center">编号</td>
+        <td align="center">年级</td>
+        <td align="center">系别</td>
         <td align="center">专业</td>
-        <td align="center">通讯地址</td>
-    
+        <td align="center">班级</td>
+        <td align="center">辅导员</td>
       </tr>
     </thead>
     <tbody class="tbody">
-    <%
-    if(student != null && student.size() != 0){
-	    for(int i = 0;i < student.size();i++){
-	    	ArrayList alRow = (ArrayList)student.get(i);
-    %>
-      <tr>
-       
-        <td align="center"><%=alRow.get(0) %></td>
-        <td align="center"><%=alRow.get(1) %></td>
-        <td align="center"><%=alRow.get(2) %></td>
-        <td align="center"><%=alRow.get(3) %></td>
-        <td align="center"><%=alRow.get(4) %></td>
-        <td align="center"><%=alRow.get(5) %></td>
-        <td align="center"><%=alRow.get(6) %></td>
-        <td align="center"><%=alRow.get(7) %></td>
-        </tr>
-          <%}} %>
+ <%
+	    for(int i=0;i<classInfo.size();i++){
+	    	ArrayList classInfo1 = (ArrayList)classInfo.get(i);	
+	 %>
+    <tr>
+	<td align="center"><%=classInfo1.get(0) %></td>	
+	<td align="center"><%=classInfo1.get(1) %></td>
+	<td align="center"><%=classInfo1.get(2) %></td>
+	<td align="center"><%=classInfo1.get(3) %></td>
+	<td align="center"><%=classInfo1.get(4) %></td>
+	<td align="center"><%=classInfo1.get(5) %></td>
+<%-- 	<td align="center" ><a href="<%=basePath %>cd/add.jsp?method=upcd&id=<%=pagelist2.get(0).toString()%>">修改</a></td>  --%>
+    </tr>
+      <%} %>
     </tbody>
   </table>
- 
 </div>
 </body>
 </html>

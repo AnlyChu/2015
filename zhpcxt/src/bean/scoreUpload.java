@@ -9,7 +9,7 @@ import java.util.List;
 import jxl.*;
 
 
-public class studentInfoUpload{
+public class scoreUpload{
 //	  InputStream is = new  FileInputStream(sourcefile);      
 //	  jxl.Workbook rwb = Workbook.getWorkbook(is); }  
 //		catch (Exception e) {  e.printStackTrace(); }
@@ -31,18 +31,17 @@ public class studentInfoUpload{
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
 		for(int j=1;j<sheet.getRows();j++){
 			Cell[] row=sheet.getRow(j);
-			String str="";
-			String val="studentId,name,sex,class,IDCard,dept,pro,address";
+			String str="'";
+			String val="studentId,sName,term,score,courseId";
 			for(int i=0;i<row.length;i++){
-				
 				if (i==row.length-1){
-					str+="'" + row[i].getContents()+"'";
+					str+=row[i].getContents()+"'";
 				}
 				else{
-				str+="'" + row[i].getContents()+"','"; 
+				str+=row[i].getContents()+"','"; 
 				}						
 			}
-			String sql = "insert into dbo.student1"+"("+val+")"+ "values"+"("+str+")";
+			String sql = "insert into dbo.score1"+"("+val+")"+ "values"+"("+str+")";
 			System.out.println("val="+val+"\rstr="+str);
 			ib.insertANDupdateANDdel(sql);
 		   }
