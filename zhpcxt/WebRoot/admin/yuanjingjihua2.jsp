@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -12,11 +12,11 @@ String message = (String)request.getAttribute("message");
 String verifyType = request.getParameter("verifyType");
 String str = "";
 if(verifyType != null && verifyType.equals("moral")){
-	str = "µÂÓý";
+	str = "å¾·è‚²";
 }else if(verifyType != null && verifyType.equals("sports")){
-	str = "ÌåÓý";
+	str = "ä½“è‚²";
 }else if(verifyType != null && verifyType.equals("ability")){
-	str = "ÄÜÁ¦";
+	str = "èƒ½åŠ›";
 }
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -53,7 +53,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -61,7 +61,7 @@ $(document).ready(function(){
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%">
     <tr>
-      <td align="center" style="padding:10px">Ô¸¾°¼Æ»®</td>
+      <td align="center" style="padding:10px">æ„¿æ™¯è®¡åˆ’</td>
     </tr>
   </table>
    <table width="100%">
@@ -71,26 +71,26 @@ $(document).ready(function(){
   <form id="article_edit" method="post" action="<%=path %>/yuanjingjihuaServlet?name=<%=verifyType %>" onSubmit="return $(this).form('validate');">
     <table border="1" align="center" cellpadding="5">
      <tr>
-        <td align="right">Ñ§ÆÚ£º</td>
+        <td align="right">å­¦æœŸï¼š</td>
         <td><select id="cc" class="easyui-combobox" name="term" editable="false" required="true">
-            <option value="1" selected>µÚ1Ñ§ÆÚ</option>
-            <option value="2">µÚ2Ñ§ÆÚ</option>
-            <option value="3">µÚ3Ñ§ÆÚ</option>
-            <option value="4">µÚ4Ñ§ÆÚ</option>
-            <option value="5">µÚ5Ñ§ÆÚ</option>
-            <option value="6">µÚ6Ñ§ÆÚ</option>
-            <option value="7">µÚ7Ñ§ÆÚ</option>
-            <option value="8">µÚ8Ñ§ÆÚ</option>
+            <option value="1" selected>ç¬¬1å­¦æœŸ</option>
+            <option value="2">ç¬¬2å­¦æœŸ</option>
+            <option value="3">ç¬¬3å­¦æœŸ</option>
+            <option value="4">ç¬¬4å­¦æœŸ</option>
+            <option value="5">ç¬¬5å­¦æœŸ</option>
+            <option value="6">ç¬¬6å­¦æœŸ</option>
+            <option value="7">ç¬¬7å­¦æœŸ</option>
+            <option value="8">ç¬¬8å­¦æœŸ</option>
         </select></td>
       </tr>
 
       <tr>	
-        <td align="right">ÄÚÈÝ£º</td>
+        <td align="right">å†…å®¹ï¼š</td>
         <td><textarea class="easyui-validatebox" name="reason" required="true" style="width:700px;height:200px;"></textarea></td>
       </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td><input type="submit" value="Ìá½»"></td>
+        <td><input type="submit" value="æäº¤"></td>
       </tr>
     </table>
   </form>

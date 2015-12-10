@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,19 +9,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <form id="form_login" method="post">
   <table class="table-padding">
     <tr>
-      <td align="right">ÓÃ»§Ãû£º</td>
-      <td><input class="easyui-validatebox" type="text" name="name" required="true" validType="pattern" customize="Customize" /></td>
+      <td align="right">ç”¨æˆ·åï¼š</td>
+      <td><input class="easyui-validatebox" type="text" name="id" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
-      <td align="right">ÃÜÂë£º</td>
+      <td align="right">å¯†ç ï¼š</td>
       <td><input class="easyui-validatebox" type="password" name="pwd" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
-      <td align="right">Éí·Ý£º</td>
+      <td align="right">èº«ä»½ï¼š</td>
       <td>
-      	<input type=radio name="status" value="¸¨µ¼Ô±" checked>¸¨µ¼Ô±
-      	<input type=radio name="status" value="Êé¼Ç">Êé¼Ç
-      	<input type=radio name="status" value="Ñ§Éú">Ñ§Éú
+      	<input type=radio name="status" value="è¾…å¯¼å‘˜" checked>è¾…å¯¼å‘˜
+      	<input type=radio name="status" value="ä¹¦è®°">ä¹¦è®°
+      	<input type=radio name="status" value="å­¦ç”Ÿ">å­¦ç”Ÿ
       </td>
     </tr>
   </table>

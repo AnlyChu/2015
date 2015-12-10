@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -49,7 +49,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="�����˵�" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="导航菜单" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -58,19 +58,19 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="5" align="center" style="padding:5px;">�ҵĳɼ�</td>
+        <td colspan="5" align="center" style="padding:5px;">我的成绩</td>
       </tr>
       <tr class="thead">
-      	<td align="center">ѧ��</td>
-        <td align="center">���ѧ��</td>
-        <td align="center">��·��ģ����Ӽ���ʵ��/���޿�/1</td>
-        <td align="center">�й����ִ�ʷ��Ҫ/���޿�/2</td>
-        <td align="center">��ѧ����A1/���޿�/3.25</td>
-         <td align="center"> ������Կγ����/���޿�/1</td>
-          <td align="center">�������/���޿�/3</td>
-           <td align="center">��ѧӢ��A2/���޿�/4</td>
-            <td align="center">��·��ģ����Ӽ���/ѡ�޿�/4</td>
-            <td align="center">�ߵ���ѧA2/���޿�/5</td>
+      	<td align="center">学期</td>
+        <td align="center">获得学分</td>
+        <td align="center">电路与模拟电子技术实验/必修课/1</td>
+        <td align="center">中国近现代史纲要/必修课/2</td>
+        <td align="center">大学物理A1/必修课/3.25</td>
+         <td align="center"> 汇编语言课程设计/必修课/1</td>
+          <td align="center">汇编语言/必修课/3</td>
+           <td align="center">大学英语A2/必修课/4</td>
+            <td align="center">电路与模拟电子技术/选修课/4</td>
+            <td align="center">高等数学A2/必修课/5</td>
        
         
       </tr>
@@ -98,7 +98,7 @@ $(document).ready(function(){
   </table>
    <form action="<%=path%>/Shuchu" method="post"> 
 <!--    <input  type=text value=123/> -->
-   <input type=submit value="��ӡ�ɼ�"/>
+   <input type=submit value="打印成绩"/>
    </form>
 </div>
 </body>

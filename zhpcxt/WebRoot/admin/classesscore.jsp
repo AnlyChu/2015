@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="导航菜单" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="瀵艰埅鑿滃崟" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -57,14 +57,14 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="5" align="center" style="padding:5px;">班级测评成绩</td>
+        <td colspan="5" align="center" style="padding:5px;">鐝骇娴嬭瘎鎴愮哗</td>
       </tr>
       <tr class="thead">
-        <td align="center">德育成绩</td>
-        <td align="center">智育成绩</td>
-        <td align="center">体育成绩</td>
-        <td align="center">能力成绩</td>
-        <td align="center">综合成绩</td>
+        <td align="center">寰疯偛鎴愮哗</td>
+        <td align="center">鏅鸿偛鎴愮哗</td>
+        <td align="center">浣撹偛鎴愮哗</td>
+        <td align="center">鑳藉姏鎴愮哗</td>
+        <td align="center">缁煎悎鎴愮哗</td>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -74,9 +74,9 @@ $(document).ready(function(){
       <tr>
         <td align="center"><table>
             <tr>
-              <td>名次</td>
-              <td>姓名</td>
-              <td>成绩</td>
+              <td>鍚嶆</td>
+              <td>濮撳悕</td>
+              <td>鎴愮哗</td>
             </tr>
             <%
             ArrayList moral = array.getClassesScore(student.get(4).toString(),"moral");
@@ -92,14 +92,14 @@ $(document).ready(function(){
             </tr>
             <%} %>
             <tr>
-              <td colspan="3">总成绩：<%=moralF %></td>
+              <td colspan="3">鎬绘垚缁╋細<%=moralF %></td>
             </tr>
         </table></td>
         <td align="center"><table>
             <tr>
-              <td>名次</td>
-              <td>姓名</td>
-              <td>成绩</td>
+              <td>鍚嶆</td>
+              <td>濮撳悕</td>
+              <td>鎴愮哗</td>
             </tr>
             <%
             ArrayList intellectual = array.getClassesScore(student.get(4).toString(),"intellectual");
@@ -115,14 +115,14 @@ $(document).ready(function(){
             </tr>
             <%} %>
             <tr>
-              <td colspan="3">总成绩：<%=intellectualF %></td>
+              <td colspan="3">鎬绘垚缁╋細<%=intellectualF %></td>
             </tr>
         </table></td>
         <td align="center"><table>
             <tr>
-              <td>名次</td>
-              <td>姓名</td>
-              <td>成绩</td>
+              <td>鍚嶆</td>
+              <td>濮撳悕</td>
+              <td>鎴愮哗</td>
             </tr>
             <%
             ArrayList sports = array.getClassesScore(student.get(4).toString(),"sports");
@@ -138,14 +138,14 @@ $(document).ready(function(){
             </tr>
             <%} %>
             <tr>
-              <td colspan="3">总成绩：<%=sportsF %></td>
+              <td colspan="3">鎬绘垚缁╋細<%=sportsF %></td>
             </tr>
         </table></td>
         <td align="center"><table>
             <tr>
-              <td>名次</td>
-              <td>姓名</td>
-              <td>成绩</td>
+              <td>鍚嶆</td>
+              <td>濮撳悕</td>
+              <td>鎴愮哗</td>
             </tr>
             <%
             ArrayList ability = array.getClassesScore(student.get(4).toString(),"ability");
@@ -161,14 +161,14 @@ $(document).ready(function(){
             </tr>
             <%} %>
             <tr>
-              <td colspan="3">总成绩：<%=abilityF %></td>
+              <td colspan="3">鎬绘垚缁╋細<%=abilityF %></td>
             </tr>
         </table></td>
         <td align="center"><table>
             <tr>
-              <td>名次</td>
-              <td>姓名</td>
-              <td>成绩</td>
+              <td>鍚嶆</td>
+              <td>濮撳悕</td>
+              <td>鎴愮哗</td>
             </tr>
             <%
             ArrayList zhonghe = array.getClassesScore(student.get(4).toString(),"zhonghe");
@@ -184,7 +184,7 @@ $(document).ready(function(){
             </tr>
             <%} %>
             <tr>
-              <td colspan="3">总成绩：<%=zhongheF %></td>
+              <td colspan="3">鎬绘垚缁╋細<%=zhongheF %></td>
             </tr>
         </table></td>
       </tr>

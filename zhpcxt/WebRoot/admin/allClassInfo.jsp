@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean" />
 <%
 	String path = request.getContextPath();
@@ -8,13 +8,12 @@
 	ArrayList adminlogin = (ArrayList) session
 			.getAttribute("adminlogin");
 	boolean closed = false;
-	ArrayList myscore = null;
-	ArrayList course = null;
+	ArrayList allClass = null;
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		myscore = array.getMyScore();
-
+		allClass = array.getAllBj();
 	}
+
 	String message = (String) request.getAttribute("message");
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -49,13 +48,13 @@ $(document).ready(function(){
 	$("#admin_add").click(function(){
 		adminAdd('<%=path%>');
 		});
-	})
-
-	/* function display_alert()
-	 {
-	 var lujing=document.form.fileUpload.value;
-	 alert("Â·¾¶="+lujing)
-	 } */
+	});
+	$("#class_add").click(function(){
+		classAdd('<%=path %>');
+	});
+	$("#course_add").click(function(){
+		courseAdd('<%=path %>');
+	});
 </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no"
@@ -63,7 +62,7 @@ $(document).ready(function(){
 	<div id="north" region="north" split="false" border="false">
 		<jsp:include page="/admin/head.jsp"></jsp:include>
 	</div>
-	<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥"
+	<div region="west" split="false" border="false" title="å¯¼èˆªèœå•"
 		style="width:180px;" id="west">
 		<div id="left-menus" border="false" fit="true">
 			<jsp:include page="/admin/left.jsp"></jsp:include>
@@ -71,64 +70,41 @@ $(document).ready(function(){
 	</div>
 	<div id="mainPanle" region="center" border="true"
 		style="background:#f7f7f7; padding:5px;">
-		<table>
-			<thead>
-				<tr>
-					<td><p>ÉÏ´«³É¼¨£¨excelÎÄ¼ş£©:</p></td>
-					<td>
-						<form action="<%=path%>/Upload" method="post">
-							<input type="file" name="fileUpload2" /> <input type=submit
-								value="ÉÏ´«ÎÄ¼ş" />
-						</form>
-					</td>
-				</tr>
-				
-			</thead>
-			<tr>
-					<td align="right"><p>Ñ§ÆÚ:</p></td>
-					<td >
-						<select name=term>
-								<%
-										ArrayList myscore2 = (ArrayList) myscore.get(0);
-								%>
-								<option value=<%=myscore2.get(2)%>><%=myscore2.get(2)%>
-								</option>
-								
-						</select>
-					</td>
-				</tr>
-		</table>
 		<table width="100%">
 			<thead>
-			<tr><td colspan="6" align="center" style="padding:5px;"><h3>°à¼¶Ñ§Éú³É¼¨</h3></td></tr>
+				<tr>
+					<td colspan="11" align="center" style="padding:5px;">è®¡ç®—æœºå­¦é™¢ç­çº§</td>
+				</tr>
 				<tr class="thead">
-					<td align="center">Ñ§ºÅ</td>
-					<td align="center" width="100px">ĞÕÃû</td>
-					<td align="center">Ñ§ÆÚ</td>
-					<td align="center">¿Î³Ì</td>
-					<td align="center">³É¼¨</td>
+					<td align="center">ç¼–å·</td>
+					<td align="center">å¹´çº§</td>
+					<td align="center">é™¢ç³»</td>
+					<td align="center">ä¸“ä¸š</td>
+					<td align="center">ç­çº§</td>
+					<td align="center">è¾…å¯¼å‘˜</td>
+					<td align="center">æ“ä½œ</td>
 				</tr>
 			</thead>
 
 			<tbody class="tbody">
 				<%
-					for (int i = 0; i < myscore.size(); i++) {
-						ArrayList myscore1 = (ArrayList) myscore.get(i);
-						course = array.getCourse(myscore1.get(3).toString());
-
-						ArrayList course1 = (ArrayList) course.get(0);
+					for (int i = 0; i < allClass.size(); i++) {
+						ArrayList allClass1 = (ArrayList) allClass.get(i);
 				%>
-				<tr>
-					<td align="center"><%=myscore1.get(0)%></td>
-					<td align="center"><%=myscore1.get(1)%></td>
-					<td align="center"><%=myscore1.get(2)%></td>
-					<td align="center"><%=course1.get(1)%></td>
-					<td align="center"><%=myscore1.get(4)%></td>
-				</tr>
+					<tr>
+						<td align="center"><%=allClass1.get(0)%></td>
+						<td align="center"><%=allClass1.get(1)%></td>
+						<td align="center"><%=allClass1.get(2)%></td>
+						<td align="center"><%=allClass1.get(3)%></td>
+						<td align="center"><%=allClass1.get(4)%></td>
+						<td align="center"><%=allClass1.get(5)%></td>
+					 	<td align="center"><a href="<%=path %>">æŸ¥çœ‹</a></td>
+					</tr>
 				<%
 					}
 				%>
 			</tbody>
+
 		</table>
 	</div>
 </body>

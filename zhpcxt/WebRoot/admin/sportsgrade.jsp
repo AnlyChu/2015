@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -57,19 +57,19 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="5" align="center" style="padding:5px;">ÌåÓý³É¼¨ÆÀ²â¹ÜÀí</td>
+        <td colspan="5" align="center" style="padding:5px;">ä½“è‚²æˆç»©è¯„æµ‹ç®¡ç†</td>
       </tr>
       <tr>
-        <td colspan="5" style="padding:5px;"><span style="color:#F00">×¢£ºÈçÆÀ²âÉóºËÎ´Í¨¹ý£¬ÇëÉ¾³ýºóÖØÐÂÌá½»</span></td>
+        <td colspan="5" style="padding:5px;"><span style="color:#F00">æ³¨ï¼šå¦‚è¯„æµ‹å®¡æ ¸æœªé€šè¿‡ï¼Œè¯·åˆ é™¤åŽé‡æ–°æäº¤</span></td>
       </tr>
       <tr>
-        <td colspan="5" style="padding:5px;"><a href="<%=path %>/admin/sportsgrade_edit.jsp">ÌåÓý³É¼¨ÆÀ²â</a></td>
+        <td colspan="5" style="padding:5px;"><a href="<%=path %>/admin/sportsgrade_edit.jsp">ä½“è‚²æˆç»©è¯„æµ‹</a></td>
       </tr>
       <tr class="thead">
-        <td align="center">ÐòºÅ</td>
-        <td align="center">·ÖÊý</td>
-        <td align="center">ÈÕÆÚ</td>
-        <td align="center">ÉóºË</td>
+        <td align="center">åºå·</td>
+        <td align="center">åˆ†æ•°</td>
+        <td align="center">æ—¥æœŸ</td>
+        <td align="center">å®¡æ ¸</td>
         <td align="center"></td>
       </tr>
     </thead>
@@ -80,11 +80,11 @@ $(document).ready(function(){
 	    	ArrayList alRow = (ArrayList)sportsgrade.get(i);
 	    	String state = "";
 	    	if(alRow.get(5).equals("0")){
-	    		state = "ÉóºËÖÐ";
+	    		state = "å®¡æ ¸ä¸­";
 	    	}else if(alRow.get(5).equals("1")){
-	    		state = "ÉóºËÒÑÍ¨¹ý";
+	    		state = "å®¡æ ¸å·²é€šè¿‡";
 	    	}else if(alRow.get(5).equals("2")){
-	    		state = "ÉóºËÎ´Í¨¹ý";
+	    		state = "å®¡æ ¸æœªé€šè¿‡";
 	    	}
     %>
       <tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){
         <td align="center"><%=alRow.get(2) %></td>
         <td align="center"><%=alRow.get(3) %></td>
         <td align="center"><%=state %></td>
-        <td align="center"><%=alRow.get(5).equals("2")?"<a href="+path+"/DelServlet?sportsgrade="+alRow.get(0)+">É¾³ý</a>":"" %></td>
+        <td align="center"><%=alRow.get(5).equals("2")?"<a href="+path+"/DelServlet?sportsgrade="+alRow.get(0)+">åˆ é™¤</a>":"" %></td>
       </tr>
       <%}} %>
     </tbody>

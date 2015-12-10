@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -44,7 +44,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -52,18 +52,18 @@ $(document).ready(function(){
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%">
     <tr>
-      <td align="center" style="padding:10px">ÌåÓı³É¼¨ÆÀ²â</td>
+      <td align="center" style="padding:10px">ä½“è‚²æˆç»©è¯„æµ‹</td>
     </tr>
   </table>
   <form id="article_edit" method="post" action="<%=path %>/SportsgradeServlet"onSubmit="return $(this).form('validate');" >
     <table border="1" align="center" cellpadding="5">
       <tr>
-        <td align="right">·ÖÊı£º</td>
-        <td><input class="easyui-numberbox" type="text" name="grade" required="true" missingMessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊı×Ö" customize="Customize" min="0.1" precision="1" /></td>
+        <td align="right">åˆ†æ•°ï¼š</td>
+        <td><input class="easyui-numberbox" type="text" name="grade" required="true" missingMessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
       </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td><input type="submit" value="Ìá½»"></td>
+        <td><input type="submit" value="æäº¤"></td>
       </tr>
     </table>
   </form>

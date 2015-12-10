@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -61,7 +61,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -70,13 +70,13 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="11" align="center" style="padding:5px;">ÇëÑ¡ÔñÒª²éÑ¯µÄ°à¼¶</td>
+        <td colspan="11" align="center" style="padding:5px;">ç­çº§ç®¡ç†</td>
       </tr>
       <tr>
-      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="class_add">ĞÂ½¨°à¼¶</a></td>
+      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="class_add">æ–°å»ºç­çº§</a></td>
       </tr>
       <tr>
-      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">ĞÂ½¨¿Î³Ì</a></td>
+      <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">æ–°å»ºè¯¾ç¨‹</a></td>
       </tr>
       <form action="<%=basePath %>admin/bj.jsp" method="post" name="form1">
       <tr class="thead">
@@ -86,11 +86,11 @@ $(document).ready(function(){
 	 <% for(int i=0;i<class1.size();i++){
 	    	ArrayList class1bj = (ArrayList)class1.get(i);	
 	 %>
-    <option value=<%=class1bj.get(0) %>><%=class1bj.get(0) %>Äê¼¶</option>
+    <option value=<%=class1bj.get(0) %>><%=class1bj.get(0) %>å¹´çº§</option>
     <%} %>
     </select>
     </td>
-    <td><input type="submit" value="Ìá½»²éÑ¯"> </td>
+    <td><input type="submit" value="æäº¤æŸ¥è¯¢"> </td>
       </tr>
       </form>
     </thead>
@@ -103,12 +103,12 @@ $(document).ready(function(){
     <thead>
       
       <tr class="thead">
-        <td align="center">°à¼¶</td>
-        <td align="center">°à¼¶ÈËÊı</td>
-        <td align="center">¸¨µ¼Ô±</td>
-        <td align="center">²»¼°¸ñÈËÊı</td>
-        <td align="center">±ä¸ü¸¨µ¼Ô±</td>
-<!--          <td align="center">±ä¸ü¸¨µ¼Ô±</td> -->
+        <td align="center">ç­çº§</td>
+        <td align="center">ç­çº§äººæ•°</td>
+        <td align="center">è¾…å¯¼å‘˜</td>
+        <td align="center">ä¸åŠæ ¼äººæ•°</td>
+        <td align="center">å˜æ›´è¾…å¯¼å‘˜</td>
+<!--          <td align="center">å˜æ›´è¾…å¯¼å‘˜</td> -->
       </tr>
     </thead>
     
@@ -135,8 +135,8 @@ $(document).ready(function(){
 	</select>
 	</td>
 	<td align="center"><%=student2.get(4) %></td>
-	<td align="center"><input type="submit" value="È·¶¨"> </td>
-<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">É¾³ı</a></td> --%>
+	<td align="center"><input type="submit" value="ç¡®å®š"> </td>
+<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">åˆ é™¤</a></td> --%>
     </tr>
     </form>
       <%}}else { %>
@@ -161,8 +161,8 @@ $(document).ready(function(){
 	</select>
 	</td>
 	<td align="center"><%=student2.get(4) %></td>
-	<td align="center"><input type="submit" value="È·¶¨"> </td>
-<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">É¾³ı</a></td> --%>
+	<td align="center"><input type="submit" value="ç¡®å®š"> </td>
+<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">åˆ é™¤</a></td> --%>
     </tr>
     </form>
       <%}}%>

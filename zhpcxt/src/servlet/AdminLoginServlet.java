@@ -57,22 +57,22 @@ public class AdminLoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
-		
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
 		String status = request.getParameter("status");
 		String table = "";
 		System.out.print("status="+status);
-		if(status.equals("¸¨µ¼Ô±")){
-			table = "admin";
-		}else if(status.equals("Êé¼Ç")){
+		if(status.equals("è¾…å¯¼å‘˜")){
+			table = "counsellor";
+		}else if(status.equals("ä¹¦è®°")){
 			table = "admin";
 		}else{
 			table = "student";
 		}
-		String sql = "select * from "+table+" where name='"+name+"' and pwd='"+pwd+"'";
+		String sql = "select * from "+table+" where id='"+id+"' and pwd='"+pwd+"'";
 
 		String args[] = {"id","name","pwd","status"};
 		SelectBean sb = new SelectBean();		
@@ -83,7 +83,7 @@ public class AdminLoginServlet extends HttpServlet {
 		if(al == null || al.size() == 0){
 			responseText = "1";
 //			request.setAttribute("message", responseText);
-		}else if(status.equals("¸¨µ¼Ô±")){
+		}else if(status.equals("è¾…å¯¼å‘˜")){
 			HttpSession session = request.getSession();
 			session.setAttribute("adminlogin", al);
 			responseText = "3";

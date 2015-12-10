@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -57,19 +57,19 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="7" align="center" style="padding:5px;"><a href="<%=path %>/admin/sportsgradeexamine.jsp">ÌåÓý³É¼¨ÉóºË</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=path %>/admin/intellectualgradeexamine.jsp">ÖÇÓý³É¼¨ÉóºË</a></td>
+        <td colspan="7" align="center" style="padding:5px;"><a href="<%=path %>/admin/sportsgradeexamine.jsp">ä½“è‚²æˆç»©å®¡æ ¸</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=path %>/admin/intellectualgradeexamine.jsp">æ™ºè‚²æˆç»©å®¡æ ¸</a></td>
       </tr>
       <tr>
-        <td colspan="7" align="center" style="padding:5px;">ÖÇÓý³É¼¨ÉóºË</td>
+        <td colspan="7" align="center" style="padding:5px;">æ™ºè‚²æˆç»©å®¡æ ¸</td>
       </tr>
       <tr class="thead">
-        <td align="center">ÐòºÅ</td>
-        <td align="center">Ñ§ÉúÐÕÃû</td>
-        <td align="center">°à¼¶</td>
-        <td align="center">Ñ§ÆÚ</td>
-        <td align="center">¿ÆÄ¿/·ÖÊý</td>
-        <td align="center">ÈÕÆÚ</td>
-        <td align="center">ÉóºË</td>
+        <td align="center">åºå·</td>
+        <td align="center">å­¦ç”Ÿå§“å</td>
+        <td align="center">ç­çº§</td>
+        <td align="center">å­¦æœŸ</td>
+        <td align="center">ç§‘ç›®/åˆ†æ•°</td>
+        <td align="center">æ—¥æœŸ</td>
+        <td align="center">å®¡æ ¸</td>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -80,16 +80,16 @@ $(document).ready(function(){
 	    	ArrayList student = array.getStudent(alRow.get(1).toString());
 	    	String state = "";
 	    	if(alRow.get(7).equals("1")){
-	    		state = "ÒÑÍ¨¹ý";
+	    		state = "å·²é€šè¿‡";
 	    	}else if(alRow.get(7).equals("2")){
-	    		state = "Î´Í¨¹ý";
+	    		state = "æœªé€šè¿‡";
 	    	}
     %>
       <tr>
         <td align="center"><%=i+1 %></td>
         <td align="center"><%=student.get(3) %></td>
         <td align="center"><%=student.get(4) %></td>
-        <td align="center">µÚ<%=alRow.get(2) %>Ñ§ÆÚ</td>
+        <td align="center">ç¬¬<%=alRow.get(2) %>å­¦æœŸ</td>
         <td align="center"><table>
             <tr>
             <%
@@ -109,7 +109,7 @@ $(document).ready(function(){
             </tr>
         </table></td>
         <td align="center"><%=alRow.get(5) %></td>
-        <td align="center"><%=alRow.get(7).equals("0")?"<a href=\""+path+"/ExamineServlet?type=intellectual&state=1&id="+alRow.get(0)+"\">ÒÑÍ¨¹ý</a>&nbsp;&nbsp;<a href=\""+path+"/ExamineServlet?type=intellectual&state=2&id="+alRow.get(0)+"\">Î´Í¨¹ý</a>":state %></td>
+        <td align="center"><%=alRow.get(7).equals("0")?"<a href=\""+path+"/ExamineServlet?type=intellectual&state=1&id="+alRow.get(0)+"\">å·²é€šè¿‡</a>&nbsp;&nbsp;<a href=\""+path+"/ExamineServlet?type=intellectual&state=2&id="+alRow.get(0)+"\">æœªé€šè¿‡</a>":state %></td>
       </tr>
       <%}} %>
     </tbody>

@@ -7,12 +7,23 @@ public class AllBean {
 	ArrayList al = null;
 	
 	public ArrayList getAllAdmin(String id){
-		String sql = "select * from admin where id!=1 and id!="+id+" and status='¸¨µ¼Ô±' order by id desc";
+		String sql = "select * from admin where id!=1 and id!="+id+" and status='è¾…å¯¼å‘˜' order by id desc";
 		String args[] = {"id","name","pwd","status"};
 		al = sb.select(sql, args);
 		return al;
 	}
-	
+	public ArrayList getAllCounsellor(){
+		String sql = "select * from counsellor";
+		String args[] = {"id","name","pwd","status"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	public ArrayList getAllCounsellor(String id){
+		String sql = "select * from counsellor where id="+id;
+		String args[] = {"id","name","pwd","status"};
+		al = sb.select(sql, args);
+		return al;
+	}
 	public ArrayList getBjs(){
 		String sql = "select distinct(nj) from bj ";
 		String args[] = {"nj"};
@@ -21,8 +32,8 @@ public class AllBean {
 	}
 	
 	public ArrayList getMgrClass(String name){
-		String sql = "select distinct cDept,cPro,cNo from class1 where cMgr='"+name+"'";
-		String args[] = {"cDept","cPro","cNo"};
+		String sql = "select * from class1 where cMgr='"+name+"'";
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql, args);
 		return al;
 	}
@@ -120,15 +131,15 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getAllBj(){
-		String sql = "select * from bj ";
-		String args[] = {"id","bj","rs","fdy","bjg"};
+		String sql = "select * from class1 ";
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	
-	public ArrayList getBj(String nj){
-		String sql = "select * from bj where nj="+nj;
-		String args[] = {"id","bj","rs","fdy","bjg"};
+	public ArrayList getBj(String cId){
+		String sql = "select * from class1 where classId='"+cId+"'";
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -154,9 +165,7 @@ public class AllBean {
 	
 	public ArrayList getStudent(String studentId){
 		String sql = "select * from student1 where studentId="+studentId;
-//		String args[] = {"id","xh","ksh","truename","sex","xszh","cc","sfzh","xy","zy","dz"};
 		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
-		
 		al = sb.select(sql, args);
 		return al;
 	}
@@ -167,7 +176,7 @@ public class AllBean {
 		al = sb.select(sql, args);
 		return al;
 	}
-	
+
 	public ArrayList getEvaluating(String id){
 		String sql = "select * from evaluating where id="+id;
 		String args[] = {"id","name","pwd","truename","positions","sex","birthday","phone","address","postalcode","email"};

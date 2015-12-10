@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -49,7 +49,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -58,20 +58,20 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="11" align="center" style="padding:5px;">Ñ§ÉúÓÃ»§¹ÜÀí</td>
+        <td colspan="11" align="center" style="padding:5px;">å­¦ç”Ÿç”¨æˆ·ç®¡ç†</td>
       </tr>
       <tr class="thead">
-        <td align="center">Ñ§ºÅ</td>
-        <td align="center">¿¼ÉúºÅ</td>
-        <td align="center">ĞÕÃû</td>
-        <td align="center">ĞÔ±ğ</td>
-        <td align="center">Ñ§ÉúÖ¤ºÅ</td>
-        <td align="center">²ã´Î</td>
-        <td align="center">Éí·İÖ¤ºÅ</td>
-        <td align="center">Ñ§Ôº</td>
-        <td align="center">×¨Òµ</td>
-        <td align="center">Í¨Ñ¶µØÖ·</td>
-         <td align="center">²Ù×÷</td>
+        <td align="center">å­¦å·</td>
+        <td align="center">è€ƒç”Ÿå·</td>
+        <td align="center">å§“å</td>
+        <td align="center">æ€§åˆ«</td>
+        <td align="center">å­¦ç”Ÿè¯å·</td>
+        <td align="center">å±‚æ¬¡</td>
+        <td align="center">èº«ä»½è¯å·</td>
+        <td align="center">å­¦é™¢</td>
+        <td align="center">ä¸“ä¸š</td>
+        <td align="center">é€šè®¯åœ°å€</td>
+         <td align="center">æ“ä½œ</td>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -91,7 +91,7 @@ $(document).ready(function(){
         <td align="center"><%=alRow.get(8) %></td>
         <td align="center"><%=alRow.get(9) %></td>
         <td align="center"><%=alRow.get(10) %></td>
-        <td align="center"><a href="<%=path %>/DelServlet?student=<%=alRow.get(0) %>">É¾³ı</a></td>
+        <td align="center"><a href="<%=path %>/DelServlet?student=<%=alRow.get(0) %>">åˆ é™¤</a></td>
       </tr>
       <%}} %>
     </tbody>

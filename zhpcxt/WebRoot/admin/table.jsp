@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -45,7 +45,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -53,48 +53,48 @@ $(document).ready(function(){
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%">
     <tr>
-      <td align="center" style="padding:10px">ÖÇÓýÆÀ²â</td>
+      <td align="center" style="padding:10px">æ™ºè‚²è¯„æµ‹</td>
     </tr>
   </table>
   <form id="article_edit" method="post" action="<%=path %>/IntellectualgradeServlet?term=<%=term %>" onSubmit="return $(this).form('validate');">
     <table border="1" align="center" cellpadding="5">
       <tr>
-        <td align="right">Ñ§ÆÚ£º</td>
-        <td>µÚ<%=term %>Ñ§ÆÚ</td>
+        <td align="right">å­¦æœŸï¼š</td>
+        <td>ç¬¬<%=term %>å­¦æœŸ</td>
       </tr>
       <tr>
-        <td align="right">¿ÆÄ¿£º</td>
+        <td align="right">ç§‘ç›®ï¼š</td>
         <td><%
         if(term != null && term.equals("1")){
         %>
           <table cellpadding="2" id="table1">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">Ë¼ÏëµÀµÂÐÞÑøÓë·¨ÂÉ»ù´¡£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ€æƒ³é“å¾·ä¿®å…»ä¸Žæ³•å¾‹åŸºç¡€ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">´óÑ§Ó¢Óï1£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¤§å­¦è‹±è¯­1ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¹ú·À½ÌÓý£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å›½é˜²æ•™è‚²ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¼ÆËã»úµ¼ÂÛ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è®¡ç®—æœºå¯¼è®ºï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÏßÐÔ´úÊý£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">çº¿æ€§ä»£æ•°ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¸ßµÈÊýÑ§ÉÏ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">é«˜ç­‰æ•°å­¦ä¸Šï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -102,44 +102,44 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table2">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">´óÑ§ÓïÎÄ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¤§å­¦è¯­æ–‡ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">Âí¿ËË¼Ö÷Òå»ù±¾Ô­Àí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">é©¬å…‹æ€ä¸»ä¹‰åŸºæœ¬åŽŸç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÖÐ¹ú½ü´úÊ·¸ÙÒª£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ä¸­å›½è¿‘ä»£å²çº²è¦ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">´óÑ§Ó¢Óï2£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¤§å­¦è‹±è¯­2ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">½ÌÊ¦¿ÚÓï£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•™å¸ˆå£è¯­ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÀëÉ¢ÊýÑ§£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ç¦»æ•£æ•°å­¦ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¸ßµÈÊýÑ§ÏÂ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input7" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">é«˜ç­‰æ•°å­¦ä¸‹ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input7" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÆÕÍ¨ÎïÀí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input8" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ™®é€šç‰©ç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input8" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¸ß¼¶ÓïÑÔ³ÌÐòÉè¼Æ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input9" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">é«˜çº§è¯­è¨€ç¨‹åºè®¾è®¡ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input9" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -147,32 +147,32 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table3">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">Ã«Ôó¶«Ë¼Ïë¡¢µËÐ¡Æ½ÀíÂÛºÍ&ldquo;Èý¸ö´ú±í&rdquo;ÖØÒªË¼Ïë¸ÅÂÛ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ¯›æ³½ä¸œæ€æƒ³ã€é‚“å°å¹³ç†è®ºå’Œ&ldquo;ä¸‰ä¸ªä»£è¡¨&rdquo;é‡è¦æ€æƒ³æ¦‚è®ºï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">´óÑ§Ó¢Óï3£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¤§å­¦è‹±è¯­3ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">µçÂ·Ô­Àí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ç”µè·¯åŽŸç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">Ä£Äâµç×Ó¼¼Êõ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ¨¡æ‹Ÿç”µå­æŠ€æœ¯ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">Ëã·¨ÓëÊý¾Ý½á¹¹£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ç®—æ³•ä¸Žæ•°æ®ç»“æž„ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">»ã±àÓïÑÔ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ±‡ç¼–è¯­è¨€ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -180,32 +180,32 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table4">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">Ã«Ôó¶«Ë¼Ïë¡¢µËÐ¡Æ½ÀíÂÛºÍ&ldquo;Èý¸ö´ú±í&rdquo;ÖØÒªË¼Ïë¸ÅÂÛ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ¯›æ³½ä¸œæ€æƒ³ã€é‚“å°å¹³ç†è®ºå’Œ&ldquo;ä¸‰ä¸ªä»£è¡¨&rdquo;é‡è¦æ€æƒ³æ¦‚è®ºï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">´óÑ§Ó¢Óï4£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¤§å­¦è‹±è¯­4ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">Êý×ÖÂß¼­£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•°å­—é€»è¾‘ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¼ÆËã»ú×é³ÉÔ­Àí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è®¡ç®—æœºç»„æˆåŽŸç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">±àÒëÔ­Àí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ç¼–è¯‘åŽŸç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input5" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">²Ù×÷ÏµÍ³£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ“ä½œç³»ç»Ÿï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input6" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -213,24 +213,24 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table5">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">ÐÄÀíÑ§£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å¿ƒç†å­¦ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÏÖ´ú½ÌÓý¼¼Êõ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">çŽ°ä»£æ•™è‚²æŠ€æœ¯ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">Êý¾Ý¿âÏµÍ³Ô­Àí£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•°æ®åº“ç³»ç»ŸåŽŸç†ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¼ÆËã»úÍ¨ÐÅÓëÍøÂç£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è®¡ç®—æœºé€šä¿¡ä¸Žç½‘ç»œï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -238,24 +238,24 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table6">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">¼ÆËã»ú½ÌÑ§·¨£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è®¡ç®—æœºæ•™å­¦æ³•ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">½ÌÓýÑ§£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•™è‚²å­¦ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">½ÌÓý¼ûÏ°£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•™è‚²è§ä¹ ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">ÍøÂç¹ÜÀíÊµÏ°£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">ç½‘ç»œç®¡ç†å®žä¹ ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input4" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -263,20 +263,20 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table7">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">ÐÎÊÆÓëÕþ²ß£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">å½¢åŠ¿ä¸Žæ”¿ç­–ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">½ÌÓýÊµÏ°£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ•™è‚²å®žä¹ ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">¼ÆËã»úÖ°Òµµ÷²é£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è®¡ç®—æœºèŒä¸šè°ƒæŸ¥ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input3" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -284,16 +284,16 @@ $(document).ready(function(){
         %>
           <table cellpadding="2" id="table8">
             <tr>
-              <td align="center">¿ÆÄ¿</td>
-              <td align="center">·ÖÊý</td>
+              <td align="center">ç§‘ç›®</td>
+              <td align="center">åˆ†æ•°</td>
             </tr>
             <tr>
-              <td align="right">Èí¼þ¹¤³Ì×ÛºÏÊµÏ°£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">è½¯ä»¶å·¥ç¨‹ç»¼åˆå®žä¹ ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input1" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
             <tr>
-              <td align="right">±ÏÒµÉè¼Æ£º</td>
-              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊý×Ö" customize="Customize" min="0.1" precision="1" /></td>
+              <td align="right">æ¯•ä¸šè®¾è®¡ï¼š</td>
+              <td><input class="easyui-numberbox" type="text" name="input2" required="true" missingmessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
             </tr>
           </table>
           <%
@@ -302,7 +302,7 @@ $(document).ready(function(){
       </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td><input type="submit" value="Ìá½»"></td>
+        <td><input type="submit" value="æäº¤"></td>
       </tr>
     </table>
   </form>

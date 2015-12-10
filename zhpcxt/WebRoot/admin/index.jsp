@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -25,7 +25,7 @@ String message = (String)request.getAttribute("message");
 <script type="text/javascript" src="<%=path %>/js/jquery.js"></script>
 <script type="text/javascript" src="<%=path %>/js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="<%=path %>/js/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="<%=path %>/js/admin.js"></script>
+<script type="text/javascript" src="<%=path %>/js/admin.js"  charset="UTF-8"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -62,9 +62,9 @@ $(document).ready(function(){
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%" height="100%">
     <tr>
-      <td align="center"> <h2 style="color:#03F">»¶Ó­Ê¹ÓÃ£º</h2><br />
+      <td align="center"> <h2 style="color:#03F">æ¬¢è¿ä½¿ç”¨ï¼š</h2><br />
         <br />
-        <h1 style="color:#666">¼ÆËã»úÑ§ÔºÑ§ÉúĞÅÏ¢µµ°¸¹ÜÀí</h1></td>
+        <h1 style="color:#666">è®¡ç®—æœºå­¦é™¢å­¦ç”Ÿä¿¡æ¯æ¡£æ¡ˆç®¡ç†</h1></td>
     </tr>
   </table>
 </div>

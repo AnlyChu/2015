@@ -1,16 +1,14 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
-ArrayList student = null;
-
+ArrayList verify = null;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getStudent();
-
+	verify = array.getVerify();
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -44,74 +42,70 @@ $(document).ready(function(){
 		adminAdd('<%=path %>');
 	});
 })
-
-/* function display_alert()
-  {
-  var lujing=document.form.fileUpload.value;
-  alert("Â·¾¶="+lujing)
-  } */
 </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no" resizable="false">
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
 </div>
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
-  <table width="100%" >
+  <table width="100%">
     <thead>
-     <tr>
-       
-      </tr>
       <tr>
-        <td><p>ÉÏ´«°à¼¶Ñ§ÉúĞÅÏ¢:</p></td>
-        <td>
-       <form action="<%=path%>/Upload?type=studentInfo" method="post"  >    
-        <input type="file" name="fileUpload1" />  
-    	<input type=submit value="ÉÏ´«ÎÄ¼ş"  />
-    	</form>
-
-
-    	</td>
-<td colspan="6" align="center" style="padding:5px;">³É¼¨ÉÏ´«</td>
+        <td colspan="9" align="center" style="padding:5px;">è¯„æµ‹å®¡æ ¸</td>
       </tr>
-  <tr class="thead">
-        <td align="center">Ñ§ºÅ</td>
-        <td align="center">ĞÕÃû</td>
-        <td align="center">ĞÔ±ğ</td>
-        <td align="center">°à¼¶</td>
-        <td align="center">Éí·İÖ¤ºÅ</td>
-        <td align="center">Ñ§Ôº</td>
-        <td align="center">×¨Òµ</td>
-        <td align="center">Í¨Ñ¶µØÖ·</td>
-    
+      <tr class="thead">
+        <td align="center">åºå·</td>
+        <td align="center">å­¦ç”Ÿå§“å</td>
+        <td align="center">ç­çº§</td>
+        <td align="center">å®¡æ ¸é¡¹ç›®</td>
+        <td align="center">åŠ /å‡åˆ†</td>
+        <td align="center">åˆ†æ•°</td>
+        <td align="center">åŸå› æˆ–ç†ç”±</td>
+        <td align="center">æ—¥æœŸ</td>
+        <td align="center">å®¡æ ¸</td>
       </tr>
     </thead>
     <tbody class="tbody">
     <%
-    if(student != null && student.size() != 0){
-	    for(int i = 0;i < student.size();i++){
-	    	ArrayList alRow = (ArrayList)student.get(i);
+    if(verify != null && verify.size() != 0){
+	    for(int i = 0;i < verify.size();i++){
+	    	ArrayList alRow = (ArrayList)verify.get(i);
+	    	ArrayList student = array.getStudent(alRow.get(1).toString());
+	    	String state = "";
+	    	String str = "";
+	    	if(alRow.get(2) != null && alRow.get(2).equals("moral")){
+	    		str = "å¾·è‚²";
+	    	}else if(alRow.get(2) != null && alRow.get(2).equals("sports")){
+	    		str = "ä½“è‚²";
+	    	}else if(alRow.get(2) != null && alRow.get(2).equals("ability")){
+	    		str = "èƒ½åŠ›";
+	    	}
+	    	if(alRow.get(8).equals("1")){
+	    		state = "å·²é€šè¿‡";
+	    	}else if(alRow.get(8).equals("2")){
+	    		state = "æœªé€šè¿‡";
+	    	}
     %>
       <tr>
-       
-        <td align="center"><%=alRow.get(0) %></td>
-        <td align="center"><%=alRow.get(1) %></td>
-        <td align="center"><%=alRow.get(2) %></td>
+        <td align="center"><%=i+1 %></td>
+        <td align="center"><%=student.get(3) %></td>
+        <td align="center"><%=student.get(4) %></td>
+        <td align="center"><%=str %></td>
         <td align="center"><%=alRow.get(3) %></td>
         <td align="center"><%=alRow.get(4) %></td>
         <td align="center"><%=alRow.get(5) %></td>
         <td align="center"><%=alRow.get(6) %></td>
-        <td align="center"><%=alRow.get(7) %></td>
-        </tr>
-          <%}} %>
+        <td align="center"><%=alRow.get(8).equals("0")?"<a href=\""+path+"/ExamineServlet?type=item&state=1&id="+alRow.get(0)+"\">å·²é€šè¿‡</a>&nbsp;&nbsp;<a href=\""+path+"/ExamineServlet?type=item&state=2&id="+alRow.get(0)+"\">æœªé€šè¿‡</a>":state %></td>
+      </tr>
+      <%}} %>
     </tbody>
   </table>
- 
 </div>
 </body>
 </html>

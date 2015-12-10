@@ -3,10 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<form id="form_reg" method="post">
+<style type="text/css">
+.table-padding td {padding:5px;}
+</style>
+<form id="form_evaluating_add" method="post">
   <table cellpadding="5">
     <tr>
-      <td align="right">学号：</td>
+      <td align="right">用户名：</td>
       <td><input class="easyui-validatebox" type="text" name="name" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
@@ -22,8 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td><input class="easyui-validatebox" type="text" name="truename" required="true" customize="Customize" /></td>
     </tr>
     <tr>
-      <td align="right">班级名称：</td>
-      <td><input class="easyui-validatebox" type="text" name="classes" required="true" customize="Customize" /></td>
+      <td align="right">职务：</td>
+      <td><input class="easyui-validatebox" type="text" name="positions" required="true" customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">性别：</td>

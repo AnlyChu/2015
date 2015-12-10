@@ -60,7 +60,7 @@ public class AdminAddServlet extends HttpServlet {
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"name","pwd","status"};
+		String args[] = {"tId","name","pwd","status"};
 		String row = "";
 		String val = "";
 		String status = "辅导员";
@@ -73,7 +73,7 @@ public class AdminAddServlet extends HttpServlet {
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
-		String sql = "insert into admin("+row+") values("+val+")";
+		String sql = "insert into counsellor("+row+") values("+val+")";
 		System.out.println("sql="+sql);
 //		String sql1 = "insert into admin (status) values('辅导员')";
 		responseText = ib.insertANDupdateANDdel(sql);

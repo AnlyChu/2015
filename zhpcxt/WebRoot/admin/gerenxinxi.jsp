@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="ตผบฝฒหตฅ" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="ๅฏผ่ช่ๅ•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -57,19 +57,19 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="11" align="center" style="padding:5px;">ังษ๚ำรปงนÜภํ</td>
+        <td colspan="11" align="center" style="padding:5px;">ๅญฆ็”็”จๆท็ฎก็</td>
       </tr>
       <tr class="thead">
-        <td align="center">ังบล</td>
-        <td align="center">ฟผษ๚บล</td>
-        <td align="center">ะีร๛</td>
-        <td align="center">ะิฑ๐</td>
-        <td align="center">ังษ๚ึคบล</td>
-        <td align="center">ฒใดฮ</td>
-        <td align="center">ษํทÝึคบล</td>
-        <td align="center">ังิบ</td>
-        <td align="center">ืจาต</td>
-        <td align="center">อจัถตุึท</td>
+        <td align="center">ๅญฆๅท</td>
+        <td align="center">่€็”ๅท</td>
+        <td align="center">ๅง“ๅ</td>
+        <td align="center">ๆ€งๅซ</td>
+        <td align="center">ๅญฆ็”่ฏๅท</td>
+        <td align="center">ๅฑๆฌก</td>
+        <td align="center">่บซไปฝ่ฏๅท</td>
+        <td align="center">ๅญฆ้ข</td>
+        <td align="center">ไธ“ไธ</td>
+        <td align="center">้€่ฎฏๅฐๅ€</td>
       </tr>
     </thead>
     <tbody class="tbody">

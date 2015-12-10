@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -49,7 +49,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="导航菜单" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="瀵艰埅鑿滃崟" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -58,11 +58,11 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="5" align="center" style="padding:5px;">愿景计划</td>
+        <td colspan="5" align="center" style="padding:5px;">鎰挎櫙璁″垝</td>
       </tr>
       <tr class="thead">
-      	<td align="center">学期</td>
-        <td align="center">内容</td>
+      	<td align="center">瀛︽湡</td>
+        <td align="center">鍐呭</td>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -79,7 +79,7 @@ $(document).ready(function(){
     </tbody>
    
   </table>
-   <a href="yuanjingjihua2.jsp">添加愿景计划</a>
+   <a href="yuanjingjihua2.jsp">娣诲姞鎰挎櫙璁″垝</a>
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -8,7 +8,7 @@ boolean closed = false;
 ArrayList admin = null;
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	admin = array.getAllAdmin(adminlogin.get(0).toString());
+	admin = array.getAllCounsellor();
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -57,16 +57,16 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="4" align="center" style="padding:5px;">¸¨µ¼Ô±¹ÜÀí</td>
+        <td colspan="4" align="center" style="padding:5px;">è¾…å¯¼å‘˜ç®¡ç†</td>
       </tr>
       <tr>
-        <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="admin_add">Ìí¼Ó¸¨µ¼Ô±</a></td>
+        <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="admin_add">æ·»åŠ è¾…å¯¼å‘˜</a></td>
       </tr>
       <tr class="thead">
-        <td align="center">ĞòºÅ</td>
-        <td align="center">ÓÃ»§Ãû</td>
-        <td align="center">Éí·İ</td>
-        <td align="center">²Ù×÷</td>
+        <td align="center">èŒå·¥å·</td>
+        <td align="center">ç”¨æˆ·å</td>
+        <td align="center">èº«ä»½</td>
+        <td align="center">æ“ä½œ</td>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -76,10 +76,10 @@ $(document).ready(function(){
 	    	ArrayList alRow = (ArrayList)admin.get(i);
     %>
       <tr>
-        <td align="center"><%=i+1 %></td>
+        <td align="center"><%=alRow.get(0) %></td>
         <td align="center"><%=alRow.get(1) %></td>
         <td align="center"><%=alRow.get(3) %></td>
-        <td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">É¾³ı</a></td>
+        <td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">åˆ é™¤</a></td>
       </tr>
       <%}} %>
     </tbody>

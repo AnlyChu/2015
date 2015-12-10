@@ -25,7 +25,7 @@ function login(path,closed){
 				    		$.messager.alert('系统消息','登录成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-				    		location.href = path+'/admin/classSelect.jsp';
+				    		location.href = path+'/counsellor/classSelect.jsp';
 				    		},false);
 				    	}else{
 				    		//window.navigate(path+'/index.jsp');
@@ -121,7 +121,7 @@ function editpass(path){
 		}]
 	});
 }
-//添加管理员
+//添加辅导员
 function adminAdd(path){
 	$("body").append("<div id='dlg_systemuser_add' style='padding:20px;'></div>");
 	$('#dlg_systemuser_add').dialog({
@@ -244,41 +244,7 @@ function courseAdd(path){
 	    }]
 	});
 }
-//选择管理班级
-//function classSelect(path){
-//	$("body").append("<div id='dlg_class_select' style='padding:20px;'></div>");
-//	$('#dlg_class_select').dialog({
-//		href:path+'/admin/classSelect.jsp',
-//		modal:true,
-//		closed:false,
-//	    title:'选择班级',
-//	    width:300,
-//	    height:250,
-//	    buttons:[{
-//	        text:'提交',
-//	        iconCls:'icon-ok',
-//	        handler:function(){
-//	            $('#from_class_select').form('submit',{
-//	            	url:path+'/admin/bj.jsp',
-//	                onSubmit:function(){
-//				        
-//				    },
-//				    success:function(data){
-//				   
-//					    		location.href = path+'/admin/bj.jsp';				    			
-//				    
-//				    }  
-//	            });
-//	        }
-//	    },{
-//	        text:'重置',
-//	        iconCls:'icon-reload',
-//	        handler:function(){
-//	            $('#dlg_class_add').dialog('refresh');
-//	        }
-//	    }]
-//	});
-//}
+
 //用户注销
 function logout(path){
 	$.ajax({

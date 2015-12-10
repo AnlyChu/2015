@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -6,15 +6,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
-ArrayList admin = null;
-if(adminlogin != null && adminlogin.size() != 0){
-	closed = true;
-	admin = array.getAllAdmin(adminlogin.get(0).toString());
-}
 
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getBj(request.getParameter("bjh")); 
+	student = array.getStudent();
+
 }
 String message = (String)request.getAttribute("message");
 %>
@@ -48,63 +44,74 @@ $(document).ready(function(){
 		adminAdd('<%=path %>');
 	});
 })
+
+/* function display_alert()
+  {
+  var lujing=document.form.fileUpload.value;
+  alert("璺緞="+lujing)
+  } */
 </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no" resizable="false">
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="导航菜单" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="瀵艰埅鑿滃崟" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
 </div>
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
-  <table width="100%">
+  <table width="100%" >
     <thead>
-      <tr>
-        <td colspan="11" align="center" style="padding:5px;">班级管理</td>
+     <tr>
+       
       </tr>
-      <tr class="thead">
-        <td align="center">班级</td>
-        <td align="center">班级人数</td>
-        <td align="center">辅导员</td>
-        <td align="center">不及格人数</td>
-        <td align="center">变更辅导员</td>
-<!--          <td align="center">变更辅导员</td> -->
+      <tr>
+        <td><p>涓婁紶鐝骇瀛︾敓淇℃伅:</p></td>
+        <td>
+       <form action="<%=path%>/Upload?type=studentInfo" method="post"  >    
+        <input type="file" name="fileUpload1" />  
+    	<input type=submit value="涓婁紶鏂囦欢"  />
+    	</form>
+
+
+    	</td>
+<td colspan="6" align="center" style="padding:5px;">鎴愮哗涓婁紶</td>
+      </tr>
+  <tr class="thead">
+        <td align="center">瀛﹀彿</td>
+        <td align="center">濮撳悕</td>
+        <td align="center">鎬у埆</td>
+        <td align="center">鐝骇</td>
+        <td align="center">韬唤璇佸彿</td>
+        <td align="center">瀛﹂櫌</td>
+        <td align="center">涓撲笟</td>
+        <td align="center">閫氳鍦板潃</td>
+    
       </tr>
     </thead>
-    
     <tbody class="tbody">
- <%
-	    for(int i=0;i<student.size();i++){
-	    	ArrayList student1 = (ArrayList)student.get(i);	
-	 %>
-	<form action="<%=path %>/DelServlet?" method="post" name=nihao<%=student1.get(0)%>>
-    <tr>
-	<td align="center"><input name=bj value=<%=student1.get(1) %> readOnly="true" ></input></td>
-	<td align="center"><%=student1.get(2) %></td>
-	<td align="center">
-	<select name=fdy>
-	<option><%=student1.get(3) %></option>
-	<%
-    if(admin != null && admin.size() != 0){
-	    for(int j = 0;j < admin.size();j++){
-	    	ArrayList alRow = (ArrayList)admin.get(j);
+    <%
+    if(student != null && student.size() != 0){
+	    for(int i = 0;i < student.size();i++){
+	    	ArrayList alRow = (ArrayList)student.get(i);
     %>
-		<option><%=alRow.get(2) %></option>
-      <%}} %>
-	</select>
-	</td>
-	<td align="center"><%=student1.get(4) %></td>
-	<td align="center"><input type="submit" value="确定"> </td>
-<%-- 	<td align="center"><a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">删除</a></td> --%>
-    </tr>
-    </form>
-      <%} %>
+      <tr>
+       
+        <td align="center"><%=alRow.get(0) %></td>
+        <td align="center"><%=alRow.get(1) %></td>
+        <td align="center"><%=alRow.get(2) %></td>
+        <td align="center"><%=alRow.get(3) %></td>
+        <td align="center"><%=alRow.get(4) %></td>
+        <td align="center"><%=alRow.get(5) %></td>
+        <td align="center"><%=alRow.get(6) %></td>
+        <td align="center"><%=alRow.get(7) %></td>
+        </tr>
+          <%}} %>
     </tbody>
-    
   </table>
+ 
 </div>
 </body>
 </html>

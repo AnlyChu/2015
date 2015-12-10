@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -12,11 +12,11 @@ String message = (String)request.getAttribute("message");
 String verifyType = request.getParameter("verifyType");
 String str = "";
 if(verifyType != null && verifyType.equals("moral")){
-	str = "µÂÓı";
+	str = "å¾·è‚²";
 }else if(verifyType != null && verifyType.equals("sports")){
-	str = "ÌåÓı";
+	str = "ä½“è‚²";
 }else if(verifyType != null && verifyType.equals("ability")){
-	str = "ÄÜÁ¦";
+	str = "èƒ½åŠ›";
 }
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -53,7 +53,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -61,26 +61,26 @@ $(document).ready(function(){
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%">
     <tr>
-      <td align="center" style="padding:10px"><%=str %>ÆÀ²â</td>
+      <td align="center" style="padding:10px"><%=str %>è¯„æµ‹</td>
     </tr>
   </table>
   <form id="article_edit" method="post" action="<%=path %>/VerifyServlet?name=<%=verifyType %>" onSubmit="return $(this).form('validate');">
     <table border="1" align="center" cellpadding="5">
       <tr>
-        <td align="right">¼Ó·Ö/¼õ·Ö£º</td>
-        <td><input name="addsubtract" type="radio" value="¼Ó·Ö" checked><span>¼Ó·Ö</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="addsubtract" value="¼õ·Ö"><span>¼õ·Ö</span></td>
+        <td align="right">åŠ åˆ†/å‡åˆ†ï¼š</td>
+        <td><input name="addsubtract" type="radio" value="åŠ åˆ†" checked><span>åŠ åˆ†</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="addsubtract" value="å‡åˆ†"><span>å‡åˆ†</span></td>
       </tr>
       <tr>
-        <td align="right">·ÖÊı£º</td>
-        <td><input class="easyui-numberbox" type="text" name="score" required="true" missingMessage="¸ÃÊäÈëÏîÖ»ÄÜÊäÈëÊı×Ö" customize="Customize" min="0.1" precision="1" /></td>
+        <td align="right">åˆ†æ•°ï¼š</td>
+        <td><input class="easyui-numberbox" type="text" name="score" required="true" missingMessage="è¯¥è¾“å…¥é¡¹åªèƒ½è¾“å…¥æ•°å­—" customize="Customize" min="0.1" precision="1" /></td>
       </tr>
       <tr>
-        <td align="right">Ô­Òò»òÀíÓÉ£º</td>
+        <td align="right">åŸå› æˆ–ç†ç”±ï¼š</td>
         <td><textarea class="easyui-validatebox" name="reason" required="true" style="width:700px;height:200px;"></textarea></td>
       </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td><input type="submit" value="Ìá½»"></td>
+        <td><input type="submit" value="æäº¤"></td>
       </tr>
     </table>
   </form>

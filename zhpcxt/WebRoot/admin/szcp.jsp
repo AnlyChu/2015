@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
 String path = request.getContextPath();
@@ -49,7 +49,7 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="µ¼º½²Ëµ¥" style="width:180px;" id="west">
+<div region="west" split="false" border="false" title="å¯¼èˆªèœå•" style="width:180px;" id="west">
   <div id="left-menus" border="false" fit="true">
     <jsp:include page="/admin/left.jsp"></jsp:include>
   </div>
@@ -58,14 +58,14 @@ $(document).ready(function(){
   <table width="100%">
     <thead>
       <tr>
-        <td colspan="5" align="center" style="padding:5px;">ÎÒµÄËØÖÊ²âÆÀ</td>
+        <td colspan="5" align="center" style="padding:5px;">æˆ‘çš„ç´ è´¨æµ‹è¯„</td>
       </tr>
       <tr class="thead">
-      	<td align="center">µÀµÂËØÑø</td>
-        <td align="center">Ñ§Ï°ÄÜÁ¦</td>
-        <td align="center">ËØÖÊÍØÕ¹</td>
-        <td align="center">Ö±½Ó¼Ó¼õ·Ö</td>
-        <td align="center">¸öÈË×Ü»ý·Ö</td>      
+      	<td align="center">é“å¾·ç´ å…»</td>
+        <td align="center">å­¦ä¹ èƒ½åŠ›</td>
+        <td align="center">ç´ è´¨æ‹“å±•</td>
+        <td align="center">ç›´æŽ¥åŠ å‡åˆ†</td>
+        <td align="center">ä¸ªäººæ€»ç§¯åˆ†</td>      
       </tr>
     </thead>
     <tbody class="tbody">
