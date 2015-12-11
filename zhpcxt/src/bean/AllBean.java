@@ -118,25 +118,54 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getStuScore(String studentId){
+		String sql = "select * from score1 where studentId="+studentId;
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getCourse(String courseId){
 		String sql = "select * from course where courseId="+courseId;
-		String args[] = {"courseId","courseName","term"};
+		String args[] = {"courseId","courseName"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getCourse(){
 		String sql = "select * from course ";
-		String args[] = {"courseId","courseName","term"};
+		String args[] = {"courseId","courseName"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getAllBj(){
-		String sql = "select * from class1 ";
+		String sql = "select distinct classId,cGrade,cDept,cPro,cNo,cMgr from class1 ";
 		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;
 	}
-	
+	public ArrayList getBjofPro(String pro){
+		String sql = "select * from class1 where cPro='"+pro+"'";
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getBjofPro(){
+		String sql = "select distinct(cPro) from class1 ";
+		String args[] = {"cPro"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getBjofGrade(String grade){
+		String sql = "select * from class1 where cGrade="+grade;
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getBjofGrade(){
+		String sql = "select distinct(cGrade)  from class1";
+		String args[] = {"cGrade"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getBj(String cId){
 		String sql = "select * from class1 where classId='"+cId+"'";
 		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
@@ -165,14 +194,22 @@ public class AllBean {
 	
 	public ArrayList getStudent(String studentId){
 		String sql = "select * from student1 where studentId="+studentId;
-		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
+		String args[] = {"studentId","name","sex","classId","IDCard","dept","pro","address"};
 		al = sb.select(sql, args);
 		return al;
 	}
 	
+	public ArrayList getClassStudent(String classId){
+		String sql = "select * from student1 where classId="+classId;
+		String args[] = {"studentId","name","sex","classId","IDCard","dept","pro","address"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	
+	
 	public ArrayList getStudent(){
 		String sql = "select * from student1";
-		String args[] = {"studentId","name","sex","class","IDCard","dept","pro","address"};
+		String args[] = {"studentId","name","sex","classId","IDCard","dept","pro","address"};
 		al = sb.select(sql, args);
 		return al;
 	}

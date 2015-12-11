@@ -32,7 +32,7 @@ function login(path,closed){
 				    		$.messager.alert('系统消息','登录成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/index.jsp';
+					    		location.href = path+'/admin/allClassInfo.jsp';
 				    		},false);
 				    	} 
 				    }

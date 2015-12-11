@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import util.DBConn;
 
 public class SelectBean {
@@ -17,7 +18,7 @@ public class SelectBean {
 	 * @param sql
 	 * @param args
 	 * @return ArrayList
-	 * @»ñÈ¡¶àÌõÐÅÏ¢
+	 * @ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public ArrayList select(String sql,String[] args){
 		ArrayList al = new ArrayList();
@@ -32,9 +33,10 @@ public class SelectBean {
 					alRow.add(rs.getString(args[i]));
 				}
 				al.add(alRow);
+				System.out.println(al);
 			}
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ catch ï¿½ï¿½
 			e.printStackTrace();
 		} finally{
 			DBConn.close(conn,st,rs);
@@ -47,7 +49,7 @@ public class SelectBean {
 	 * @param sql
 	 * @param args
 	 * @return ArrayList
-	 * @»ñÈ¡Ò»ÌõÐÅÏ¢
+	 * @ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public ArrayList selectRow(String[] args,String sql){
 		ArrayList al = new ArrayList();
@@ -60,7 +62,7 @@ public class SelectBean {
 				al.add(rs.getString(args[i]));
 			}
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ catch ï¿½ï¿½
 		} finally{
 			DBConn.close(conn,st,rs);
 		}
@@ -72,7 +74,7 @@ public class SelectBean {
 	 * @param sql
 	 * @param args
 	 * @return ArrayList
-	 * @»ñÈ¡Ò»ÁÐÐÅÏ¢
+	 * @ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public ArrayList selectRow(String sql,String[] args){
 		ArrayList al = new ArrayList();
@@ -86,7 +88,7 @@ public class SelectBean {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ catch ï¿½ï¿½
 			e.printStackTrace();
 		} finally{
 			DBConn.close(conn,st,rs);
@@ -98,7 +100,7 @@ public class SelectBean {
 	 * @param sql
 	 * @param args
 	 * @return ArrayList
-	 * @»ñÈ¡·ÖÒ³ÐÅÏ¢
+	 * @ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½ï¿½Ï¢
 	 */
 	public ArrayList selectPage(String sql,String[] args,int showRow,int itemSum){
 		ArrayList al = new ArrayList();
@@ -118,7 +120,7 @@ public class SelectBean {
 				al.add(alRow);
 			}
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ catch ï¿½ï¿½
 			e.printStackTrace();
 		} finally{
 			DBConn.close(conn,st,rs);

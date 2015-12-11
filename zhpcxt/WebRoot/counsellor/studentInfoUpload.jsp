@@ -6,10 +6,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
-
+String classId = (String) request.getParameter("classId");
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
-	student = array.getStudent();
+	student = array.getClassStudent(classId);
 
 }
 String message = (String)request.getAttribute("message");
