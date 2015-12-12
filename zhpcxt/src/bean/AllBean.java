@@ -7,7 +7,7 @@ public class AllBean {
 	ArrayList al = null;
 	
 	public ArrayList getAllAdmin(String id){
-		String sql = "select * from admin where id!=1 and id!="+id+" and status='辅导员' order by id desc";
+		String sql = "select * from admin where id!=1 and id!="+id+" and status='辅导员" + "order by id desc";
 		String args[] = {"id","name","pwd","status"};
 		al = sb.select(sql, args);
 		return al;
@@ -106,20 +106,26 @@ public class AllBean {
 		al=sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getMyScore(String student){
-		String sql = "select * from score1 where student="+student+"order by xueqi asc";
-		String args[] = {"student","xueqi","xf","dl","jds","wl","hb","hb2","yy","dl2","sx"};
+	public ArrayList getClassScore(String classId){
+		String sql = "select * from "+classId;
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getMyScore(){
 		String sql = "select * from score1 ";
-		String args[] = {"studentId","sName","term","courseId","score"};
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getStuScore(String studentId){
-		String sql = "select * from score1 where studentId="+studentId;
+	public ArrayList getStuScoreTableName(String classId){
+		String sql = "select cScoreTableName from class1 where classId="+classId;
+		String args[] = {"cScoreTableName"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getStuScore(String studentId,String cScoreTableName){
+		String sql = "select * from " + cScoreTableName + " where studentId="+studentId;
 		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
 		al = sb.select(sql,args);
 		return al;
@@ -198,7 +204,30 @@ public class AllBean {
 		al = sb.select(sql, args);
 		return al;
 	}
-	
+	public ArrayList getSchYear(String classId){
+		String sql = "select distinct(schoolYear) from " + classId;
+		String args[] = {"schoolYear"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getScoreOfSchYear(String SchYear,String tableName){
+		String sql = "select * from " + tableName + " where schoolYear='"+SchYear+"'";
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getTerm(String classId){
+		String sql = "select distinct(term) from " + classId;
+		String args[] = {"term"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getScoreOfTerm(String term,String SchYear,String tableName){
+		String sql = "select * from " + tableName + " where term="+term + "and where schoolYear='"+SchYear+"'";
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getClassStudent(String classId){
 		String sql = "select * from student1 where classId="+classId;
 		String args[] = {"studentId","name","sex","classId","IDCard","dept","pro","address"};

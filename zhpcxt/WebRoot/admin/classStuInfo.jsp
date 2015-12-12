@@ -48,6 +48,9 @@ $(document).ready(function(){
 	$("#admin_add").click(function(){
 		adminAdd('<%=path%>');
 		});
+	$("#course_add").click(function(){
+		courseAdd('<%=path %>');
+	});
 	})
 
 	/* function display_alert()
@@ -99,7 +102,7 @@ $(document).ready(function(){
 				<tr>
 
 					<td align="center"><%=alRow.get(0)%></td>
-					<td align="center"><a href="<%=basePath%>counsellor/stuScore.jsp?studentId=<%=alRow.get(0)%>"><%=alRow.get(1)%></a></td>
+					<td align="center"><a href="<%=basePath%>counsellor/stuScore.jsp?studentId=<%=alRow.get(0)%>&classId=<%=alRow.get(3)%>"><%=alRow.get(1)%></a></td>
 					<td align="center"><%=alRow.get(2)%></td>
 					<td align="center"><%=alRow.get(3)%></td>
 					<td align="center"><%=alRow.get(4)%></td>

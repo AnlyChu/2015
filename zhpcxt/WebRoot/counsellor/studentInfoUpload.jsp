@@ -6,7 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
 boolean closed = false;
 ArrayList student = null;
-String classId = (String) request.getParameter("classId");
+String classId = (String) session.getAttribute("classId");
+	session.setAttribute("classId",classId);
 if(adminlogin != null && adminlogin.size() != 0){
 	closed = true;
 	student = array.getClassStudent(classId);

@@ -26,16 +26,16 @@ public class shuchu{
 
 
 	public void shuchu(String student) throws IOException, RowsExceededException, WriteException{ 
-		String[] title={"Ñ§ÉúºÅ","Ñ§ÆÚ","»ñµÃÑ§·Ö","µçÂ·ÓëÄ£Äâµç×Ó¼¼ÊõÊµÑé/±ØĞŞ¿Î/1","ÖĞ¹ú½üÏÖ´úÊ·¸ÙÒª/±ØĞŞ¿Î/2","´óÑ§ÎïÀíA1/±ØĞŞ¿Î/3.25","»ã±àÓïÑÔ¿Î³ÌÉè¼Æ/±ØĞŞ¿Î/1","»ã±àÓïÑÔ/±ØĞŞ¿Î/3","´óÑ§Ó¢ÓïA2/±ØĞŞ¿Î/4","µçÂ·ÓëÄ£Äâµç×Ó¼¼Êõ/Ñ¡ĞŞ¿Î/4","¸ßµÈÊıÑ§A2/±ØĞŞ¿Î/5"};
-		String path="D:/Êä³ö³É¼¨.xls";
+		String[] title={"å­¦ç”Ÿå·","å­¦æœŸ","è·å¾—å­¦åˆ†","ç”µè·¯ä¸æ¨¡æ‹Ÿç”µå­æŠ€æœ¯å®éªŒ/å¿…ä¿®è¯¾/1","ä¸­å›½è¿‘ç°ä»£å²çº²è¦/å¿…ä¿®è¯¾/2","å¤§å­¦ç‰©ç†A1/å¿…ä¿®è¯¾/3.25","æ±‡ç¼–è¯­è¨€è¯¾ç¨‹è®¾è®¡/å¿…ä¿®è¯¾/1","æ±‡ç¼–è¯­è¨€/å¿…ä¿®è¯¾/3","å¤§å­¦è‹±è¯­A2/å¿…ä¿®è¯¾/4","ç”µè·¯ä¸æ¨¡æ‹Ÿç”µå­æŠ€æœ¯/é€‰ä¿®è¯¾/4","é«˜ç­‰æ•°å­¦A2/å¿…ä¿®è¯¾/5"};
+		String path="D:/è¾“å‡ºæˆç»©.xls";
 		WritableWorkbook wwb;   
-        // ĞÂ½¨Á¢Ò»¸öjxlÎÄ¼ş,¼´ÔÚdÅÌÏÂÉú³ÉtestJXL.xls   
+        // æ–°å»ºç«‹ä¸€ä¸ªjxlæ–‡ä»¶,å³åœ¨dç›˜ä¸‹ç”ŸæˆtestJXL.xls   
        OutputStream os = new FileOutputStream(path);   
        wwb=Workbook.createWorkbook(os); 
-       WritableSheet sheet = wwb.createSheet("Ñ§Éú³É¼¨", 0);
+       WritableSheet sheet = wwb.createSheet("å­¦ç”Ÿæˆç»©", 0);
        ArrayList myscore = null;
        AllBean array=new AllBean();
-       myscore = array.getMyScore(student);
+      // myscore = array.getMyScore(student);
        for(int i=0;i<title.length;i++){    	   
     		   jxl.write.Label label=new jxl.write.Label(i,0,title[i]);   
     	   	   sheet.addCell(label);
@@ -49,7 +49,7 @@ public class shuchu{
     	   }
        } 
        wwb.write();   
-       // ¹Ø±ÕÎÄ¼ş   
+       // å…³é—­æ–‡ä»¶   
        wwb.close(); 
 	}
 

@@ -50,44 +50,42 @@
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
-<link rel="stylesheet" type="text/css" href="<%=path%>/css/base.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/css/admin-css.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/css/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/css/themes/icon.css">
-<script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
-<script type="text/javascript" src="<%=path%>/js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="<%=path%>/js/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="<%=path%>/js/admin.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
+<link rel="stylesheet" type="text/css" href="<%=path %>/css/admin-css.css" />
+<link rel="stylesheet" type="text/css" href="<%=path %>/css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=path %>/css/themes/icon.css">
+<script type="text/javascript" src="<%=path %>/js/jquery.js"></script>
+<script type="text/javascript" src="<%=path %>/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=path %>/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="<%=path %>/js/admin.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('tbody tr:even').css({'background':'#ffffff'});
 	$('tbody tr:odd').css({'background':'#eeeeff'});
-	var message = <%=message%>;
+	var message = <%=message %>;
 	if(message != null && message != ""){
+		
 		alert(message);
 	}
-	login('<%=path%>',<%=closed%>);
+	login('<%=path %>',<%=closed %>);
 	$("#click_logout").click(function(){
-		logout('<%=path%>');
+		logout('<%=path %>');
 	});
 	$("#editpass").click(function(){
-		editpass('<%=path%>');
+		editpass('<%=path %>');
 	});
 	$("#admin_add").click(function(){
-		adminAdd('<%=path%>');
-		});
+		adminAdd('<%=path %>');
 	});
 	$("#class_add").click(function(){
-		classAdd('<%=path%>');
+		classAdd('<%=path %>');
 	});
 	$("#course_add").click(function(){
-		courseAdd('<%=path%>');
+		courseAdd('<%=path %>');
 	});
+})
+	
 	function getPro(pro){
 		var cPro=pro;
 		document.classSelect.action="<%=basePath%>admin/allClassInfo.jsp?cPro="
@@ -117,15 +115,19 @@ $(document).ready(function(){
 	</div>
 	<div id="mainPanle" region="center" border="true"
 		style="background:#f7f7f7; padding:5px;">
-		<div style="background:#f7f7f7; margin:15px;">
-			<a href="<%=basePath%>admin/allClassSelect.jsp">查询班级</a>
-		</div>
 		<form method="post" name="classSelect">
 			<table width="100%">
 				<thead>
+				<tr>
+      				<td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="class_add">新建班级</a></td>
+      			</tr>
+      			<tr>
+      				<td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>
+      			</tr>
 					<tr>
 						<td colspan="11" align="center" style="padding:5px;"><h3>计算机学院班级</h3></td>
 					</tr>
+					
 					<tr class="thead">
 						<td align="center">编号</td>
 						<td align="center">

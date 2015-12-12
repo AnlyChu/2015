@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -72,6 +74,9 @@ public class AdminLoginServlet extends HttpServlet {
 		}else{
 			table = "student";
 		}
+		
+//		Integer classId = AdminLoginServlet.getClassId("admin");
+		
 		String sql = "select * from "+table+" where id='"+id+"' and pwd='"+pwd+"'";
 
 		String args[] = {"id","name","pwd","status"};
@@ -108,5 +113,23 @@ public class AdminLoginServlet extends HttpServlet {
 	public void init() throws ServletException {
 		// Put your code here
 	}
-
+	
+//	public static Map<String, Integer> classMap = new HashMap<String,Integer>();
+//	
+//	//POST
+//	public void setClassId(int classId,String username){
+//		classMap.remove(username);
+//		classMap.put(username, classId);
+//	}
+//
+//	//GET
+//	public static Integer getClassId(String username){
+//		return classMap.get(username);
+//	}
+//	
+//	//POST
+//	public static void clearClassId(String username){
+//		classMap.remove(username);
+//	}
+//
 }

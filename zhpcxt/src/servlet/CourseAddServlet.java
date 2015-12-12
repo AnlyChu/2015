@@ -55,12 +55,12 @@ public class CourseAddServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"courseId","courseName","term"};
+		String args[] = {"courseId","courseName"};
 		String row = "";
 		String val = "";
 		for(int i = 0;i < args.length;i++){

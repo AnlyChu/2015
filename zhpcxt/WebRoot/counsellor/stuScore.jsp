@@ -9,12 +9,15 @@
 			.getAttribute("adminlogin");
 	boolean closed = false;
 	ArrayList stuScore = null;
+	ArrayList stuScoreTableName = null;
 	ArrayList course = null;
 	String studentId = (String) request.getParameter("studentId");
+	String classId = (String) request.getParameter("classId");
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		stuScore = array.getStuScore(studentId);
-
+		stuScoreTableName = array.getStuScoreTableName(classId);
+		ArrayList stuScoreTableName1 = (ArrayList) stuScoreTableName.get(0);
+		stuScore = array.getStuScore(studentId,stuScoreTableName1.get(0).toString());
 	}
 	String message = (String) request.getAttribute("message");
 %>

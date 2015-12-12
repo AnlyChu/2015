@@ -61,8 +61,8 @@ public class UploadServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String path = request.getContextPath();
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("fileUpload") != null){
 			String lujing=(File)request.getAttribute("fileUpload") + request.getParameter("fileUpload");
 //        	String filepath=new File(lujing).getAbsoluteFile();
@@ -70,18 +70,18 @@ public class UploadServlet extends HttpServlet {
 			stu.upload(lujing);
 		}
 		else if(request.getParameter("fileUpload1") != null){
-			String lujing="G:/biyesheji/µç×Óµµ/"+request.getParameter("fileUpload1");
+			String lujing="G:/biyesheji/ç”µå­æ¡£/"+request.getParameter("fileUpload1");
 			studentInfoUpload stu=new studentInfoUpload();
 			stu.upload(lujing);
-			request.setAttribute("message", "'ÉÏ´«³É¹¦£¡'");
-			request.getRequestDispatcher("/admin/studentInfoUpload.jsp").forward(request, response);
+			request.setAttribute("message", "'ä¸Šä¼ æˆåŠŸï¼'");
+			request.getRequestDispatcher("/counsellor/studentInfoUpload.jsp").forward(request, response);
 		}
 		else if(request.getParameter("fileUpload2") != null){
-			String lujing="G:/biyesheji/µç×Óµµ/"+request.getParameter("fileUpload2");
+			String lujing="G:/biyesheji/ç”µå­æ¡£/"+request.getParameter("fileUpload2");
 			scoreUpload stu=new scoreUpload();
 			stu.upload(lujing);	
-			request.setAttribute("message", "'³É¼¨ÉÏ´«³É¹¦£¡'");
-			request.getRequestDispatcher("/admin/classScore.jsp").forward(request, response);
+			request.setAttribute("message", "'æˆç»©ä¸Šä¼ æˆåŠŸï¼'");
+			request.getRequestDispatcher("/counsellor/classScore.jsp").forward(request, response);
 		}
         
         

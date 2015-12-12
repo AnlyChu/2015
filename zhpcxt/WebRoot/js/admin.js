@@ -188,7 +188,7 @@ function classAdd(path){
 				    		$.messager.alert('系统消息','添加成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/bj.jsp';				    			
+					    		location.href = path+'/admin/allClassInfo.jsp';				    			
 				    		},false);
 				    	} 
 				    }  
@@ -229,7 +229,7 @@ function courseAdd(path){
 				    		$.messager.alert('系统消息','添加成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
 					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/bj.jsp';				    			
+					    		location.href = path+'/admin/allClassInfo.jsp';				    			
 				    		},false);
 				    	} 
 				    }  

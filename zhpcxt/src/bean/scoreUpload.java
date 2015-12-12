@@ -27,12 +27,12 @@ public class scoreUpload{
 //		Sheet[] sheetStringArr = workbook.getSheets();
 //		System.out.println(sheetStringArr[0].getRow(0));
 //		Cell c00=sheet.getCell(0,0);
-//		System.out.println("c00µÄÖµ="+c00.getType());	
+//		System.out.println("c00ï¿½ï¿½Öµ="+c00.getType());	
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
 		for(int j=1;j<sheet.getRows();j++){
 			Cell[] row=sheet.getRow(j);
 			String str="'";
-			String val="studentId,sName,term,score,courseId";
+			String val="studentId,sName,scholleYear,term,score,courseId";
 			for(int i=0;i<row.length;i++){
 				if (i==row.length-1){
 					str+=row[i].getContents()+"'";

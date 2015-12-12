@@ -16,9 +16,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td align="right">课程名：</td>
       <td><input class="easyui-validatebox" type="text" name="courseName" required="true"  customize="Customize" /></td>
     </tr>
-    <tr>
-      <td align="right">学期：</td>
-      <td><input class="easyui-validatebox" type="text" name="term" required="true"  customize="Customize" /></td>
-    </tr>
   </table>
 </form>

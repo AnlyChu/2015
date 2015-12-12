@@ -3,13 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
-
+String classId = (String)session.getAttribute("classId");
 %>
 <ul>
 <%
 if(adminlogin != null && adminlogin.size() != 0){ 
 if(adminlogin.get(3).equals("书记")){ %>
-	<li><a href="<%=path %>/admin/bj.jsp">班级信息查询</a></li>
+	<li><a href="<%=path %>/admin/allClassInfo.jsp">班级信息查询</a></li>
 	<li><a href="<%=path %>/admin/systemuser.jsp">辅导员管理</a></li>
 	<li><a href="<%=path %>/admin/student.jsp">学生信息查询</a></li>
 <%}

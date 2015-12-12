@@ -55,27 +55,36 @@ public class ClassAddServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"classId","dept","grade","pro","class","classMgr","sum"};
+		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr","cScoreTableName"};
 		String row = "";
 		String val = "";
 		for(int i = 0;i < args.length;i++){
 			if(i == args.length-1){
 				row += args[i];
-				val += "'"+request.getParameter(args[i])+"'";
+				val += "'"+request.getParameter(args[0])+"'";
 			}else{
 				row += args[i]+",";
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
+		String creatTableSql = "CREATE TABLE [dbo].[" + request.getParameter(args[0]) 
+													+ "]([studentId] [nvarchar](50) NOT NULL, "
+													+ "[sName] [nchar](10) ,"
+													+ "[schoolYear] [nchar](10) NULL,"
+													+ "[term] [nchar](10) NULL,"
+													+ "[courseId] [nchar](10) NOT NULL,"
+													+ "[score] [float] NULL)";
+ 
 		String sql = "insert into class1("+row+") values("+val+")";
 		System.out.println("sql="+sql);
+		System.out.println("creatTableSql="+creatTableSql);
+		responseText = ib.insertANDupdateANDdel(creatTableSql);
 		responseText = ib.insertANDupdateANDdel(sql);
-		
 		PrintWriter out = response.getWriter();
 		out.print(responseText);
 		out.close();

@@ -27,19 +27,19 @@ public class studentInfoUpload{
 //		Sheet[] sheetStringArr = workbook.getSheets();
 //		System.out.println(sheetStringArr[0].getRow(0));
 //		Cell c00=sheet.getCell(0,0);
-//		System.out.println("c00µÄÖµ="+c00.getType());	
+//		System.out.println("c00ï¿½ï¿½Öµ="+c00.getType());	
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
 		for(int j=1;j<sheet.getRows();j++){
 			Cell[] row=sheet.getRow(j);
-			String str="";
-			String val="studentId,name,sex,class,IDCard,dept,pro,address";
+			String str="'";
+			String val="studentId,name,sex,classId,IDCard,dept,pro,address";
 			for(int i=0;i<row.length;i++){
 				
 				if (i==row.length-1){
-					str+="'" + row[i].getContents()+"'";
+					str+=row[i].getContents()+"'";
 				}
 				else{
-				str+="'" + row[i].getContents()+"','"; 
+				str+=row[i].getContents()+"','"; 
 				}						
 			}
 			String sql = "insert into dbo.student1"+"("+val+")"+ "values"+"("+str+")";

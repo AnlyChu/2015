@@ -5,8 +5,12 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+			
 	ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
-	//String adminName = (String)request.getAttribute("adminName");
+	if((String) session.getAttribute("classId") !=null){
+		session.removeAttribute("classId");
+	}
+	
 	boolean closed = false;
 	ArrayList class1 = null;
 	ArrayList admin = null;
@@ -40,15 +44,7 @@
 		$('tbody tr:odd').css({
 			'background' : '#eeeeff'
 		});
-
 	});	
-	/*function getCid(classID){
-		var cId=classID;
-		alert(cId);
-		document.Form1.action="<%=basePath%>counsellor/classInfo.jsp?cId="+cId;
-		document.Form1.submit();
-	
-	}*/
 
 </script>
 </head>
@@ -63,13 +59,14 @@
 						<table class="table-padding">
 							<tr>
 								<td align="right">选择班级：</td>
-								<td><select name="classId" >
+								<td><select name="classId">
 										<%
 											if (admin != null && admin.size() != 0) {
 												for (int j = 0; j < class1.size(); j++) {
 													ArrayList classMgr = (ArrayList) class1.get(j);
 													String className = classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString();
 													String classID = classMgr.get(0).toString();
+												
 										%>
 										<option value="<%=classID%>"><%=className%></option>
 										<%
