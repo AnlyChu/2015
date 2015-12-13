@@ -16,7 +16,7 @@ if(adminlogin.get(3).equals("书记")){ %>
 if(adminlogin.get(3).equals("辅导员")){ %>
 	<li><a href="<%=path %>/counsellor/classScore.jsp">成绩上传</a></li>
   <li><a href="<%=path %>/counsellor/verifyexamine.jsp">评测审核</a></li>
-  <li><a href="<%=path %>/counsellor/classInfo.jsp">班级基本信息</a></li>
+  <li><a href="<%=path %>/counsellor/classInfo.jsp?classId=<%=classId%>">班级基本信息</a></li>
   <li><a href="<%=path %>/counsellor/evaluating.jsp">班长管理</a></li>
   <li><a href="<%=path %>/counsellor/studentInfoUpload.jsp">班级学生信息</a></li>
 <%}

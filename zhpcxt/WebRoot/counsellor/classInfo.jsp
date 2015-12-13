@@ -8,11 +8,11 @@
 	ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
 	boolean closed = false;
 	ArrayList classInfo = null;
-	session.setAttribute("classId",request.getParameter("classId"));
+	String classId = (String) request.getParameter("classId");
+	session.setAttribute("classId",classId);
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		String classId = (String) request.getAttribute("classId");
-			classInfo = array.getBj(request.getParameter("classId"));
+		classInfo = array.getBj(request.getParameter("classId"));
 			
 	}
 

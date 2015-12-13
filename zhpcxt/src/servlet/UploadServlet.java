@@ -60,7 +60,8 @@ public class UploadServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = request.getContextPath();
+		String path = request.getSession().getServletContext().getRealPath(request.getRequestURI());
+
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("fileUpload") != null){
@@ -70,7 +71,7 @@ public class UploadServlet extends HttpServlet {
 			stu.upload(lujing);
 		}
 		else if(request.getParameter("fileUpload1") != null){
-			String lujing="G:/biyesheji/电子档/"+request.getParameter("fileUpload1");
+			String lujing="G:/bishe/电子档/"+ request.getParameter("fileUpload1");
 			studentInfoUpload stu=new studentInfoUpload();
 			stu.upload(lujing);
 			request.setAttribute("message", "'上传成功！'");

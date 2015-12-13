@@ -54,11 +54,6 @@ $(document).ready(function(){
 <div id="north" region="north" split="false" border="false">
   <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
-<div region="west" split="false" border="false" title="导航菜单" style="width:180px;" id="west">
-  <div id="left-menus" border="false" fit="true">
-    <jsp:include page="/admin/left.jsp"></jsp:include>
-  </div>
-</div>
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
   <table width="100%" height="100%">
     <tr>
