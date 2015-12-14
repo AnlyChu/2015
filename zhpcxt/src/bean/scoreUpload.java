@@ -6,6 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import jxl.*;
 
 
@@ -14,7 +20,7 @@ public class scoreUpload{
 //	  jxl.Workbook rwb = Workbook.getWorkbook(is); }  
 //		catch (Exception e) {  e.printStackTrace(); }
 
-	public void upload(String lujing){ 
+	public void upload(String lujing,String cScoreTableName){
 		Workbook workbook=null;
 		try{
 			workbook=Workbook.getWorkbook(new File(lujing));	 
@@ -32,7 +38,7 @@ public class scoreUpload{
 		for(int j=1;j<sheet.getRows();j++){
 			Cell[] row=sheet.getRow(j);
 			String str="'";
-			String val="studentId,sName,scholleYear,term,score,courseId";
+			String val="studentId,sName,schoolYear,term,score,courseId";
 			for(int i=0;i<row.length;i++){
 				if (i==row.length-1){
 					str+=row[i].getContents()+"'";
@@ -41,7 +47,7 @@ public class scoreUpload{
 				str+=row[i].getContents()+"','"; 
 				}						
 			}
-			String sql = "insert into dbo.score1"+"("+val+")"+ "values"+"("+str+")";
+			String sql = "insert into dbo.["+cScoreTableName+"]("+val+")"+ "values"+"("+str+")";
 			System.out.println("val="+val+"\rstr="+str);
 			ib.insertANDupdateANDdel(sql);
 		   }

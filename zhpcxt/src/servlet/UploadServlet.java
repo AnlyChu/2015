@@ -78,11 +78,15 @@ public class UploadServlet extends HttpServlet {
 			request.getRequestDispatcher("/counsellor/studentInfoUpload.jsp").forward(request, response);
 		}
 		else if(request.getParameter("fileUpload2") != null){
-			String lujing="G:/biyesheji/电子档/"+request.getParameter("fileUpload2");
+			String lujing="G:/bishe/电子档/"+request.getParameter("fileUpload2");
 			scoreUpload stu=new scoreUpload();
-			stu.upload(lujing);	
+			String cScoreTableName = (String)request.getSession().getAttribute("classId");
+			stu.upload(lujing, cScoreTableName);
 			request.setAttribute("message", "'成绩上传成功！'");
-			request.getRequestDispatcher("/counsellor/classScore.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() +"/counsellor/classScore.jsp");
+			//("/counsellor/classScore.jsp").forward(request, response);
+
+
 		}
         
         

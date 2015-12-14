@@ -64,7 +64,9 @@
     <script type="text/javascript" src="<%=path%>/js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(window).load(function () {
+            $("#londing").css('display', 'none');
+            $("#londEnd").css('display', 'block');
             $('tbody tr:even').css({'background': '#ffffff'});
             $('tbody tr:odd').css({'background': '#eeeeff'});
             var message = <%=message%>;
@@ -85,14 +87,14 @@
         function getSchoolYear(schoolYear) {
             var cSchoolYear = schoolYear;
             document.termSelect.action = "<%=basePath%>counsellor/classScore.jsp?schoolYear="
-            + cSchoolYear;
+                    + cSchoolYear;
             document.termSelect.submit();
 
         }
         function getTerm(term) {
             var cTerm = term;
             document.termSelect.action = "<%=basePath%>counsellor/classScore.jsp?term="
-            + cTerm;
+                    + cTerm;
             document.termSelect.submit();
 
         }
@@ -106,6 +108,8 @@
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no"
       resizable="false">
+
+
 <div id="north" region="north" split="false" border="false">
     <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
@@ -115,8 +119,11 @@
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
+
 <div id="mainPanle" region="center" border="true"
      style="background:#f7f7f7; padding:5px;">
+    <div id="londing" style="display: block" align="center">数据加载ing</div>
+    <div id="londEnd" style="display: none">
     <table>
         <thead>
         <tr>
@@ -137,19 +144,42 @@
         <tr>
             <td><p>学年:</p></td>
             <td>
-                <form action="<%=path%>/counsellor/classInfo.jsp" method="post">
-                    <select name="schoolYear">
+                <form action="<%=path%>/counsellor/classScore.jsp" method="post" name="termSelect">
+                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
+                        <option>
+                            <script language="javascript">
+                                document.termSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
+                            </script>
+                        </option>
                         <%
-                        for (int j = 0; j < classSchoolYear.size(); j++) {
-                        ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);
+                            for (int j = 0; j < classSchoolYear.size(); j++) {
+                                ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);
                         %>
-                        <option value=<%=getSchoolYear.get(0)%>><%=getSchoolYear.get(0)%></option>
+                        <option><%=getSchoolYear.get(0)%>
+                        </option>
                         <%
-                        }
+                            }
                         %>
-                        </select>
-                   学期:
-                    <input type="text" name="term"/>
+                    </select>
+                    学期:
+                    <select name="term" onchange="getTerm(this.value);">
+                        <option>
+                            <script language="javascript">
+                                document.termSelect.term.value = "<%=request.getParameter("term")%>";
+                            </script>
+                        </option>
+                        <%
+                            if (schoolYear1 != null) {
+                                for (int j = 0; j < classTerm.size(); j++) {
+                                    ArrayList getTerm = (ArrayList) classTerm.get(j);
+                        %>
+                        <option value=<%=getTerm.get(0)%>><%=getTerm.get(0)%>
+                        </option>
+                        <%
+                                }
+                            }
+                        %>
+                    </select>
                     <input type="submit" value="查询"/>
                 </form>
             </td>
@@ -157,109 +187,110 @@
 
         </thead>
     </table>
-
-    <form method="post" name="termSelect">
-        <table width="100%">
-            <thead>
-            <tr>
-                <td colspan="6" align="center" style="padding:5px;"><h3>班级学生成绩</h3></td>
-            </tr>
-            <tr class="thead">
-                <td align="center">学号</td>
-                <td align="center" width="100px">姓名</td>
-                <td align="center">学年
-                    <%--<select name="schoolYear" onchange="getSchoolYear(this.value);">--%>
-                    <%--<option selected="selected" value = null>学年</option>--%>
-                    <%--<%--%>
-                    <%--for (int j = 0; j < classSchoolYear.size(); j++) {--%>
-                    <%--ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);--%>
-                    <%--%>--%>
-                    <%--<option value=<%=getSchoolYear.get(0)%>><%=getSchoolYear.get(0)%></option>--%>
-                    <%--<%--%>
-                    <%--}--%>
-                    <%--%>--%>
-                    <%--</select>--%>
-                </td>
-                <td align="center">学期
-                    <%--<select name="term" onchange="getTerm(this.value);">--%>
+        <form method="post">
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td colspan="6" align="center" style="padding:5px;"><h3>班级学生成绩</h3></td>
+                </tr>
+                <tr class="thead">
+                    <td align="center">学号</td>
+                    <td align="center" width="100px">姓名</td>
+                    <td align="center">学年
+                        <%--<select name="schoolYear" onchange="getSchoolYear(this.value);">--%>
+                        <%--<option selected="selected" value = null>学年</option>--%>
+                        <%--<%--%>
+                        <%--for (int j = 0; j < classSchoolYear.size(); j++) {--%>
+                        <%--ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);--%>
+                        <%--%>--%>
+                        <%--<option value=<%=getSchoolYear.get(0)%>><%=getSchoolYear.get(0)%></option>--%>
+                        <%--<%--%>
+                        <%--}--%>
+                        <%--%>--%>
+                        <%--</select>--%>
+                    </td>
+                    <td align="center">学期
+                        <%--<select name="term" onchange="getTerm(this.value);">--%>
                         <%--<option selected="selected" value=null>学期</option>--%>
                         <%--<%--%>
-                            <%--if (schoolYear1 != null) {--%>
-                                <%--for (int j = 0; j < classTerm.size(); j++) {--%>
-                                    <%--ArrayList getTerm = (ArrayList) classTerm.get(j);--%>
+                        <%--if (schoolYear1 != null) {--%>
+                        <%--for (int j = 0; j < classTerm.size(); j++) {--%>
+                        <%--ArrayList getTerm = (ArrayList) classTerm.get(j);--%>
                         <%--%>--%>
                         <%--<option value=<%=getTerm.get(0)%>><%=getTerm.get(0)%>--%>
                         <%--</option>--%>
                         <%--<%--%>
-                                <%--}--%>
-                            <%--}--%>
+                        <%--}--%>
+                        <%--}--%>
                         <%--%>--%>
-                    <%--</select>--%>
-                </td>
-                <td align="center">课程</td>
-                <td align="center">成绩</td>
-            </tr>
-            </thead>
+                        <%--</select>--%>
+                    </td>
+                    <td align="center">课程</td>
+                    <td align="center">成绩</td>
+                </tr>
+                </thead>
 
-            <tbody class="tbody">
-            <%
-                if (schoolYear1 != null) {
-                    for (int i = 0; i < getScoreOfSchYear1.size(); i++) {
-                        ArrayList getScoreOfSchYear2 = (ArrayList) getScoreOfSchYear1.get(i);
-                        course = array.getCourse(getScoreOfSchYear2.get(4).toString());
-                        for (int j = 0; j < course.size(); j++) {
-                            ArrayList course1 = (ArrayList) course.get(j);
-            %>
-            <tr>
-                <td align="center"><%=getScoreOfSchYear2.get(0)%>
-                </td>
-                <td align="center"><%=getScoreOfSchYear2.get(1)%>
-                </td>
-                <td align="center"><%=getScoreOfSchYear2.get(2)%>
-                </td>
-                <td align="center"><%=getScoreOfSchYear2.get(3)%>
-                </td>
-                <td align="center"><%=course1.get(1)%>
-                </td>
-                <td align="center"><%=getScoreOfSchYear2.get(5)%>
-                </td>
-            </tr>
-            <%
+                <tbody class="tbody">
+                <%
+                    if (schoolYear1 != null && term1 == null) {
+                        for (int i = 0; i < getScoreOfSchYear1.size(); i++) {
+                            ArrayList getScoreOfSchYear2 = (ArrayList) getScoreOfSchYear1.get(i);
+                            course = array.getCourse(getScoreOfSchYear2.get(4).toString());
+                            for (int j = 0; j < course.size(); j++) {
+                                ArrayList course1 = (ArrayList) course.get(j);
+                %>
+                <tr>
+                    <td align="center"><%=getScoreOfSchYear2.get(0)%>
+                    </td>
+                    <td align="center"><%=getScoreOfSchYear2.get(1)%>
+                    </td>
+                    <td align="center"><%=getScoreOfSchYear2.get(2)%>
+                    </td>
+                    <td align="center"><%=getScoreOfSchYear2.get(3)%>
+                    </td>
+                    <td align="center"><%=course1.get(1)%>
+                    </td>
+                    <td align="center"><%=getScoreOfSchYear2.get(5)%>
+                    </td>
+                </tr>
+                <%
+                        }
                     }
-                }
-            } else if (schoolYear1 != null && term1 != null) {
-                for (int i = 0; i < getScoreOfSchYear1.size(); i++) {
-                    ArrayList getScoreOfSchYear2 = (ArrayList) getScoreOfSchYear1.get(i);
-                    ArrayList getScoreOfTerm2 = (ArrayList) getScoreOfSchYear2.get(i);
-                    for (int k = 0; k < getScoreOfSchYear2.size(); k++) {
-                        getScoreOfTerm2 = (ArrayList) getScoreOfSchYear2.get(k);
-                        course = array.getCourse(getScoreOfSchYear2.get(4).toString());
-                        for (int j = 0; j < course.size(); j++) {
-                            ArrayList course1 = (ArrayList) course.get(j);
-            %>
-            <tr>
-                <td align="center"><%=getScoreOfTerm2.get(0)%>
-                </td>
-                <td align="center"><%=getScoreOfTerm2.get(1)%>
-                </td>
-                <td align="center"><%=getScoreOfTerm2.get(2)%>
-                </td>
-                <td align="center"><%=getScoreOfTerm2.get(3)%>
-                </td>
-                <td align="center"><%=course1.get(1)%>
-                </td>
-                <td align="center"><%=getScoreOfTerm2.get(5)%>
-                </td>
-            </tr>
-            <%
+                } else if (schoolYear1 != null && term1 != null) {
+                    for (int i = 0; i < getScoreOfTerm1.size(); i++) {
+                        ArrayList getScoreOfTerm2 = (ArrayList) getScoreOfTerm1.get(i);
+                        if (getScoreOfTerm2.get(3).toString() != term1) {
+                            continue;
+                        } else {
+                            course = array.getCourse(getScoreOfTerm2.get(4).toString());
+                            for (int j = 0; j < course.size(); j++) {
+                                ArrayList course1 = (ArrayList) course.get(j);
+
+                %>
+                <tr>
+                    <td align="center"><%=getScoreOfTerm2.get(0)%>
+                    </td>
+                    <td align="center"><%=getScoreOfTerm2.get(1)%>
+                    </td>
+                    <td align="center"><%=getScoreOfTerm2.get(2)%>
+                    </td>
+                    <td align="center"><%=getScoreOfTerm2.get(3)%>
+                    </td>
+                    <td align="center"><%=course1.get(1)%>
+                    </td>
+                    <td align="center"><%=getScoreOfTerm2.get(5)%>
+                    </td>
+                </tr>
+                <%
+                                }
                             }
                         }
                     }
-                }
-            %>
-            </tbody>
-        </table>
-    </form>
+                %>
+                </tbody>
+            </table>
+        </form>
+    </div>
 </div>
 </body>
 </html>
