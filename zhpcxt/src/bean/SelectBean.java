@@ -33,7 +33,7 @@ public class SelectBean {
 					alRow.add(rs.getString(args[i]));
 				}
 				al.add(alRow);
-				System.out.println(al);
+				//System.out.println(al);
 			}
 		} catch (SQLException e) {
 			// TODO �Զ���� catch ��

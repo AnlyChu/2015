@@ -87,14 +87,14 @@
         function getSchoolYear(schoolYear) {
             var cSchoolYear = schoolYear;
             document.termSelect.action = "<%=basePath%>counsellor/classScore.jsp?schoolYear="
-                    + cSchoolYear;
+            + cSchoolYear;
             document.termSelect.submit();
 
         }
         function getTerm(term) {
             var cTerm = term;
             document.termSelect.action = "<%=basePath%>counsellor/classScore.jsp?term="
-                    + cTerm;
+            + cTerm;
             document.termSelect.submit();
 
         }
@@ -124,69 +124,69 @@
      style="background:#f7f7f7; padding:5px;">
     <div id="londing" style="display: block" align="center">数据加载ing</div>
     <div id="londEnd" style="display: none">
-    <table>
-        <thead>
-        <tr>
-            <td><p>上传成绩（excel文件）:</p></td>
-            <td>
-                <form action="<%=path%>/Upload" method="post">
-                    <input type="file" name="fileUpload2"/> <input type=submit
-                                                                   value="上传文件"/>
-                </form>
-            </td>
-        </tr>
+        <table>
+            <thead>
+            <tr>
+                <td><p>上传成绩（excel文件）:</p></td>
+                <td>
+                    <form action="<%=path%>/Upload" method="post">
+                        <input type="file" name="fileUpload2"/> <input type=submit
+                                                                       value="上传文件"/>
+                    </form>
+                </td>
+            </tr>
 
-        </thead>
-    </table>
+            </thead>
+        </table>
 
-    <table>
-        <thead>
-        <tr>
-            <td><p>学年:</p></td>
-            <td>
-                <form action="<%=path%>/counsellor/classScore.jsp" method="post" name="termSelect">
-                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
-                        <option>
-                            <script language="javascript">
-                                document.termSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
-                            </script>
-                        </option>
-                        <%
-                            for (int j = 0; j < classSchoolYear.size(); j++) {
-                                ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);
-                        %>
-                        <option><%=getSchoolYear.get(0)%>
-                        </option>
-                        <%
-                            }
-                        %>
-                    </select>
-                    学期:
-                    <select name="term" onchange="getTerm(this.value);">
-                        <option>
-                            <script language="javascript">
-                                document.termSelect.term.value = "<%=request.getParameter("term")%>";
-                            </script>
-                        </option>
-                        <%
-                            if (schoolYear1 != null) {
-                                for (int j = 0; j < classTerm.size(); j++) {
-                                    ArrayList getTerm = (ArrayList) classTerm.get(j);
-                        %>
-                        <option value=<%=getTerm.get(0)%>><%=getTerm.get(0)%>
-                        </option>
-                        <%
+        <table>
+            <thead>
+            <tr>
+                <td><p>学年:</p></td>
+                <td>
+                    <form action="<%=path%>/counsellor/classScore.jsp" method="post" name="termSelect">
+                        <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
+                            <option>
+                                <script language="javascript">
+                                    document.termSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
+                                </script>
+                            </option>
+                            <%
+                                for (int j = 0; j < classSchoolYear.size(); j++) {
+                                    ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);
+                            %>
+                            <option><%=getSchoolYear.get(0)%>
+                            </option>
+                            <%
                                 }
-                            }
-                        %>
-                    </select>
-                    <input type="submit" value="查询"/>
-                </form>
-            </td>
-        </tr>
+                            %>
+                        </select>
+                        学期:
+                        <select name="term" onchange="getTerm(this.value);">
+                            <option>
+                                <script language="javascript">
+                                    document.termSelect.term.value = "<%=request.getParameter("term")%>";
+                                </script>
+                            </option>
+                            <%
+                                if (schoolYear1 != null) {
+                                    for (int j = 0; j < classTerm.size(); j++) {
+                                        ArrayList getTerm = (ArrayList) classTerm.get(j);
+                            %>
+                            <option value=<%=getTerm.get(0)%>><%=getTerm.get(0)%>
+                            </option>
+                            <%
+                                    }
+                                }
+                            %>
+                        </select>
+                        <input type="submit" value="查询"/>
+                    </form>
+                </td>
+            </tr>
 
-        </thead>
-    </table>
+            </thead>
+        </table>
         <form method="post">
             <table width="100%">
                 <thead>
@@ -225,8 +225,42 @@
                         <%--%>--%>
                         <%--</select>--%>
                     </td>
-                    <td align="center">课程</td>
-                    <td align="center">成绩</td>
+                    <%
+                        if (schoolYear1 != null && term1 == null) {
+                            ArrayList tableName = array.getStuScoreTableName(classId);
+                            ArrayList tableName1 = (ArrayList) tableName.get(0);
+                            ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                            for (int k = 0; k < courseID.size(); k++) {
+
+                                ArrayList courseName = (ArrayList) courseID.get(k);
+                                course = array.getCourseName(courseName.get(0).toString());
+                                for (int m = 0; m < course.size(); m++) {
+                                    ArrayList courseRealName = (ArrayList) course.get(m);
+
+                    %>
+                    <td align="center"><%=courseRealName.get(0)%>
+                    </td>
+                    <%
+                            }
+                        }
+                    } else if (schoolYear1 != null && term1 != null) {
+                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName1 = (ArrayList) tableName.get(0);
+                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        for (int k = 0; k < courseID.size(); k++) {
+                            ArrayList courseName = (ArrayList) courseID.get(k);
+                            course = (ArrayList) courseName.get(0);
+                            for (int m = 0; m < course.size(); m++) {
+                                ArrayList courseRealName = (ArrayList) course.get(m);
+
+                    %>
+                    <td align="center"><%=courseRealName.get(0)%>
+                    </td>
+                    <%
+                                }
+                            }
+                        }
+                    %>
                 </tr>
                 </thead>
 
@@ -235,9 +269,6 @@
                     if (schoolYear1 != null && term1 == null) {
                         for (int i = 0; i < getScoreOfSchYear1.size(); i++) {
                             ArrayList getScoreOfSchYear2 = (ArrayList) getScoreOfSchYear1.get(i);
-                            course = array.getCourse(getScoreOfSchYear2.get(4).toString());
-                            for (int j = 0; j < course.size(); j++) {
-                                ArrayList course1 = (ArrayList) course.get(j);
                 %>
                 <tr>
                     <td align="center"><%=getScoreOfSchYear2.get(0)%>
@@ -248,13 +279,26 @@
                     </td>
                     <td align="center"><%=getScoreOfSchYear2.get(3)%>
                     </td>
-                    <td align="center"><%=course1.get(1)%>
+                    <%
+                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName1 = (ArrayList) tableName.get(0);
+                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        for (int k = 0; k < courseID.size(); k++) {
+                            ArrayList courseName = (ArrayList) courseID.get(k);
+                            if (courseName.get(0).toString().equals(getScoreOfSchYear2.get(4).toString())) {
+                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfSchYear2.get(0).toString(), courseName.get(0).toString(), tableName1.get(0).toString());
+                                for (int m = 0; m < courseScore.size(); m++) {
+                                    ArrayList courseScore1 = (ArrayList) courseScore.get(m);
+                    %>
+                    <td align="center"><%=courseScore1.get(5)%>
                     </td>
-                    <td align="center"><%=getScoreOfSchYear2.get(5)%>
-                    </td>
+                    <%
+                                }
+                            }
+                        }
+                    %>
                 </tr>
                 <%
-                        }
                     }
                 } else if (schoolYear1 != null && term1 != null) {
                     for (int i = 0; i < getScoreOfTerm1.size(); i++) {
@@ -262,10 +306,6 @@
                         if (getScoreOfTerm2.get(3).toString() != term1) {
                             continue;
                         } else {
-                            course = array.getCourse(getScoreOfTerm2.get(4).toString());
-                            for (int j = 0; j < course.size(); j++) {
-                                ArrayList course1 = (ArrayList) course.get(j);
-
                 %>
                 <tr>
                     <td align="center"><%=getScoreOfTerm2.get(0)%>
@@ -276,13 +316,27 @@
                     </td>
                     <td align="center"><%=getScoreOfTerm2.get(3)%>
                     </td>
-                    <td align="center"><%=course1.get(1)%>
+                    <%
+                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName1 = (ArrayList) tableName.get(0);
+                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        for (int k = 0; k < courseID.size(); k++) {
+                            ArrayList courseName = (ArrayList) courseID.get(k);
+                            if (courseName.get(0).toString().equals(getScoreOfTerm2.get(4).toString())) {
+                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfTerm2.get(0).toString(), courseName.get(0).toString(), tableName1.get(0).toString());
+                                for (int m = 0; m < courseScore.size(); m++) {
+                                    ArrayList courseScore1 = (ArrayList) courseScore.get(m);
+                    %>
+                    <td align="center"><%=courseScore1.get(5)%>
                     </td>
-                    <td align="center"><%=getScoreOfTerm2.get(5)%>
+                    <%
+                                }
+                            }
+                        }
+                    %>
                     </td>
                 </tr>
                 <%
-                                }
                             }
                         }
                     }

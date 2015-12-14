@@ -130,9 +130,27 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getStuScoreOfcourseId(String studentId,String courseId,String cScoreTableName){
+		String sql = "select * from dbo.[" + cScoreTableName + "] where studentId="+studentId + " and courseId="+courseId;
+		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getCourse(String courseId){
 		String sql = "select * from course where courseId="+courseId;
 		String args[] = {"courseId","courseName"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getAllCourse(String tableName){
+		String sql = "select distinct(courseId) from dbo.[" + tableName + "] ";
+		String args[] = {"courseId"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getCourseName(String courseId){
+		String sql = "select distinct(courseName) from course where courseId="+courseId;
+		String args[] = {"courseName"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -210,6 +228,7 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+
 	public ArrayList getScoreOfSchYear(String SchYear,String tableName){
 		String sql = "select * from dbo.[" + tableName + "] where schoolYear='"+SchYear+"'";
 		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
