@@ -131,8 +131,8 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getStuScoreOfcourseId(String studentId,String courseId,String cScoreTableName){
-		String sql = "select * from dbo.[" + cScoreTableName + "] where studentId="+studentId + " and courseId="+courseId;
-		String args[] = {"studentId","sName","schoolYear","term","courseId","score"};
+		String sql = "select score from dbo.[" + cScoreTableName + "] where studentId="+studentId + " and courseId="+courseId;
+		String args[] = {"score"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -142,8 +142,14 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getAllCourse(String tableName){
-		String sql = "select distinct(courseId) from dbo.[" + tableName + "] ";
+	public ArrayList getAllCourseForSchoolYear(String tableName,String schoolYear){
+		String sql = "select distinct(courseId) from dbo.[" + tableName + "] where schoolYear='" + schoolYear + "'";
+		String args[] = {"courseId"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getAllCourseForTerm(String tableName,String schoolYear,String term){
+		String sql = "select distinct(courseId) from dbo.[" + tableName + "] where term='" + term + "'";
 		String args[] = {"courseId"};
 		al = sb.select(sql,args);
 		return al;

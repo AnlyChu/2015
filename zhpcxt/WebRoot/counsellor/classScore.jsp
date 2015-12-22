@@ -229,7 +229,7 @@
                         if (schoolYear1 != null && term1 == null) {
                             ArrayList tableName = array.getStuScoreTableName(classId);
                             ArrayList tableName1 = (ArrayList) tableName.get(0);
-                            ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                            ArrayList courseID = array.getAllCourseForSchoolYear(tableName1.get(0).toString(), schoolYear1);
                             for (int k = 0; k < courseID.size(); k++) {
 
                                 ArrayList courseName = (ArrayList) courseID.get(k);
@@ -246,10 +246,10 @@
                     } else if (schoolYear1 != null && term1 != null) {
                         ArrayList tableName = array.getStuScoreTableName(classId);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
-                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        ArrayList courseID = array.getAllCourseForTerm(tableName1.get(0).toString(), schoolYear1, term1);
                         for (int k = 0; k < courseID.size(); k++) {
                             ArrayList courseName = (ArrayList) courseID.get(k);
-                            course = (ArrayList) courseName.get(0);
+                            course = array.getCourseName(courseName.get(0).toString());
                             for (int m = 0; m < course.size(); m++) {
                                 ArrayList courseRealName = (ArrayList) course.get(m);
 
@@ -282,15 +282,14 @@
                     <%
                         ArrayList tableName = array.getStuScoreTableName(classId);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
-                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        ArrayList courseID =  array.getAllCourseForSchoolYear(tableName1.get(0).toString(), schoolYear1);
                         for (int k = 0; k < courseID.size(); k++) {
-                            ArrayList courseName = (ArrayList) courseID.get(k);
-                            if (courseName.get(0).toString().equals(getScoreOfSchYear2.get(4).toString())) {
-                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfSchYear2.get(0).toString(), courseName.get(0).toString(), tableName1.get(0).toString());
+                            ArrayList courseID1 = (ArrayList) courseID.get(k);
+                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfSchYear2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
                                 for (int m = 0; m < courseScore.size(); m++) {
                                     ArrayList courseScore1 = (ArrayList) courseScore.get(m);
                     %>
-                    <td align="center"><%=courseScore1.get(5)%>
+                    <td align="center"><%=courseScore1.get(0)%>
                     </td>
                     <%
                                 }
@@ -299,13 +298,13 @@
                     %>
                 </tr>
                 <%
-                    }
+//                    }
                 } else if (schoolYear1 != null && term1 != null) {
                     for (int i = 0; i < getScoreOfTerm1.size(); i++) {
                         ArrayList getScoreOfTerm2 = (ArrayList) getScoreOfTerm1.get(i);
-                        if (getScoreOfTerm2.get(3).toString() != term1) {
-                            continue;
-                        } else {
+//                        if (getScoreOfTerm2.get(3).toString() != term1) {
+//                            continue;
+//                        } else {
                 %>
                 <tr>
                     <td align="center"><%=getScoreOfTerm2.get(0)%>
@@ -319,15 +318,14 @@
                     <%
                         ArrayList tableName = array.getStuScoreTableName(classId);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
-                        ArrayList courseID = array.getAllCourse(tableName1.get(0).toString());
+                        ArrayList courseID = array.getAllCourseForTerm(tableName1.get(0).toString(), schoolYear1, term1);
                         for (int k = 0; k < courseID.size(); k++) {
-                            ArrayList courseName = (ArrayList) courseID.get(k);
-                            if (courseName.get(0).toString().equals(getScoreOfTerm2.get(4).toString())) {
-                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfTerm2.get(0).toString(), courseName.get(0).toString(), tableName1.get(0).toString());
+                            ArrayList courseID1 = (ArrayList) courseID.get(k);
+                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfTerm2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
                                 for (int m = 0; m < courseScore.size(); m++) {
                                     ArrayList courseScore1 = (ArrayList) courseScore.get(m);
                     %>
-                    <td align="center"><%=courseScore1.get(5)%>
+                    <td align="center"><%=courseScore1.get(0)%>
                     </td>
                     <%
                                 }
@@ -337,8 +335,6 @@
                     </td>
                 </tr>
                 <%
-                            }
-                        }
                     }
                 %>
                 </tbody>
