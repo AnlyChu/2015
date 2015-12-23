@@ -65,6 +65,7 @@
     <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
+            $("#west").css('display', 'block');
             $("#londing").css('display', 'none');
             $("#londEnd").css('display', 'block');
             $('tbody tr:even').css({'background': '#ffffff'});
@@ -114,7 +115,7 @@
     <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
 <div region="west" split="false" border="false" title="导航菜单"
-     style="width:180px;" id="west">
+     style="width:180px;display: none" id="west" >
     <div id="left-menus" border="false" fit="true">
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
@@ -122,7 +123,7 @@
 
 <div id="mainPanle" region="center" border="true"
      style="background:#f7f7f7; padding:5px;">
-    <div id="londing" style="display: block" align="center">数据加载ing</div>
+    <div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
     <div id="londEnd" style="display: none">
         <table>
             <thead>
@@ -180,7 +181,6 @@
                                 }
                             %>
                         </select>
-                        <input type="submit" value="查询"/>
                     </form>
                 </td>
             </tr>
@@ -193,6 +193,12 @@
                 <tr>
                     <td colspan="6" align="center" style="padding:5px;"><h3>班级学生成绩</h3></td>
                 </tr>
+                <%--<tr>--%>
+                <%--<form action="<%=path%>counsellor/classScore.jsp" method="post">--%>
+                    <%--<input type="text" name="student"/>--%>
+                    <%--<input type=submit value="查询"/>--%>
+                <%--</form>--%>
+                <%--</tr>--%>
                 <tr class="thead">
                     <td align="center">学号</td>
                     <td align="center" width="100px">姓名</td>

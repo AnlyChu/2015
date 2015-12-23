@@ -78,7 +78,9 @@
 
 
             </td>
-            <td colspan="6" align="center" style="padding:5px;">成绩上传</td>
+        </tr>
+        <tr>
+            <td colspan="11" align="center" style="padding:5px;"><h3>班级学生信息</h3></td>
         </tr>
         <tr class="thead">
             <td align="center">学号</td>

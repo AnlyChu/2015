@@ -185,7 +185,7 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getBjofGrade(String grade){
-		String sql = "select * from class1 where cGrade="+grade;
+		String sql = "select * from class1 where cGrade='"+grade+"'";
 		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;
