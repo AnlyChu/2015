@@ -1,12 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 import bean.InsertUpdateDelBean;
 
@@ -69,18 +71,20 @@ public class DelServlet extends HttpServlet {
 		String intellectualgrade = request.getParameter("intellectualgrade");
 		String student = request.getParameter("student");
 		String evaluating = request.getParameter("evaluating");
-		String bj = request.getParameter("bjh");
-		System.out.println("班级="+bj);
-		String fdy = request.getParameter("fdy");
-		if(bj != null && !bj.equals("")){
+		String cMgr = request.getParameter("cMgr");
+		HttpSession session = request.getSession();
+		String classId = (String) session.getAttribute("classId");
+		if(cMgr != null && !cMgr.equals("")){
 			
-			sql = "update bj set fdy='"+fdy+"' where bj='"+bj+"'";
+			sql = "update class1 set cMgr='"+cMgr+"' where classId='"+classId+"'";
 			System.out.println("sql"+sql);
 			ib.insertANDupdateANDdel(sql);
-			str = "/admin/bj.jsp";	
+			str = "/admin/classStuInfo.jsp";
 			String responseText = "";
-			responseText = "修改成功";
-			request.setAttribute("message", responseText);
+			responseText = "1";
+			PrintWriter out = response.getWriter();
+			out.print(responseText);
+			out.close();
 		}
 		if(verify != null && !verify.equals("")){
 			sql = "delete from verify where id="+verify;

@@ -196,8 +196,8 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getBj(String cId){
-		String sql = "select * from class1 where classId='"+cId+"'";
+	public ArrayList getBj(String classId){
+		String sql = "select * from class1 where classId='"+classId+"'";
 		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr"};
 		al = sb.select(sql,args);
 		return al;

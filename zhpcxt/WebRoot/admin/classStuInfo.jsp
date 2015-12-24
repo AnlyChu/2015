@@ -51,7 +51,10 @@ $(document).ready(function(){
 	$("#course_add").click(function(){
 		courseAdd('<%=path %>');
 	});
-	})
+	$("#change_cmgr").click(function(){
+		changeCmgr('<%=path %>');
+	});
+	});
 
 	/* function display_alert()
 	 {
@@ -78,6 +81,9 @@ $(document).ready(function(){
 			 	<tr>
       				<td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>
       			</tr>
+				<tr>
+					<td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="change_cmgr">更换辅导员</a></td>
+				</tr>
 				<tr>
 					<td colspan="11" align="center" style="padding:5px;"><h3>班级学生信息</h3></td>
 				</tr>

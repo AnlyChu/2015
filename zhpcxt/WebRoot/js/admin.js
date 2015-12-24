@@ -244,7 +244,47 @@ function courseAdd(path){
 	    }]
 	});
 }
-
+//更换辅导员
+function changeCmgr(path){
+	$("body").append("<div id='dlg_change_cmgr' style='padding:20px;'></div>");
+	$('#dlg_change_cmgr').dialog({
+		href:path+'/admin/changeCmgr.jsp',
+		modal:true,
+		closed:false,
+		title:'新建课程',
+		width:300,
+		height:250,
+		buttons:[{
+			text:'提交',
+			iconCls:'icon-ok',
+			handler:function(){
+				$('#from_change_cmgr').form('submit',{
+					url:path+'/DelServlet',
+					onSubmit:function(){
+						return $(this).form('validate');
+					},
+					success:function(data){
+						if(data == "-1"){
+							$.messager.alert('系统消息','修改失败','error');
+						}else{
+							$.messager.alert('系统消息','修改成功','info',function(){
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path+'/admin/classStuInfo.jsp';
+							},false);
+						}
+					}
+				});
+			}
+		},{
+			text:'重置',
+			iconCls:'icon-reload',
+			handler:function(){
+				$('#dlg_course_add').dialog('refresh');
+			}
+		}]
+	});
+}
 //用户注销
 function logout(path){
 	$.ajax({

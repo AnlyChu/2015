@@ -11,7 +11,7 @@ if(adminlogin != null && adminlogin.size() != 0){
 if(adminlogin.get(3).equals("书记")){ %>
 	<li><a href="<%=path %>/admin/allClassInfo.jsp">班级信息查询</a></li>
 	<li><a href="<%=path %>/admin/systemuser.jsp">辅导员管理</a></li>
-	<li><a href="<%=path %>/counsellor/classSelect.jsp">学生信息查询</a></li>
+	<li><a href="<%=path %>/admin/classStuInfo.jsp">学生信息查询</a></li>
 <%}
 if(adminlogin.get(3).equals("辅导员")){ %>
 	<li><a href="<%=path %>/counsellor/classScore.jsp">班级学生成绩</a></li>
