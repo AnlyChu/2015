@@ -6,7 +6,7 @@
 	ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
 	boolean closed = false;
 	ArrayList counsellor = null;
-	ArrayList classInfoCmgr = null
+	ArrayList classInfoCmgr = null;
 	String classId = (String) session.getAttribute("classId");
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
@@ -16,17 +16,18 @@
 	}
 %>
 <style type="text/css">
-	.table-padding td {padding:5px;}
+	.table-padding {text-align: center}
+	.table-padding td {padding:5px;margin-top: 5px;}
 </style>
 <form id="from_change_cmgr" method="post">
 	<table class="table-padding">
-		<tr>
-			<select name="cMgr" style="width:14%">
+		<tr align="center">
+			<select name="cMgr" style="margin-left: 40%;margin-top: 20%;">
 				<%
 						for (int i = 0; i < classInfoCmgr.size(); i++) {
 							ArrayList classCmgr = (ArrayList) classInfoCmgr.get(i);
 				%>
-				<option selected="selected"><%classCmgr.get(5)%></option>
+				<option selected="selected"><%=classCmgr.get(5)%></option>
 				<%
 					}
 				%>

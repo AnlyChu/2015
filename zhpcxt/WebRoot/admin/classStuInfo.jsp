@@ -9,6 +9,10 @@
 	boolean closed = false;
 	ArrayList student = null;
 	String classId = (String) request.getParameter("classId");
+	if(classId == null){
+		classId = (String) session.getAttribute("classId");
+	}
+	session.setAttribute("classId",classId);
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
 		student = array.getClassStudent(classId);

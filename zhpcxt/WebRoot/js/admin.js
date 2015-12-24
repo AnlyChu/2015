@@ -251,9 +251,9 @@ function changeCmgr(path){
 		href:path+'/admin/changeCmgr.jsp',
 		modal:true,
 		closed:false,
-		title:'新建课程',
-		width:300,
-		height:250,
+		title:'更换辅导员',
+		width:250,
+		height:200,
 		buttons:[{
 			text:'提交',
 			iconCls:'icon-ok',
@@ -277,10 +277,10 @@ function changeCmgr(path){
 				});
 			}
 		},{
-			text:'重置',
-			iconCls:'icon-reload',
+			text:'取消',
+			iconCls:'icon-cancel',
 			handler:function(){
-				$('#dlg_course_add').dialog('refresh');
+				$('#dlg_change_cmgr').dialog('close');
 			}
 		}]
 	});

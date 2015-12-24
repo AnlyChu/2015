@@ -57,8 +57,8 @@ public class DelServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		
 		String sql = "";
 		String str = "";
