@@ -1,12 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<jsp:useBean id="array" scope="page" class="bean.AllBean"/>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
+    String classId = (String) session.getAttribute("classId");
+    ArrayList classInfo = null;
+    if (adminlogin != null && adminlogin.size() != 0) {
+        classInfo = array.getBj(classId);
+    }
 %>
-<title>¼ÆËã»úÑ§ÔºÑ§ÉúĞÅÏ¢µµ°¸¹ÜÀí</title>
+<title>è®¡ç®—æœºå­¦é™¢å­¦ç”Ÿä¿¡æ¯æ¡£æ¡ˆç®¡ç†</title>
 <style>
-.table-padding td {padding:5px;}
+    .table-padding td {
+        padding: 5px;
+    }
 </style>
-<div class="north-left">¼ÆËã»úÑ§ÔºÑ§ÉúĞÅÏ¢µµ°¸¹ÜÀí</div>
-<div class="north-right">»¶Ó­£º<%=adminlogin != null && adminlogin.size() != 0?adminlogin.get(1):"" %>&nbsp;--&gt;&nbsp;ÓÃ»§½ÇÉ«£º<%=adminlogin != null && adminlogin.size() != 0?adminlogin.get(3):"" %>&nbsp;--&gt;&nbsp;<a href="javascript:void(0)" id="editpass">ĞŞ¸ÄÃÜÂë</a>&nbsp;--&gt;&nbsp;<a href="javascript:void(0)" id="click_logout">°²È«ÍË³ö</a></div>
+<div class="north-left" style="width:50%">è®¡ç®—æœºå­¦é™¢å­¦ç”Ÿä¿¡æ¯æ¡£æ¡ˆç®¡ç†
+    <span style="font-size: 10px;margin-left: 8%">
+         å½“å‰ç­çº§ï¼š
+    <%
+        if (adminlogin != null && adminlogin.size() != 0) {
+            for (int i = 0; i < classInfo.size(); i++) {
+                ArrayList classInfo1 = (ArrayList) classInfo.get(i);
+                String className = classInfo1.get(2).toString() + classInfo1.get(3).toString() + classInfo1.get(4).toString();
+    %>
+    <%=className%>
+    <%
+            }
+        }
+    %>
+    </span>
+</div>
+<div class="north-right">æ¬¢è¿ï¼š<%=adminlogin != null && adminlogin.size() != 0 ? adminlogin.get(1) : "" %>&nbsp;|&nbsp;ç”¨æˆ·è§’è‰²ï¼š<%=adminlogin != null && adminlogin.size() != 0 ? adminlogin.get(3) : "" %>
+    &nbsp;|&nbsp;<a href="javascript:void(0)" id="editpass">ä¿®æ”¹å¯†ç </a>&nbsp;|&nbsp;<a href="javascript:void(0)"
+                                                                                    id="click_logout">å®‰å…¨é€€å‡º</a></div>
