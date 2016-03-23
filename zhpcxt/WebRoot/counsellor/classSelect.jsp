@@ -7,8 +7,8 @@
 			+ path + "/";
 			
 	ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
-	if((String) session.getAttribute("classId") !=null){
-		session.removeAttribute("classId");
+	if((String) session.getAttribute("class_id") !=null){
+		session.removeAttribute("class_id");
 	}
 	
 	boolean closed = false;
@@ -59,7 +59,7 @@
 						<table class="table-padding">
 							<tr>
 								<td align="right">选择班级：</td>
-								<td><select name="classId">
+								<td><select name="class_id">
 										<%
 											if (admin != null && admin.size() != 0) {
 												for (int j = 0; j < class1.size(); j++) {

@@ -4,10 +4,10 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
-    String classId = (String) session.getAttribute("classId");
+    String class_id = (String) session.getAttribute("class_id");
     ArrayList classInfo = null;
     if (adminlogin != null && adminlogin.size() != 0) {
-        classInfo = array.getBj(classId);
+        classInfo = array.getBjInfo(class_id);
     }
 %>
 <title>计算机学院学生信息档案管理</title>

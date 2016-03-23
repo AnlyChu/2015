@@ -71,9 +71,10 @@ public class UploadServlet extends HttpServlet {
 			stu.upload(lujing);
 		}
 		else if(request.getParameter("fileUpload1") != null){
-			String lujing="G:/bishe/电子档/"+ request.getParameter("fileUpload1");
+			String lujing="/Users/Anly.Z/Desktop/" + request.getParameter("fileUpload1");
+			String class_id = (String)request.getSession().getAttribute("class_id");
 			studentInfoUpload stu=new studentInfoUpload();
-			stu.upload(lujing);
+			stu.upload(lujing,class_id);
 			request.setAttribute("message", "'上传成功！'");
 			request.getRequestDispatcher("/counsellor/studentInfoUpload.jsp").forward(request, response);
 		}

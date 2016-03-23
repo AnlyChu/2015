@@ -72,7 +72,7 @@ public class ClassAddServlet extends HttpServlet {
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
-		String creatTableSql = "CREATE TABLE ` " +
+		String creatTableSql = "CREATE TABLE `" +
 				request.getParameter(args[0]) + "` (\n" +
 				"  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
 				"  `student_id` int(11) DEFAULT NULL,\n" +

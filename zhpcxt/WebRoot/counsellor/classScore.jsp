@@ -13,7 +13,7 @@
     ArrayList classTerm = null;
     ArrayList getScoreOfSchYear1 = null;
     ArrayList getScoreOfTerm1 = null;
-    String classId = (String) session.getAttribute("classId");
+    String class_id = (String) session.getAttribute("class_id");
     String schoolYear1 = (String) request.getParameter("schoolYear");
     String term1 = (String) request.getParameter("term");
     if (term1 == null) {
@@ -36,7 +36,7 @@
     }
     if (adminlogin != null && adminlogin.size() != 0) {
         closed = true;
-        ArrayList tableName = array.getStuScoreTableName(classId);
+        ArrayList tableName = array.getStuScoreTableName(class_id);
         ArrayList tableName1 = (ArrayList) tableName.get(0);
         classSchoolYear = array.getSchYear(tableName1.get(0).toString());
         classTerm = array.getTerm(tableName1.get(0).toString());
@@ -115,7 +115,7 @@
     <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
 <div region="west" split="false" border="false" title="导航菜单"
-     style="width:180px;display: none" id="west" >
+     style="width:180px;display: none" id="west">
     <div id="left-menus" border="false" fit="true">
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
@@ -131,8 +131,8 @@
                 <td><p>上传成绩（excel文件）:</p></td>
                 <td>
                     <form action="<%=path%>/Upload" method="post">
-                        <input type="file" name="fileUpload2"/> <input type=submit
-                                                                       value="上传文件"/>
+                        <input type="file" name="fileUpload2"/>
+                        <input type=submit value="上传文件"/>
                     </form>
                 </td>
             </tr>
@@ -195,8 +195,8 @@
                 </tr>
                 <%--<tr>--%>
                 <%--<form action="<%=path%>counsellor/classScore.jsp" method="post">--%>
-                    <%--<input type="text" name="student"/>--%>
-                    <%--<input type=submit value="查询"/>--%>
+                <%--<input type="text" name="student"/>--%>
+                <%--<input type=submit value="查询"/>--%>
                 <%--</form>--%>
                 <%--</tr>--%>
                 <tr class="thead">
@@ -233,7 +233,7 @@
                     </td>
                     <%
                         if (schoolYear1 != null && term1 == null) {
-                            ArrayList tableName = array.getStuScoreTableName(classId);
+                            ArrayList tableName = array.getStuScoreTableName(class_id);
                             ArrayList tableName1 = (ArrayList) tableName.get(0);
                             ArrayList courseID = array.getAllCourseForSchoolYear(tableName1.get(0).toString(), schoolYear1);
                             for (int k = 0; k < courseID.size(); k++) {
@@ -250,7 +250,7 @@
                             }
                         }
                     } else if (schoolYear1 != null && term1 != null) {
-                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName = array.getStuScoreTableName(class_id);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
                         ArrayList courseID = array.getAllCourseForTerm(tableName1.get(0).toString(), schoolYear1, term1);
                         for (int k = 0; k < courseID.size(); k++) {
@@ -286,14 +286,14 @@
                     <td align="center"><%=getScoreOfSchYear2.get(3)%>
                     </td>
                     <%
-                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName = array.getStuScoreTableName(class_id);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
-                        ArrayList courseID =  array.getAllCourseForSchoolYear(tableName1.get(0).toString(), schoolYear1);
+                        ArrayList courseID = array.getAllCourseForSchoolYear(tableName1.get(0).toString(), schoolYear1);
                         for (int k = 0; k < courseID.size(); k++) {
                             ArrayList courseID1 = (ArrayList) courseID.get(k);
-                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfSchYear2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
-                                for (int m = 0; m < courseScore.size(); m++) {
-                                    ArrayList courseScore1 = (ArrayList) courseScore.get(m);
+                            ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfSchYear2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
+                            for (int m = 0; m < courseScore.size(); m++) {
+                                ArrayList courseScore1 = (ArrayList) courseScore.get(m);
                     %>
                     <td align="center"><%=courseScore1.get(0)%>
                     </td>
@@ -304,7 +304,7 @@
                     %>
                 </tr>
                 <%
-//                    }
+                    //                    }
                 } else if (schoolYear1 != null && term1 != null) {
                     for (int i = 0; i < getScoreOfTerm1.size(); i++) {
                         ArrayList getScoreOfTerm2 = (ArrayList) getScoreOfTerm1.get(i);
@@ -322,14 +322,14 @@
                     <td align="center"><%=getScoreOfTerm2.get(3)%>
                     </td>
                     <%
-                        ArrayList tableName = array.getStuScoreTableName(classId);
+                        ArrayList tableName = array.getStuScoreTableName(class_id);
                         ArrayList tableName1 = (ArrayList) tableName.get(0);
                         ArrayList courseID = array.getAllCourseForTerm(tableName1.get(0).toString(), schoolYear1, term1);
                         for (int k = 0; k < courseID.size(); k++) {
                             ArrayList courseID1 = (ArrayList) courseID.get(k);
-                                ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfTerm2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
-                                for (int m = 0; m < courseScore.size(); m++) {
-                                    ArrayList courseScore1 = (ArrayList) courseScore.get(m);
+                            ArrayList courseScore = array.getStuScoreOfcourseId(getScoreOfTerm2.get(0).toString(), courseID1.get(0).toString(), tableName1.get(0).toString());
+                            for (int m = 0; m < courseScore.size(); m++) {
+                                ArrayList courseScore1 = (ArrayList) courseScore.get(m);
                     %>
                     <td align="center"><%=courseScore1.get(0)%>
                     </td>

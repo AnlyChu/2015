@@ -131,13 +131,13 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getStuScore(String student_id,String class_score_table){
-		String sql = "select * from " + class_score_table + "] where student_id="+student_id;
+		String sql = "select * from `" + class_score_table + "` where student_id="+student_id;
 		String args[] = {"student_id","name","school_year","term","course_id","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getStuScoreOfcourse_id(String student_id,String course_id,String class_score_table){
-		String sql = "select score from " + class_score_table + "] where student_id="+student_id + " and course_id="+course_id;
+	public ArrayList getStuScoreOfcourseId(String student_id,String course_id,String class_score_table){
+		String sql = "select score from `" + class_score_table + "` where student_id="+student_id + " and course_id="+course_id;
 		String args[] = {"score"};
 		al = sb.select(sql,args);
 		return al;
@@ -148,14 +148,14 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getAllCourseForclass_score_table(String tableName,String class_score_table){
-		String sql = "select distinct(course_id) from " + tableName + "] where class_score_table='" + class_score_table + "'";
+	public ArrayList getAllCourseForSchoolYear(String tableName,String class_score_table){
+		String sql = "select distinct(course_id) from `" + tableName + "` where class_score_table='" + class_score_table + "'";
 		String args[] = {"course_id"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getAllCourseForTerm(String tableName,String class_score_table,String term){
-		String sql = "select distinct(course_id) from " + tableName + "] where term='" + term + "'";
+		String sql = "select distinct(course_id) from `" + tableName + "` where term='" + term + "'";
 		String args[] = {"course_id"};
 		al = sb.select(sql,args);
 		return al;
@@ -235,27 +235,27 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getSchYear(String class_id){
-		String sql = "select distinct(class_score_table) from " + class_id +"]";
-		String args[] = {"class_score_table"};
+		String sql = "select distinct(school_year) from `" + class_id + "`";
+		String args[] = {"school_year"};
 		al = sb.select(sql,args);
 		return al;
 	}
 
 	public ArrayList getScoreOfSchYear(String SchYear,String tableName){
-		String sql = "select * from " + tableName + "] where class_score_table='"+SchYear+"'";
-		String args[] = {"student_id","sName","class_score_table","term","course_id","score"};
+		String sql = "select * from `" + tableName + "` where school_year='"+SchYear+"'";
+		String args[] = {"student_id","name","school_grades","school_year","term","course_id","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getTerm(String class_id){
-		String sql = "select distinct(term) from " + class_id +"]";
+		String sql = "select distinct(term) from `" + class_id + "`";
 		String args[] = {"term"};
 		al = sb.select(sql,args);
 		return al;
 	}
 	public ArrayList getScoreOfTerm(String term,String SchYear,String tableName){
-		String sql = "select * from " + tableName + "] where term=" + term + " and class_score_table='"+SchYear+"'";
-		String args[] = {"student_id","sName","class_score_table","term","course_id","score"};
+		String sql = "select * from `" + tableName + "` where term=" + term + " and school_year='"+SchYear+"'";
+		String args[] = {"student_id","name","school_grades","school_year","term","course_id","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
