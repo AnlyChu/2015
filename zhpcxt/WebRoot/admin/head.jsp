@@ -18,12 +18,14 @@
 </style>
 <div class="north-left" style="width:50%">计算机学院学生信息档案管理
     <span style="font-size: 10px;margin-left: 8%">
+      <%
+          if (adminlogin != null && adminlogin.size() != 0 && adminlogin.get(1).toString().equals("辅导员")) {
+      %>
          当前班级：
     <%
-        if (adminlogin != null && adminlogin.size() != 0) {
-            for (int i = 0; i < classInfo.size(); i++) {
-                ArrayList classInfo1 = (ArrayList) classInfo.get(i);
-                String className = classInfo1.get(2).toString() + classInfo1.get(3).toString() + classInfo1.get(4).toString();
+        for (int i = 0; i < classInfo.size(); i++) {
+            ArrayList classInfo1 = (ArrayList) classInfo.get(i);
+            String className = classInfo1.get(2).toString() + classInfo1.get(3).toString() + classInfo1.get(4).toString();
     %>
     <%=className%>
     <%

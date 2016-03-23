@@ -8,14 +8,14 @@
 	ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
 	boolean closed = false;
 	ArrayList student = null;
-	String classId = (String) request.getParameter("classId");
-	if(classId == null){
-		classId = (String) session.getAttribute("classId");
+	String class_id = (String) request.getParameter("class_id");
+	if(class_id == null){
+		class_id = (String) session.getAttribute("class_id");
 	}
-	session.setAttribute("classId",classId);
+	session.setAttribute("class_id",class_id);
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		student = array.getClassStudent(classId);
+		student = array.getClassStudent(class_id);
 
 	}
 	String message = (String) request.getAttribute("message");
@@ -53,10 +53,10 @@ $(document).ready(function(){
 		adminAdd('<%=path%>');
 		});
 	$("#course_add").click(function(){
-		courseAdd('<%=path %>');
+		courseAdd('<%=path%>');
 	});
 	$("#change_cmgr").click(function(){
-		changeCmgr('<%=path %>');
+		changeCmgr('<%=path%>');
 	});
 	});
 
@@ -112,7 +112,7 @@ $(document).ready(function(){
 				<tr>
 
 					<td align="center"><%=alRow.get(0)%></td>
-					<td align="center"><a href="<%=basePath%>counsellor/stuScore.jsp?studentId=<%=alRow.get(0)%>&classId=<%=alRow.get(3)%>"><%=alRow.get(1)%></a></td>
+					<td align="center"><a href="<%=basePath%>counsellor/stuScore.jsp?studentId=<%=alRow.get(0)%>&class_id=<%=alRow.get(3)%>"><%=alRow.get(1)%></a></td>
 					<td align="center"><%=alRow.get(2)%></td>
 					<td align="center"><%=alRow.get(3)%></td>
 					<td align="center"><%=alRow.get(4)%></td>

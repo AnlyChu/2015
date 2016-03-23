@@ -12,8 +12,9 @@
 	ArrayList getBjofPro1 = null;
 	ArrayList getBjofGrade = null;
 	ArrayList getBjofGrade1 = null;
-	String classPro = (String) request.getParameter("cPro");
-	String classGrade = (String) request.getParameter("cGrade");
+	String classMgr = null;
+	String classPro = (String) request.getParameter("pro");
+	String classGrade = (String) request.getParameter("garde");
 	if (classPro == null) {
 		classPro = null;
 	} else {
@@ -87,16 +88,14 @@ $(document).ready(function(){
 })
 	
 	function getPro(pro){
-		var cPro=pro;
-		document.classSelect.action="<%=basePath%>admin/allClassInfo.jsp?cPro="
-				+ cPro;
+		document.classSelect.action="<%=basePath%>admin/allClassInfo.jsp?pro="
+				+ pro;
 		document.classSelect.submit();
 
 	}
 	function getGrade(grade){
-		var cGrade=grade;
-		document.classSelect.action="<%=basePath%>admin/allClassInfo.jsp?cGrade="
-				+ cGrade;
+		document.classSelect.action="<%=basePath%>admin/allClassInfo.jsp?grade="
+				+ grade;
 		document.classSelect.submit();
 
 	}
@@ -145,7 +144,7 @@ $(document).ready(function(){
 						</td>
 						<td align="center">院系</td>
 						<td align="center">
-						<select name="classPro" onchange="getPro(this.value);" style="width:14%">
+						<select name="classPro" onchange="getPro(this.value);">
 							<option selected="selected" style="text-align:center">专业 </option>
 								<%
 										for (int j = 0; j < getBjofPro1.size(); j++) {
@@ -175,8 +174,15 @@ $(document).ready(function(){
 						<td align="center"><%=allClass1.get(2)%></td>
 						<td align="center"><%=allClass1.get(3)%></td>
 						<td align="center"><%=allClass1.get(4)%></td>
-						<td align="center"><%=allClass1.get(5)%></td>
-						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?classId=<%=allClass1.get(0)%>">查看</a></td>
+						<%
+							if( allClass1.get(5).toString().equals("null") || allClass1.get(5).toString().equals("")){
+								classMgr = "无";
+							} else {
+								classMgr = allClass1.get(5).toString();
+							}
+						%>
+						<td align="center"><%=classMgr%></td>
+						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=allClass1.get(0)%>">查看</a></td>
 					</tr>
 					<%
 						}
@@ -190,8 +196,15 @@ $(document).ready(function(){
 						<td align="center"><%=getClassofPro.get(2)%></td>
 						<td align="center"><%=getClassofPro.get(3)%></td>
 						<td align="center"><%=getClassofPro.get(4)%></td>
-						<td align="center"><%=getClassofPro.get(5)%></td>
-						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?classId=<%=getClassofPro.get(0)%>">查看</a></td>
+						<%
+							if( getClassofPro.get(5).toString().equals("null") || getClassofPro.get(5).toString().equals("")){
+								classMgr = "无";
+							} else {
+								classMgr = getClassofPro.get(5).toString();
+							}
+						%>
+						<td align="center"><%=classMgr%></td>
+						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassofPro.get(0)%>">查看</a></td>
 					</tr>
 					<%
 						}
@@ -205,8 +218,15 @@ $(document).ready(function(){
 						<td align="center"><%=getClassGrade.get(2)%></td>
 						<td align="center"><%=getClassGrade.get(3)%></td>
 						<td align="center"><%=getClassGrade.get(4)%></td>
-						<td align="center"><%=getClassGrade.get(5)%></td>
-						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?classId=<%=getClassGrade.get(0)%>">查看</a></td>
+						<%
+							if( getClassGrade.get(5).toString().equals("null") || getClassGrade.get(5).toString().equals("")){
+								classMgr = "无";
+							} else {
+								classMgr = getClassGrade.get(5).toString();
+							}
+						%>
+						<td align="center"><%=classMgr%></td>
+						<td align="center"><a href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassGrade.get(1)%>">查看</a></td>
 					</tr>
 					<%
 						}

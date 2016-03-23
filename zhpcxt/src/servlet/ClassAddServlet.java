@@ -60,7 +60,7 @@ public class ClassAddServlet extends HttpServlet {
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"classId","cGrade","cDept","cPro","cNo","cMgr","cScoreTableName"};
+		String args[] = {"class_id","grade","dept","pro","class","mgr","class_score_table"};
 		String row = "";
 		String val = "";
 		for(int i = 0;i < args.length;i++){
@@ -72,15 +72,21 @@ public class ClassAddServlet extends HttpServlet {
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
-		String creatTableSql = "CREATE TABLE [dbo].[" + request.getParameter(args[0]) 
-													+ "]([studentId] [nvarchar](50) NOT NULL, "
-													+ "[sName] [nchar](10) ,"
-													+ "[schoolYear] [nchar](10) NULL,"
-													+ "[term] [nchar](10) NULL,"
-													+ "[courseId] [nchar](10) NOT NULL,"
-													+ "[score] [float] NULL)";
- 
-		String sql = "insert into class1("+row+") values("+val+")";
+		String creatTableSql = "CREATE TABLE ` " +
+				request.getParameter(args[0]) + "` (\n" +
+				"  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
+				"  `student_id` int(11) DEFAULT NULL,\n" +
+				"  `name` varchar(255) DEFAULT NULL,\n" +
+				"  `school_grades` float DEFAULT NULL,\n" +
+				"  `class_id` int(11) DEFAULT NULL,\n" +
+				"  `school_year` varchar(255) DEFAULT NULL,\n" +
+				"  `term` varchar(255) DEFAULT NULL,\n" +
+				"  `course_id` int(11) DEFAULT NULL,\n" +
+				"  `score` float DEFAULT NULL,\n" +
+				"  PRIMARY KEY (`id`)\n" +
+				") ENGINE=InnoDB DEFAULT CHARSET=utf8";
+
+		String sql = "insert into class("+row+") values("+val+")";
 		System.out.println("sql="+sql);
 		System.out.println("creatTableSql="+creatTableSql);
 		responseText = ib.insertANDupdateANDdel(creatTableSql);

@@ -71,12 +71,12 @@ public class DelServlet extends HttpServlet {
 		String intellectualgrade = request.getParameter("intellectualgrade");
 		String student = request.getParameter("student");
 		String evaluating = request.getParameter("evaluating");
-		String cMgr = request.getParameter("cMgr");
+		String mgr = request.getParameter("mgr");
 		HttpSession session = request.getSession();
-		String classId = (String) session.getAttribute("classId");
-		if(cMgr != null && !cMgr.equals("")){
+		String class_id = (String) session.getAttribute("class_id");
+		if(mgr != null && !mgr.equals("")){
 			
-			sql = "update class1 set cMgr='"+cMgr+"' where classId='"+classId+"'";
+			sql = "update class set mgr='"+mgr+"' where class_id='"+class_id+"'";
 			System.out.println("sql"+sql);
 			ib.insertANDupdateANDdel(sql);
 			str = "/admin/classStuInfo.jsp";

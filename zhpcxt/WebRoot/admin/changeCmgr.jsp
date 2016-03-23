@@ -7,11 +7,12 @@
 	boolean closed = false;
 	ArrayList counsellor = null;
 	ArrayList classInfoCmgr = null;
-	String classId = (String) session.getAttribute("classId");
+	String classMgr = null;
+	String class_id = (String) session.getAttribute("class_id");
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		classInfoCmgr = array.getBj(classId);
-		counsellor = array.getAllCounsellor();
+		classInfoCmgr = array.getBj(class_id);
+		counsellor = array.getCounsellor();
 
 	}
 %>
@@ -22,12 +23,17 @@
 <form id="from_change_cmgr" method="post">
 	<table class="table-padding">
 		<tr align="center">
-			<select name="cMgr" style="margin-left: 40%;margin-top: 20%;">
+			<select name="mgr" style="margin-left: 40%;margin-top: 20%;">
 				<%
 						for (int i = 0; i < classInfoCmgr.size(); i++) {
 							ArrayList classCmgr = (ArrayList) classInfoCmgr.get(i);
+							if( classCmgr.get(0).toString().equals("null") || classCmgr.get(0).toString().equals("")){
+								classMgr = "-请选择-";
+							} else {
+								classMgr = classCmgr.get(0).toString();
+							}
 				%>
-				<option selected="selected"><%=classCmgr.get(5)%></option>
+				<option selected="selected"><%=classMgr%></option>
 				<%
 					}
 				%>
@@ -35,7 +41,7 @@
 					for (int j = 0; j < counsellor.size(); j++) {
 						ArrayList changCmgr = (ArrayList) counsellor.get(j);
 				%>
-				<option value=<%=changCmgr.get(1)%>><%=changCmgr.get(1)%></option>
+				<option value=<%=changCmgr.get(0)%>><%=changCmgr.get(0)%></option>
 				<%
 					}
 				%>

@@ -61,27 +61,28 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
+		String user_id = request.getParameter("user_id");
 		String name = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
 		String status = request.getParameter("status");
-		String table = "";
+//		String table = "";
 		System.out.print("status="+status);
-		if(status.equals("辅导员")){
-			table = "counsellor";
-		}else if(status.equals("书记")){
-			table = "admin";
-		}else{
-			table = "student";
-		}
+//		if(status.equals("辅导员")){
+//			table = "counsellor";
+//		}else if(status.equals("书记")){
+//			table = "admin";
+//		}else{
+//			table = "student";
+//		}
 		
 //		Integer classId = AdminLoginServlet.getClassId("admin");
 		
-		String sql = "select * from "+table+" where id='"+id+"' and pwd='"+pwd+"'";
+		String sql = "select * from user where user_id='"+user_id+"' and pwd='"+pwd+"'";
 
-		String args[] = {"id","name","pwd","status"};
+		String args[] = {"user_id","name","pwd","status"};
 		SelectBean sb = new SelectBean();		
 		ArrayList al = sb.selectRow(args, sql);
+		System.out.print("sql="+sql);
 
         String responseText = "";
 		

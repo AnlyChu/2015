@@ -10,23 +10,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="table-padding">
     <tr>
       <td align="right">编号：</td>
-      <td><input class="easyui-validatebox" type="text" name="classId" required="true" validType="pattern" customize="Customize" /></td>
+      <td><input class="easyui-validatebox" type="text" name="class_id" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">年级：</td>
-      <td><input class="easyui-validatebox" type="text" name="cGrade" required="true"  customize="Customize" /></td>
+      <td><input class="easyui-validatebox" type="text" name="grade" required="true"  customize="Customize" /></td>
     </tr>
      <tr>
       <td align="right">系别：</td>
-      <td><input class="easyui-validatebox" type="text" name="cDept" required="true"  customize="Customize" /></td>
+      <td><input class="easyui-validatebox" type="text" name="dept" required="true"  customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">专业：</td>
-      <td><input class="easyui-validatebox" type="text" name="cPro" required="true" customize="Customize" /></td>
+      <td><input class="easyui-validatebox" type="text" name="pro" required="true" customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">班级：</td>
-      <td><input class="easyui-validatebox" type="text" name="cNo" required="true" customize="Customize" /></td>
+      <td><input class="easyui-validatebox" type="text" name="class" required="true" customize="Customize" /></td>
     </tr>
     
   </table>

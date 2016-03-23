@@ -12,7 +12,7 @@
 	session.setAttribute("classId",classId);
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		classInfo = array.getBj(request.getParameter("classId"));
+		classInfo = array.getBjInfo(request.getParameter("classId"));
 			
 	}
 
