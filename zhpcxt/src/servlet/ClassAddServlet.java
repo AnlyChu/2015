@@ -75,13 +75,11 @@ public class ClassAddServlet extends HttpServlet {
 		String creatTableSql = "CREATE TABLE `" +
 				request.getParameter(args[0]) + "` (\n" +
 				"  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
-				"  `student_id` int(11) DEFAULT NULL,\n" +
-				"  `name` varchar(255) DEFAULT NULL,\n" +
+				"  `student_id` varchar(255) DEFAULT NULL,\n" +
+				"  `course_id` varchar(255) DEFAULT NULL,\n" +
 				"  `school_grades` float DEFAULT NULL,\n" +
-				"  `class_id` int(11) DEFAULT NULL,\n" +
 				"  `school_year` varchar(255) DEFAULT NULL,\n" +
 				"  `term` varchar(255) DEFAULT NULL,\n" +
-				"  `course_id` int(11) DEFAULT NULL,\n" +
 				"  `score` float DEFAULT NULL,\n" +
 				"  PRIMARY KEY (`id`)\n" +
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8";

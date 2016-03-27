@@ -172,6 +172,12 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getCourseOfName(String name){
+		String sql = "select id from course where course_name = '" + name + "'";
+		String args[] = {"id"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getAllBj(){
 		String sql = "select distinct class_id,grade,dept,pro,class,mgr from class ";
 		String args[] = {"class_id","grade","dept","pro","class","mgr"};

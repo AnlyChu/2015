@@ -131,6 +131,22 @@
                 <td><p>上传成绩（excel文件）:</p></td>
                 <td>
                     <form action="<%=path%>/Upload" method="post">
+                        <select name="schoolYear">
+                            <option>-请选择学年-</option>
+                            <option value="2012-2013">2012-2013</option>
+                            <option value="2013-2014">2013-2014</option>
+                            <option value="2014-2015">2014-2015</option>
+                            <option value="2015-2016">2015-2016</option>
+                            <option value="2016-2017">2016-2017</option>
+                            <option value="2017-2018">2017-2018</option>
+                            <option value="2018-2019">2018-2019</option>
+                            <option value="2019-2020">2019-2020</option>
+                        </select>
+                        <select name="term">
+                            <option>-请选择学期-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
                         <input type="file" name="fileUpload2"/>
                         <input type=submit value="上传文件"/>
                     </form>

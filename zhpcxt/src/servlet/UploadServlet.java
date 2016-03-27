@@ -71,7 +71,7 @@ public class UploadServlet extends HttpServlet {
 			stu.upload(lujing);
 		}
 		else if(request.getParameter("fileUpload1") != null){
-			String lujing="/Users/Anly.Z/Desktop/" + request.getParameter("fileUpload1");
+			String lujing="/Users/Anly.Z/Documents/" + request.getParameter("fileUpload1");
 			String class_id = (String)request.getSession().getAttribute("class_id");
 			studentInfoUpload stu=new studentInfoUpload();
 			stu.upload(lujing,class_id);
@@ -79,10 +79,12 @@ public class UploadServlet extends HttpServlet {
 			request.getRequestDispatcher("/counsellor/studentInfoUpload.jsp").forward(request, response);
 		}
 		else if(request.getParameter("fileUpload2") != null){
-			String lujing="G:/bishe/电子档/"+request.getParameter("fileUpload2");
+			String lujing="/Users/Anly.Z/Documents/" + request.getParameter("fileUpload2");
 			scoreUpload stu=new scoreUpload();
-			String cScoreTableName = (String)request.getSession().getAttribute("classId");
-			stu.upload(lujing, cScoreTableName);
+			String cScoreTableName = (String)request.getSession().getAttribute("class_id");
+			String school_year=request.getParameter("schoolYear");
+			String term=request.getParameter("term");
+			stu.upload(lujing, cScoreTableName,school_year,term);
 			request.setAttribute("message", "'成绩上传成功！'");
 			response.sendRedirect(request.getContextPath() +"/counsellor/classScore.jsp");
 			//("/counsellor/classScore.jsp").forward(request, response);
