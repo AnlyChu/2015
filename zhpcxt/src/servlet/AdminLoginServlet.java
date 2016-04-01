@@ -77,7 +77,7 @@ public class AdminLoginServlet extends HttpServlet {
 		
 //		Integer classId = AdminLoginServlet.getClassId("admin");
 		
-		String sql = "select * from user where user_id='"+user_id+"' and pwd='"+pwd+"'";
+		String sql = "select * from user where user_id='"+user_id+"' and pwd='"+pwd+"' and status = '" + status + "'";
 
 		String args[] = {"user_id","name","pwd","status"};
 		SelectBean sb = new SelectBean();		

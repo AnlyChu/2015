@@ -20,7 +20,7 @@ function login(path,closed){
 				    },
 				    success:function(data){
 				    	if(data == "1"){
-				    		$.messager.alert('系统消息','用户名或密码错误','error');
+				    		$.messager.alert('系统消息','用户名、密码或身份错误','error');
 				    	}else if(data == "3"){
 				    		$.messager.alert('系统消息','登录成功','info',function(){
 					    		$('#dlg_login').dialog('refresh');
