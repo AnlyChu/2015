@@ -132,7 +132,7 @@ public class AllBean {
 	}
 	public ArrayList getStuScore(String student_id,String class_score_table){
 		String sql = "select * from `" + class_score_table + "` where student_id="+student_id;
-		String args[] = {"student_id","name","school_year","term","course_id","score"};
+		String args[] = {"student_id","school_year","term","course_id","score"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -143,8 +143,14 @@ public class AllBean {
 		return al;
 	}
 	public ArrayList getCourse(String course_id){
-		String sql = "select * from course where course_id="+course_id;
-		String args[] = {"course_id","courseName"};
+		String sql = "select * from course where id="+course_id;
+		String args[] = {"id","course_name"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getAllCourse(String tableName){
+		String sql = "select distinct(course_id) from `" + tableName + "`";
+		String args[] = {"course_id"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -175,6 +181,12 @@ public class AllBean {
 	public ArrayList getCourseOfName(String name){
 		String sql = "select id from course where course_name = '" + name + "'";
 		String args[] = {"id"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getCourseScore(String course_id,String class_id){
+		String sql = "select * from `"+ class_id + "` where course_id = '" + course_id + "'";
+		String args[] = {"student_id","course_id","score"};
 		al = sb.select(sql,args);
 		return al;
 	}

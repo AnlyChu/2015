@@ -11,13 +11,11 @@
 	ArrayList stuScore = null;
 	ArrayList stuScoreTableName = null;
 	ArrayList course = null;
-	String studentId = (String) request.getParameter("studentId");
-	String classId = (String) request.getParameter("classId");
+	String student_id = (String) request.getParameter("student_id");
+	String class_id = (String) request.getParameter("class_id");
 	if (adminlogin != null && adminlogin.size() != 0) {
 		closed = true;
-		stuScoreTableName = array.getStuScoreTableName(classId);
-		ArrayList stuScoreTableName1 = (ArrayList) stuScoreTableName.get(0);
-		stuScore = array.getStuScore(studentId,stuScoreTableName1.get(0).toString());
+		stuScore = array.getStuScore(student_id,class_id);
 	}
 	String message = (String) request.getAttribute("message");
 %>
@@ -89,15 +87,15 @@ $(document).ready(function(){
 				<%
 					for (int i = 0; i < stuScore.size(); i++) {
 						ArrayList myscore1 = (ArrayList) stuScore.get(i);
-						course = array.getCourse(myscore1.get(4).toString());
+						course = array.getCourse(myscore1.get(3).toString());
 						for (int j = 0; j < course.size(); j++) {
 							ArrayList course1 = (ArrayList) course.get(j);
 				%>
 				<tr>
+					<td align="center"><%=myscore1.get(1)%></td>
 					<td align="center"><%=myscore1.get(2)%></td>
-					<td align="center"><%=myscore1.get(3)%></td>
 					<td align="center"><%=course1.get(1)%></td>
-					<td align="center"><%=myscore1.get(5)%></td>
+					<td align="center"><%=myscore1.get(4)%></td>
 				</tr>
 				<%
 					}
