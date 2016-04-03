@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="table-padding">
     <tr>
       <td align="right">编号：</td>
-      <td><input class="easyui-validatebox" type="text" name="class_id" required="true" validType="pattern" customize="Customize" /></td>
+      <td><input class="easyui-numberbox" type="text" name="class_id" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">年级：</td>
@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
     <tr>
       <td align="right">班级：</td>
-      <td><input class="easyui-validatebox" type="text" name="class" required="true" customize="Customize" /></td>
+      <td><input class="easyui-numberbox" type="text" name="class" required="true" customize="Customize" /></td>
     </tr>
     
   </table>

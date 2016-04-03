@@ -144,7 +144,7 @@ public class AllBean {
 	}
 	public ArrayList getCourse(String course_id){
 		String sql = "select * from course where id="+course_id;
-		String args[] = {"id","course_name"};
+		String args[] = {"id","course_name","level","grades"};
 		al = sb.select(sql,args);
 		return al;
 	}

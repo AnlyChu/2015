@@ -68,6 +68,8 @@
     <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#londing").css('display', 'none');
+            $("#mainPanle").css('display', '');
             <%
             if(schoolYear1 != null){
             %>
@@ -162,20 +164,21 @@
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
+<div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
 <div id="mainPanle" region="center" border="true"
-     style="background:#f7f7f7; padding:5px;">
+     style="background:#f7f7f7; padding:5px;display: none;">
     <form method="post" name="classScore">
         <table width="100%">
             <thead>
+            <tr>
+                <td colspan="11" align="center" style="padding:5px;"><h3><a href="javascript:void(0)" id="classInfo" style="color: blue;">班级学生信息</a>
+                    | <a href="javascript:void(0)" id="classScore">班级学生成绩</a></h3></td>
+            </tr>
             <tr>
                 <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>
             </tr>
             <tr>
                 <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="change_cmgr">更换辅导员</a></td>
-            </tr>
-            <tr>
-                <td colspan="11" align="center" style="padding:5px;"><h3><a href="javascript:void(0)" id="classInfo" style="color: blue;">班级学生信息</a>
-                    | <a href="javascript:void(0)" id="classScore">班级学生成绩</a></h3></td>
             </tr>
             <tr class="thead classInfo" style="display: none">
                 <td align="center">学号</td>

@@ -72,6 +72,7 @@ public class DelServlet extends HttpServlet {
 		String student = request.getParameter("student");
 		String evaluating = request.getParameter("evaluating");
 		String mgr = request.getParameter("mgr");
+		String[] classID = request.getParameterValues("checkClass");
 		HttpSession session = request.getSession();
 		String class_id = (String) session.getAttribute("class_id");
 		if(mgr != null && !mgr.equals("")){
@@ -80,6 +81,19 @@ public class DelServlet extends HttpServlet {
 			System.out.println("sql"+sql);
 			ib.insertANDupdateANDdel(sql);
 			str = "/admin/classStuInfo.jsp";
+			String responseText = "";
+			responseText = "1";
+			PrintWriter out = response.getWriter();
+			out.print(responseText);
+			out.close();
+		}
+		if(mgr != null && !mgr.equals("") && classID.length != 0){
+			for (int i = 0;i < classID.length;i++){
+				sql = "update class set mgr='"+mgr+"' where class_id='"+classID[i]+"'";
+				System.out.println("sql"+sql);
+				ib.insertANDupdateANDdel(sql);
+			}
+			str = "/admin/systemuser.jsp";
 			String responseText = "";
 			responseText = "1";
 			PrintWriter out = response.getWriter();

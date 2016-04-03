@@ -19,7 +19,7 @@ if ($.fn.validatebox){
 	$.fn.validatebox.defaults.rules.length.message = '输入内容长度必须介于{0}和{1}之间';
 }
 if ($.fn.numberbox){
-	$.fn.numberbox.defaults.missingMessage = '该输入项为必输项';
+	$.fn.numberbox.defaults.missingMessage = '该输入项为必输项，且只能是数字';
 }
 if ($.fn.combobox){
 	$.fn.combobox.defaults.missingMessage = '该输入项为必输项';

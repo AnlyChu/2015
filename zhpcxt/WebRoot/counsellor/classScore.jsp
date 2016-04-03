@@ -62,9 +62,9 @@
     <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
-            $("#west").css('display', 'block');
+            $("#west").css('display', '');
             $("#londing").css('display', 'none');
-            $("#londEnd").css('display', 'block');
+            $("#londEnd").css('display', '');
             $('tbody tr:even').css({'background': '#ffffff'});
             $('tbody tr:odd').css({'background': '#eeeeff'});
             var message = <%=message%>;
@@ -117,10 +117,9 @@
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
-
+<div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
 <div id="mainPanle" region="center" border="true"
      style="background:#f7f7f7; padding:5px;">
-    <div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
     <div id="londEnd" style="display: none">
         <table>
             <thead>

@@ -1,303 +1,355 @@
 ﻿//用户登录
-function login(path,closed){
+function login(path, closed) {
 	$("body").append("<div id='dlg_login' style='padding:20px;'></div>");
 	$('#dlg_login').dialog({
-		href:path+'/admin/login.jsp',
-		modal:true,
-		closed:closed,
-	    title:'用户登录',
-	    width:300,
-	    height:190,
-	    closable:false,
-	    buttons:[{
-	        text:'登录',
-	        iconCls:'icon-ok',
-	        handler:function(){
-	            $('#form_login').form('submit',{
-	            	url:path+'/AdminLoginServlet',
-	                onSubmit:function(){
-				        return $(this).form('validate');
-				    },
-				    success:function(data){
-				    	if(data == "1"){
-				    		$.messager.alert('系统消息','用户名、密码或身份错误','error');
-				    	}else if(data == "3"){
-				    		$.messager.alert('系统消息','登录成功','info',function(){
-					    		$('#dlg_login').dialog('refresh');
-					    		$('#dlg_login').dialog('close');
-				    		location.href = path+'/counsellor/classSelect.jsp';
-				    		},false);
-				    	}else{
-				    		//window.navigate(path+'/index.jsp');
-				    		$.messager.alert('系统消息','登录成功','info',function(){
-					    		$('#dlg_login').dialog('refresh');
-					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/allClassInfo.jsp';
-				    		},false);
-				    	} 
-				    }
-	            });
-	        }
-	    },{
-	        text:'注册',
-	        iconCls:'icon-reload',
-	        handler:function(){
-	            $("body").append("<div id='dlg_reg' style='padding:20px;'></div>");
-	            $('#dlg_reg').dialog({
-					href:path+'/admin/reg.jsp',
-					modal:true,
-					closed:false,
-				    title:'用户注册',
-				    width:300,
-				    height:450,
-				    buttons:[{
-				        text:'注册',
-				        iconCls:'icon-ok',
-				        handler:function(){
-				            $('#form_reg').form('submit',{
-				            	url:path+'/RegServlet?type=reg',
-				                onSubmit:function(){
-							        return $(this).form('validate');
-							    },
-							    success:function(data){
-							    	if(data == "-1"){
-							    		$.messager.alert('系统消息','学号已存在','error');
-							    	}else{
-							    		$.messager.alert('系统消息','注册成功，请登录','info');
-							    		$('#dlg_reg').dialog('refresh');
-							    		$('#dlg_reg').dialog('close');
-							    	} 
-							    }  
-				            });
-				        }
-				    },{
-				        text:'重置',
-				        iconCls:'icon-reload',
-				        handler:function(){
-				            $('#dlg_reg').dialog('refresh');
-				        }
-				    }]
+		href: path + '/admin/login.jsp',
+		modal: true,
+		closed: closed,
+		title: '用户登录',
+		width: 300,
+		height: 190,
+		closable: false,
+		buttons: [{
+			text: '登录',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#form_login').form('submit', {
+					url: path + '/AdminLoginServlet',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						if (data == "1") {
+							$.messager.alert('系统消息', '用户名、密码或身份错误', 'error');
+						} else if (data == "3") {
+							$.messager.alert('系统消息', '登录成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/counsellor/classSelect.jsp';
+							}, false);
+						} else {
+							//window.navigate(path+'/index.jsp');
+							$.messager.alert('系统消息', '登录成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/admin/allClassInfo.jsp';
+							}, false);
+						}
+					}
 				});
-	        }
-	    }]
+			}
+		}, {
+			text: '注册',
+			iconCls: 'icon-reload',
+			handler: function () {
+				$("body").append("<div id='dlg_reg' style='padding:20px;'></div>");
+				$('#dlg_reg').dialog({
+					href: path + '/admin/reg.jsp',
+					modal: true,
+					closed: false,
+					title: '用户注册',
+					width: 300,
+					height: 450,
+					buttons: [{
+						text: '注册',
+						iconCls: 'icon-ok',
+						handler: function () {
+							$('#form_reg').form('submit', {
+								url: path + '/RegServlet?type=reg',
+								onSubmit: function () {
+									return $(this).form('validate');
+								},
+								success: function (data) {
+									if (data == "-1") {
+										$.messager.alert('系统消息', '学号已存在', 'error');
+									} else {
+										$.messager.alert('系统消息', '注册成功，请登录', 'info');
+										$('#dlg_reg').dialog('refresh');
+										$('#dlg_reg').dialog('close');
+									}
+								}
+							});
+						}
+					}, {
+						text: '重置',
+						iconCls: 'icon-reload',
+						handler: function () {
+							$('#dlg_reg').dialog('refresh');
+						}
+					}]
+				});
+			}
+		}]
 	});
 }
 //修改密码
-function editpass(path){
+function editpass(path) {
 	$("body").append("<div id='dlg_update_pwd' style='padding:20px;'></div>");
 	$('#dlg_update_pwd').dialog({
-		href:path+'/admin/pwd_update.jsp',
-		modal:true,
-		closed:false,
-		title:'修改密码',
-		width:310,
-		height:200,
-		buttons:[{
-			text:'提交',
-			iconCls:'icon-ok',
-			handler:function(){
-				$('#form_pwd_update').form('submit',{
-					url:path+'/PwdUpdateServlet',
-					onSubmit:function(){
+		href: path + '/admin/pwd_update.jsp',
+		modal: true,
+		closed: false,
+		title: '修改密码',
+		width: 310,
+		height: 200,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#form_pwd_update').form('submit', {
+					url: path + '/PwdUpdateServlet',
+					onSubmit: function () {
 						return $(this).form('validate');
 					},
-					success:function(data){
-						if(data == "-1"){
-							$.messager.alert('系统消息','修改密码失败','error');
-						}else{
-							$.messager.alert('系统消息','密码修改成功','info');
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '修改密码失败', 'error');
+						} else {
+							$.messager.alert('系统消息', '密码修改成功', 'info');
 							$('#dlg_update_pwd').dialog('refresh');
 							$('#dlg_update_pwd').dialog('close');
-						} 
-					}  
+						}
+					}
 				});
 			}
-		},{
-			text:'重置',
-			iconCls:'icon-reload',
-			handler:function(){
+		}, {
+			text: '重置',
+			iconCls: 'icon-reload',
+			handler: function () {
 				$('#dlg_update_pwd').dialog('refresh');
 			}
 		}]
 	});
 }
 //添加辅导员
-function adminAdd(path){
+function adminAdd(path) {
 	$("body").append("<div id='dlg_systemuser_add' style='padding:20px;'></div>");
 	$('#dlg_systemuser_add').dialog({
-		href:path+'/admin/systemuser_add.jsp',
-		modal:true,
-		closed:false,
-	    title:'添加辅导员',
-	    width:300,
-	    height:200,
-	    buttons:[{
-	        text:'提交',
-	        iconCls:'icon-ok',
-	        handler:function(){
-	            $('#form_systemuser_add').form('submit',{
-	            	url:path+'/AdminAddServlet',
-	                onSubmit:function(){
-				        return $(this).form('validate');
-				    },
-				    success:function(data){
-				    	if(data == "-1"){
-				    		$.messager.alert('系统消息','用户名已存在','error');
-				    	}else{
-				    		$.messager.alert('系统消息','添加成功','info',function(){
-					    		$('#dlg_login').dialog('refresh');
-					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/systemuser.jsp';				    			
-				    		},false);
-				    	} 
-				    }  
-	            });
-	        }
-	    },{
-	        text:'重置',
-	        iconCls:'icon-reload',
-	        handler:function(){
-	            $('#dlg_systemuser_add').dialog('refresh');
-	        }
-	    }]
-	});
-}
-//新增班级
-function classAdd(path){
-	$("body").append("<div id='dlg_class_add' style='padding:20px;'></div>");
-	$('#dlg_class_add').dialog({
-		href:path+'/admin/class_add.jsp',
-		modal:true,
-		closed:false,
-	    title:'新增班级',
-	    width:300,
-	    height:250,
-	    buttons:[{
-	        text:'提交',
-	        iconCls:'icon-ok',
-	        handler:function(){
-	            $('#form_class_add').form('submit',{
-	            	url:path+'/ClassAddServlet',
-	                onSubmit:function(){
-				        return $(this).form('validate');
-				    },
-				    success:function(data){
-				    	if(data == "-1"){
-				    		$.messager.alert('系统消息','用户名已存在','error');
-				    	}else{
-				    		$.messager.alert('系统消息','添加成功','info',function(){
-					    		$('#dlg_login').dialog('refresh');
-					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/allClassInfo.jsp';				    			
-				    		},false);
-				    	} 
-				    }  
-	            });
-	        }
-	    },{
-	        text:'重置',
-	        iconCls:'icon-reload',
-	        handler:function(){
-	            $('#dlg_class_add').dialog('refresh');
-	        }
-	    }]
-	});
-}
-//新建课程
-function courseAdd(path){
-	$("body").append("<div id='dlg_course_add' style='padding:20px;'></div>");
-	$('#dlg_course_add').dialog({
-		href:path+'/admin/createCourse.jsp',
-		modal:true,
-		closed:false,
-	    title:'新建课程',
-	    width:300,
-	    height:250,
-	    buttons:[{
-	        text:'提交',
-	        iconCls:'icon-ok',
-	        handler:function(){
-	            $('#from_course_add').form('submit',{
-	            	url:path+'/CourseAddServlet',
-	                onSubmit:function(){
-				        return $(this).form('validate');
-				    },
-				    success:function(data){
-				    	if(data == "-1"){
-				    		$.messager.alert('系统消息','课程已存在','error');
-				    	}else{
-				    		$.messager.alert('系统消息','添加成功','info',function(){
-					    		$('#dlg_login').dialog('refresh');
-					    		$('#dlg_login').dialog('close');
-					    		location.href = path+'/admin/allClassInfo.jsp';				    			
-				    		},false);
-				    	} 
-				    }  
-	            });
-	        }
-	    },{
-	        text:'重置',
-	        iconCls:'icon-reload',
-	        handler:function(){
-	            $('#dlg_course_add').dialog('refresh');
-	        }
-	    }]
-	});
-}
-//更换辅导员
-function changeCmgr(path){
-	$("body").append("<div id='dlg_change_cmgr' style='padding:20px;'></div>");
-	$('#dlg_change_cmgr').dialog({
-		href:path+'/admin/changeCmgr.jsp',
-		modal:true,
-		closed:false,
-		title:'更换辅导员',
-		width:250,
-		height:200,
-		buttons:[{
-			text:'提交',
-			iconCls:'icon-ok',
-			handler:function(){
-				$('#from_change_cmgr').form('submit',{
-					url:path+'/DelServlet',
-					onSubmit:function(){
+		href: path + '/admin/systemuser_add.jsp',
+		modal: true,
+		closed: false,
+		title: '添加辅导员',
+		width: 300,
+		height: 200,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#form_systemuser_add').form('submit', {
+					url: path + '/AdminAddServlet',
+					onSubmit: function () {
 						return $(this).form('validate');
 					},
-					success:function(data){
-						if(data == "-1"){
-							$.messager.alert('系统消息','修改失败','error');
-						}else{
-							$.messager.alert('系统消息','修改成功','info',function(){
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '用户名已存在', 'error');
+						} else {
+							$.messager.alert('系统消息', '添加成功', 'info', function () {
 								$('#dlg_login').dialog('refresh');
 								$('#dlg_login').dialog('close');
-								location.href = path+'/admin/classStuInfo.jsp';
-							},false);
+								location.href = path + '/admin/systemuser.jsp';
+							}, false);
 						}
 					}
 				});
 			}
-		},{
-			text:'取消',
-			iconCls:'icon-cancel',
-			handler:function(){
+		}, {
+			text: '重置',
+			iconCls: 'icon-reload',
+			handler: function () {
+				$('#dlg_systemuser_add').dialog('refresh');
+			}
+		}]
+	});
+}
+//新增班级
+function classAdd(path) {
+	$("body").append("<div id='dlg_class_add' style='padding:20px;'></div>");
+	$('#dlg_class_add').dialog({
+		href: path + '/admin/class_add.jsp',
+		modal: true,
+		closed: false,
+		title: '新增班级',
+		width: 300,
+		height: 250,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#form_class_add').form('submit', {
+					url: path + '/ClassAddServlet',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '用户名已存在', 'error');
+						} else {
+							$.messager.alert('系统消息', '添加成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/admin/allClassInfo.jsp';
+							}, false);
+						}
+					}
+				});
+			}
+		}, {
+			text: '重置',
+			iconCls: 'icon-reload',
+			handler: function () {
+				$('#dlg_class_add').dialog('refresh');
+			}
+		}]
+	});
+}
+//新建课程
+function courseAdd(path) {
+	$("body").append("<div id='dlg_course_add' style='padding:20px;'></div>");
+	$('#dlg_course_add').dialog({
+		href: path + '/admin/createCourse.jsp',
+		modal: true,
+		closed: false,
+		title: '新建课程',
+		width: 300,
+		height: 250,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#from_course_add').form('submit', {
+					url: path + '/CourseAddServlet',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '课程已存在', 'error');
+						} else {
+							$.messager.alert('系统消息', '添加成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/admin/allClassInfo.jsp';
+							}, false);
+						}
+					}
+				});
+			}
+		}, {
+			text: '重置',
+			iconCls: 'icon-reload',
+			handler: function () {
+				$('#dlg_course_add').dialog('refresh');
+			}
+		}]
+	});
+}
+//列出未通过的课程信息
+function showTheCourseJS(path, student_id, class_id) {
+	$("body").append("<div id='dlg_flip' style='padding:20px;'></div>");
+	$('#dlg_flip').dialog({
+		href: path + '/admin/stuNoQualifiedCourse.jsp?student_id=' + student_id + '&class_id=' + class_id,
+		modal: true,
+		closed: false,
+		title: '未通过课程',
+		width: 400
+	});
+}
+//更换辅导员
+function changeCmgr(path) {
+	$("body").append("<div id='dlg_change_cmgr' style='padding:20px;'></div>");
+	$('#dlg_change_cmgr').dialog({
+		href: path + '/admin/changeCmgr.jsp',
+		modal: true,
+		closed: false,
+		title: '更换辅导员',
+		width: 250,
+		height: 200,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#from_change_cmgr').form('submit', {
+					url: path + '/DelServlet',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '修改失败', 'error');
+						} else {
+							$.messager.alert('系统消息', '修改成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/admin/classStuInfo.jsp';
+							}, false);
+						}
+					}
+				});
+			}
+		}, {
+			text: '取消',
+			iconCls: 'icon-cancel',
+			handler: function () {
 				$('#dlg_change_cmgr').dialog('close');
 			}
 		}]
 	});
 }
+//分配班级给辅导员
+function giveClassToMgr(path, mgr) {
+	$("body").append("<div id='dlg_giveClassToMgr' style='padding:20px;text-align: center;'></div>");
+	$('#dlg_giveClassToMgr').dialog({
+		href: path + '/admin/giveClassToMgr.jsp?mgr=' + mgr,
+		modal: true,
+		closed: false,
+		title: '分配班级',
+		width: 350,
+		height: 200,
+		buttons: [{
+			text: '提交',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#from_giveClassToMgr').form('submit', {
+					url: path + '/DelServlet',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						if (data == "-1") {
+							$.messager.alert('系统消息', '修改失败', 'error');
+						} else {
+							$.messager.alert('系统消息', '修改成功', 'info', function () {
+								$('#dlg_login').dialog('refresh');
+								$('#dlg_login').dialog('close');
+								location.href = path + '/admin/systemuser.jsp';
+							}, false);
+						}
+					}
+				});
+			}
+		}, {
+			text: '取消',
+			iconCls: 'icon-cancel',
+			handler: function () {
+				$('#dlg_giveClassToMgr').dialog('close');
+			}
+		}]
+	});
+}
 //用户注销
-function logout(path){
+function logout(path) {
 	$.ajax({
-   		type: 'POST',
-   		url: path+'/RemoveServlet',
-   		data: 'mark=admin',
-	   	success: function(msg){
-	     window.location = (path+'/admin/index.jsp');
-	   }
+		type: 'POST',
+		url: path + '/RemoveServlet',
+		data: 'mark=admin',
+		success: function (msg) {
+			window.location = (path + '/admin/index.jsp');
+		}
 	});
 }
 //解析JSON
-function parseJson (text) {
+function parseJson(text) {
 	//extract JSON string
 	var match;
 	if ((match = /\{[\s\S]*\}|\[[\s\S]*\]/.exec(text))) {
@@ -316,46 +368,46 @@ function parseJson (text) {
 	throw 'JSON parse error';
 }
 //上传文件
-function upload(path){
+function upload(path) {
 	$("body").append("<div id='dlg_upload' style='padding:20px;'></div>");
 	$('#dlg_upload').dialog({
-		href:path+'/admin/upload_file.jsp',
-		modal:true,
-		closed:false,
-	    title:'上传文件',
-	    width:450,
-	    height:150,
-	    closable:true,
-	    buttons:[{
-	        text:'上传',
-	        iconCls:'icon-ok',
-	        handler:function(){
-	            $('#upload_file').form('submit',{
-	            	url:path+'/admin/upload_json.jsp',
-	                onSubmit:function(){
-				        return $(this).form('validate');
-				    },
-				    success:function(data){
-				    	var json = parseJson(data);
-				    	if(json.error === 1){
-				    		$.messager.alert('系统消息',json.message,'error');
-				    	}else{
-				    		//window.navigate(path+'/index.jsp');
-				    		$.messager.alert('系统消息','上传成功','info',function(){
-					    		$('#dlg_upload').dialog('refresh');
-					    		$('#dlg_upload').dialog('close');
-					    		$('#paths').val(json.url);				    			
-				    		},false);
-				    	} 
-				    }
-	            });
-	        }
-	    },{
-	        text:'重置',
-	        iconCls:'icon-reload',
-	        handler:function(){
-	            $('#dlg_upload').dialog('refresh');
-	        }
-	    }]
+		href: path + '/admin/upload_file.jsp',
+		modal: true,
+		closed: false,
+		title: '上传文件',
+		width: 450,
+		height: 150,
+		closable: true,
+		buttons: [{
+			text: '上传',
+			iconCls: 'icon-ok',
+			handler: function () {
+				$('#upload_file').form('submit', {
+					url: path + '/admin/upload_json.jsp',
+					onSubmit: function () {
+						return $(this).form('validate');
+					},
+					success: function (data) {
+						var json = parseJson(data);
+						if (json.error === 1) {
+							$.messager.alert('系统消息', json.message, 'error');
+						} else {
+							//window.navigate(path+'/index.jsp');
+							$.messager.alert('系统消息', '上传成功', 'info', function () {
+								$('#dlg_upload').dialog('refresh');
+								$('#dlg_upload').dialog('close');
+								$('#paths').val(json.url);
+							}, false);
+						}
+					}
+				});
+			}
+		}, {
+			text: '重置',
+			iconCls: 'icon-reload',
+			handler: function () {
+				$('#dlg_upload').dialog('refresh');
+			}
+		}]
 	});
 }
