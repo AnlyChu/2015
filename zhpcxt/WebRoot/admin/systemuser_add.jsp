@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="table-padding">
   <tr>
       <td align="right">职工号：</td>
-      <td><input class="easyui-validatebox" type="text" name="tId" required="true" validType="pattern" customize="Customize" /></td>
+      <td><input class="easyui-numberbox" type="text" name="tId" required="true" validType="pattern" customize="Customize" /></td>
     </tr>
     <tr>
       <td align="right">用户名：</td>

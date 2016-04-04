@@ -49,7 +49,6 @@ function login(path, closed) {
 					closed: false,
 					title: '用户注册',
 					width: 300,
-					height: 450,
 					buttons: [{
 						text: '注册',
 						iconCls: 'icon-ok',
@@ -91,7 +90,6 @@ function editpass(path) {
 		closed: false,
 		title: '修改密码',
 		width: 310,
-		height: 200,
 		buttons: [{
 			text: '提交',
 			iconCls: 'icon-ok',
@@ -130,7 +128,6 @@ function adminAdd(path) {
 		closed: false,
 		title: '添加辅导员',
 		width: 300,
-		height: 200,
 		buttons: [{
 			text: '提交',
 			iconCls: 'icon-ok',
