@@ -62,9 +62,8 @@
     <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
     <script type="text/javascript">
         $(window).load(function () {
-            $("#west").css('display', '');
             $("#londing").css('display', 'none');
-            $("#londEnd").css('display', '');
+            $("#mainPanle").css('display', '');
             $('tbody tr:even').css({'background': '#ffffff'});
             $('tbody tr:odd').css({'background': '#eeeeff'});
             var message = <%=message%>;
@@ -97,11 +96,6 @@
 
         }
 
-        /* function display_alert()
-         {
-         var lujing=document.form.fileUpload.value;
-         alert("路径="+lujing)
-         } */
     </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no"
@@ -112,15 +106,14 @@
     <jsp:include page="/admin/head.jsp"></jsp:include>
 </div>
 <div region="west" split="false" border="false" title="导航菜单"
-     style="width:180px;display: none" id="west">
+     style="width:180px;" id="west">
     <div id="left-menus" border="false" fit="true">
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
 <div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
 <div id="mainPanle" region="center" border="true"
-     style="background:#f7f7f7; padding:5px;">
-    <div id="londEnd" style="display: none">
+     style="background:#f7f7f7; padding:5px;display: none;">
         <table>
             <thead>
             <tr>
@@ -203,7 +196,7 @@
             <table width="100%">
                 <thead>
                 <tr>
-                    <td colspan="6" align="center" style="padding:5px;"><h3>班级学生成绩</h3></td>
+                    <td colspan="11" align="center" style="padding:5px;"><h3>班级学生成绩</h3></td>
                 </tr>
                 <%--<tr>--%>
                 <%--<form action="<%=path%>counsellor/classScore.jsp" method="post">--%>
@@ -216,33 +209,8 @@
                     <td align="center" width="100px">姓名</td>
                     <td align="center">获得学分</td>
                     <td align="center" width="100px">学年
-                        <%--<select name="schoolYear" onchange="getSchoolYear(this.value);">--%>
-                        <%--<option selected="selected" value = null>学年</option>--%>
-                        <%--<%--%>
-                        <%--for (int j = 0; j < classSchoolYear.size(); j++) {--%>
-                        <%--ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);--%>
-                        <%--%>--%>
-                        <%--<option value=<%=getSchoolYear.get(0)%>><%=getSchoolYear.get(0)%></option>--%>
-                        <%--<%--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--</select>--%>
                     </td>
                     <td align="center">学期
-                        <%--<select name="term" onchange="getTerm(this.value);">--%>
-                        <%--<option selected="selected" value=null>学期</option>--%>
-                        <%--<%--%>
-                        <%--if (schoolYear1 != null) {--%>
-                        <%--for (int j = 0; j < classTerm.size(); j++) {--%>
-                        <%--ArrayList getTerm = (ArrayList) classTerm.get(j);--%>
-                        <%--%>--%>
-                        <%--<option value=<%=getTerm.get(0)%>><%=getTerm.get(0)%>--%>
-                        <%--</option>--%>
-                        <%--<%--%>
-                        <%--}--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--</select>--%>
                     </td>
                     <%
                         if (schoolYear1 != null && term1 == null) {
@@ -380,7 +348,6 @@
                 </tbody>
             </table>
         </form>
-    </div>
 </div>
 </body>
 </html>

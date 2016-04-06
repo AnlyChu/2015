@@ -57,8 +57,8 @@ public class PwdUpdateServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		
 		String newpwd = request.getParameter("newpwd");
 		HttpSession session = request.getSession();
@@ -67,15 +67,15 @@ public class PwdUpdateServlet extends HttpServlet {
 		String table = "";
 		String status = (String)adminlogin.get(3);
 		
-		if(status.equals("¹ÜÀíÔ±")){
-			table = "admin";
-		}else if(status.equals("ÆÀ²âÔ±")){
-			table = "evaluating";
-		}else{
-			table = "student";
-		}
+//		if(status.equals("ï¿½ï¿½ï¿½ï¿½Ô±")){
+//			table = "admin";
+//		}else if(status.equals("ï¿½ï¿½ï¿½ï¿½Ô±")){
+//			table = "evaluating";
+//		}else{
+//			table = "student";
+//		}
 		
-		String sql = "update "+table+" set pwd='"+newpwd+"' where id="+adminlogin.get(0);
+		String sql = "update user set pwd='"+newpwd+"' where user_id="+adminlogin.get(0);
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
 		int responseText = ib.insertANDupdateANDdel(sql);
 		

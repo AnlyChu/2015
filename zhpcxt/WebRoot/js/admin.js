@@ -251,6 +251,10 @@ function showTheCourseJS(path, student_id, class_id) {
 		title: '未通过课程',
 		width: 400
 	});
+	$('.panel-tool-close').bind("click", function () {
+		$('#dlg_flip').dialog('close');
+		$('#dlg_flip').dialog('destroy');
+	})
 }
 //更换辅导员
 function changeCmgr(path) {
@@ -333,6 +337,68 @@ function giveClassToMgr(path, mgr) {
 			}
 		}]
 	});
+}
+//素质测评评分提交
+function submit(path) {
+	var daodesuyangPlus = parseInt(document.getElementById("daodesuyangPlus").value);
+	var daodesuyangSub = parseInt(document.getElementById("daodesuyangSub").value);
+	var studyingPlus = parseInt(document.getElementById("studyingPlus").value);
+	var studyingSub = parseInt(document.getElementById("studyingSub").value);
+	var suzhituozhanPlus = parseInt(document.getElementById("suzhituozhanPlus").value);
+	var suzhituozhanSub = parseInt(document.getElementById("suzhituozhanSub").value);
+	var doPlusOrSub = parseInt(document.getElementById("doPlusOrSub").value);
+	if (isNaN(daodesuyangPlus) || isNaN(daodesuyangSub) || isNaN(studyingPlus) || isNaN(studyingSub) || isNaN(suzhituozhanPlus) || isNaN(suzhituozhanSub) || isNaN(doPlusOrSub)) {
+		alert("请填写所有评分项");
+	} else {
+		$("body").append("<div id='dlg_submit' style='padding:20px;text-align: center;'></div>");
+		$('#dlg_submit').dialog({
+			href: path + '/counsellor/evaluatingSubmit.jsp?daodesuyangPlus=' + daodesuyangPlus
+			+ '&daodesuyangSub=' + daodesuyangSub
+			+ '&studyingPlus=' + studyingPlus
+			+ '&studyingSub=' + studyingSub
+			+ '&suzhituozhanPlus=' + suzhituozhanPlus
+			+ '&suzhituozhanSub=' + suzhituozhanSub
+			+ '&doPlusOrSub=' + doPlusOrSub,
+			modal: true,
+			closed: false,
+			title: '素质综合测评评分',
+			width: 350,
+			buttons: [{
+				text: '确定',
+				iconCls: 'icon-ok',
+				handler: function () {
+					$('#suzhizeping').form('submit', {
+						url: path + '/DelServlet',
+						onSubmit: function () {
+							return $(this).form('validate');
+						},
+						success: function (data) {
+							if (data == "-1") {
+								$.messager.alert('系统消息', '修改失败', 'error');
+							} else {
+								$.messager.alert('系统消息', '修改成功', 'info', function () {
+									$('#dlg_submit').dialog('refresh');
+									$('#dlg_submit').dialog('close');
+									location.href = path + '/counsellor/studentInfoForRate.jsp';
+								}, false);
+							}
+						}
+					});
+				}
+			}, {
+				text: '修改',
+				iconCls: 'icon-cancel',
+				handler: function () {
+					$('#dlg_submit').dialog('close');
+					$('#dlg_submit').dialog('destroy');
+				}
+			}]
+		});
+		$('.panel-tool-close').bind("click", function () {
+			$('#dlg_submit').dialog('close');
+			$('#dlg_submit').dialog('destroy');
+		});
+	}
 }
 //用户注销
 function logout(path) {

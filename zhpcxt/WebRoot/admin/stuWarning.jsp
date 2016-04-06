@@ -51,14 +51,10 @@
             $("#course_add").click(function () {
                 courseAdd('<%=path%>');
             });
-//            $(".flip").click(function(){
-//                $(".theCourse").slideToggle("slow");
-//                $(".theCourse")[0].style.display = '';
-//            });
         });
-        function showTheCourse (student_id,class_id){
-            showTheCourseJS('<%=path%>',student_id,class_id);
-        }
+        <%--function showTheCourse (student_id,class_id){--%>
+        <%--showTheCourseJS('<%=path%>',student_id,class_id);--%>
+        <%--}--%>
     </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no"
@@ -92,7 +88,7 @@
             <td align="center">未通过课程数</td>
         </tr>
         </thead>
-        <tbody class="tbody classInfo" >
+        <tbody class="tbody classInfo">
         <%
             if (student != null && student.size() != 0) {
                 int[] sum = new int[student.size()];
@@ -106,7 +102,7 @@
                         }
                     }
 
-                        if (sum[i] >= 4) {
+                    if (sum[i] >= 4) {
         %>
 
         <tr>
@@ -114,7 +110,7 @@
             <td align="center"><%=alRow.get(0)%>
             </td>
             <td align="center"><%=alRow.get(1)%>
-            </a></td>
+                </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
             <td align="center"><%=alRow.get(3)%>
@@ -123,15 +119,14 @@
             </td>
             <td align="center"><%=alRow.get(6)%>
             </td>
-            <td align="center" id="flip" onclick="showTheCourse(<%=alRow.get(0)%>,<%=alRow.get(3)%>);" style="cursor:pointer"><%=sum[i]%>
+            <td align="center" onclick="showTheCourseJS('<%=path%>',<%=alRow.get(0)%>,<%=alRow.get(3)%>);"
+                style="cursor:pointer"><%=sum[i]%>
             </td>
         </tr>
 
         <%
-                            }
-                        }
-//                    }
-//                }
+                    }
+                }
             }
         %>
         </tbody>

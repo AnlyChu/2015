@@ -55,15 +55,15 @@ public class AdminAddServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html;charset=gb2312");
-		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 
 		int responseText = 0;
 		InsertUpdateDelBean ib = new InsertUpdateDelBean();
-		String args[] = {"tId","name","pwd","status"};
+		String args[] = {"user_id","name","pwd","status"};
 		String row = "";
 		String val = "";
-		String status = "¸¨µ¼Ô±";
+		String status = "è¾…å¯¼å‘˜";
 		for(int i = 0;i < args.length;i++){
 			if(i == args.length-1){
 				row += "status";
@@ -73,9 +73,8 @@ public class AdminAddServlet extends HttpServlet {
 				val += "'"+request.getParameter(args[i])+"',";
 			}
 		}
-		String sql = "insert into counsellor("+row+") values("+val+")";
+		String sql = "insert into user("+row+") values("+val+")";
 		System.out.println("sql="+sql);
-//		String sql1 = "insert into admin (status) values('¸¨µ¼Ô±')";
 		responseText = ib.insertANDupdateANDdel(sql);
 	
 //		responseText = ib.insertANDupdateANDdel(sql1);

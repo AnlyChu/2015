@@ -6,12 +6,17 @@
     ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
     boolean closed = false;
     ArrayList student = null;
+    String school_year = null;
     String class_id = (String) session.getAttribute("class_id");
-    session.setAttribute("class_id", class_id);
+    if (session.getAttribute("school_year") != null) {
+        school_year = (String) session.getAttribute("school_year");
+    } else {
+        school_year = request.getParameter("school_year");
+    }
+    ArrayList checkRating = null;
     if (adminlogin != null && adminlogin.size() != 0) {
         closed = true;
         student = array.getClassStudent(class_id);
-
     }
     String message = (String) request.getAttribute("message");
 %>
@@ -28,6 +33,8 @@
     <script type="text/javascript" src="<%=path %>/js/admin.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#londing").css('display', 'none');
+            $("#mainPanle").css('display', '');
             $('tbody tr:even').css({'background': '#ffffff'});
             $('tbody tr:odd').css({'background': '#eeeeff'});
             var message = <%=message %>;
@@ -62,29 +69,10 @@
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
-<div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
+<div id="londing" style="display: '';margin-top: 10%" align="center">数据加载ing</div>
+<div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;display: none;">
     <table width="100%">
         <thead>
-        <tr>
-
-        </tr>
-        <%
-            if (student == null || student.size() == 0) {
-        %>
-        <tr>
-            <td><p>上传班级学生信息:</p></td>
-            <td>
-                <form action="<%=path%>/Upload?type=studentInfo" method="post">
-                    <input type="file" name="fileUpload1"/>
-                    <input type=submit value="上传文件"/>
-                </form>
-
-
-            </td>
-        </tr>
-        <%
-            }
-        %>
         <tr>
             <td colspan="11" align="center" style="padding:5px;"><h3>班级学生信息</h3></td>
         </tr>
@@ -93,10 +81,10 @@
             <td align="center">姓名</td>
             <td align="center">性别</td>
             <td align="center">班级</td>
-            <td align="center">身份证号</td>
             <td align="center">学院</td>
             <td align="center">专业</td>
-            <td align="center">通讯地址</td>
+            <td align="center">学年</td>
+            <td align="center">操作</td>
 
         </tr>
         </thead>
@@ -116,14 +104,26 @@
             </td>
             <td align="center"><%=alRow.get(3) %>
             </td>
-            <td align="center"><%=alRow.get(4) %>
-            </td>
             <td align="center"><%=alRow.get(5) %>
             </td>
             <td align="center"><%=alRow.get(6) %>
             </td>
-            <td align="center"><%=alRow.get(7) %>
+            <td align="center"><%=school_year %>
             </td>
+            <%
+                checkRating = array.getEvaluating(alRow.get(0).toString(), school_year, class_id);
+                if (checkRating != null && checkRating.size() != 0) {
+            %>
+            <td align="center">已评分</td>
+            <%
+            } else {
+            %>
+            <td align="center">
+                <a href="<%=basePath%>counsellor/stuQualityEvaluation.jsp?student_id=<%=alRow.get(0)%>&school_year=<%=school_year%>">评分</a>
+            </td>
+            <%
+                }
+            %>
         </tr>
         <%
                 }

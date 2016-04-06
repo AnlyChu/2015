@@ -69,7 +69,7 @@
             <td align="center">
                 <a href="<%=path %>/DelServlet?admin=<%=alRow.get(0) %>">删除</a>
                 |
-                <a href="javascript:void(0)" id="giveClassToMgr">分配班级</a>
+                <a href="javascript:void(0)" onclick="giveClassToMgr('<%=path %>', '<%=mgr %>')">分配班级</a>
             </td>
         </tr>
         <%
@@ -99,10 +99,11 @@
         $("#admin_add").click(function () {
             adminAdd('<%=path %>');
         });
-        $("#giveClassToMgr").click(function () {
-            giveClassToMgr('<%=path %>', '<%=mgr %>');
-        });
-    })
+
+    });
+    <%--function giveClassToMgr(){--%>
+        <%--giveClassToMgr('<%=path %>', '<%=mgr %>');--%>
+    <%--}--%>
 </script>
 </body>
 </html>

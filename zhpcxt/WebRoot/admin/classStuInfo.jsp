@@ -174,9 +174,9 @@
                 <td colspan="11" align="center" style="padding:5px;"><h3><a href="javascript:void(0)" id="classInfo" style="color: blue;">班级学生信息</a>
                     | <a href="javascript:void(0)" id="classScore">班级学生成绩</a></h3></td>
             </tr>
-            <tr>
-                <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="course_add">新建课程</a></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td colspan="4" style="padding:5px;"><a href="javascript:void(0)" id="change_cmgr">更换辅导员</a></td>
             </tr>

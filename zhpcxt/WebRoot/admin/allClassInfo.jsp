@@ -247,8 +247,8 @@
                 %>
                 <td align="center"><%=classMgr%>
                 </td>
-                <td align="center"><a
-                        href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassGrade.get(1)%>">查看</a></td>
+                <td align="center">
+                    <a href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassGrade.get(1)%>">查看</a></td>
             </tr>
             <%
                     }

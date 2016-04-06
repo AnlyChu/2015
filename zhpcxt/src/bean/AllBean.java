@@ -154,6 +154,12 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getAllCourseSchoolYear(String tableName){
+		String sql = "select distinct(school_year) from `" + tableName + "`";
+		String args[] = {"school_year"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getAllCourseForSchoolYear(String tableName,String schoolYear){
 		String sql = "select distinct(course_id) from `" + tableName + "` where school_year='" + schoolYear + "'";
 		String args[] = {"course_id"};
@@ -309,9 +315,9 @@ public class AllBean {
 		al = sb.select(sql, args);
 		return al;
 	}
-	public ArrayList getEvaluating(String id){
-		String sql = "select * from evaluating where id="+id;
-		String args[] = {"id","name","pwd","truename","positions","sex","birthday","phone","address","postalcode","email"};
+	public ArrayList getEvaluating(String student_id,String school_year,String tableName){
+		String sql = "select distinct(school_year) from evaluating where school_year='" + school_year + "' and class_id = '" + tableName + "' and student_id =" + student_id;
+		String args[] = {"school_year"};
 		al = sb.selectRow(args, sql);
 		return al;
 	}
