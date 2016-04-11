@@ -13,16 +13,18 @@ if(adminlogin.get(3).equals("书记")){ %>
 	<li><a href="<%=path %>/admin/systemuser.jsp">辅导员管理</a></li>
 	<li><a href="<%=path %>/admin/stuInfoSelect.jsp">学生信息查询</a></li>
 	<li><a href="<%=path %>/admin/classQualified.jsp">班级及格率查询</a></li>
+	<li><a href="<%=path %>/admin/classRating.jsp">班级测评查询</a></li>
 	<li><a href="<%=path %>/admin/stuWarning.jsp">学业预警查询</a></li>
 <%}
 if(adminlogin.get(3).equals("辅导员")){ %>
 	<li><a href="<%=path %>/counsellor/classScore.jsp">班级学生成绩</a></li>
-  <li><a href="<%=path %>/counsellor/verifyexamine.jsp">评测审核</a></li>
-  <li><a href="<%=path %>/counsellor/classSelect.jsp">查询</a></li>
+  <%--<li><a href="<%=path %>/counsellor/verifyexamine.jsp">评测审核</a></li>--%>
+  <%--<li><a href="<%=path %>/counsellor/classSelect.jsp">查询</a></li>--%>
   <li><a href="<%=path %>/counsellor/classInfo.jsp?class_id=<%=class_id%>">班级基本信息</a></li>
-  <li><a href="<%=path %>/counsellor/evaluating.jsp">班长管理</a></li>
+  <%--<li><a href="<%=path %>/counsellor/evaluating.jsp">班长管理</a></li>--%>
   <li><a href="<%=path %>/counsellor/studentInfoUpload.jsp">班级学生信息</a></li>
   <li><a href="<%=path %>/counsellor/rateSchoolYearSelect.jsp">学生素质综合测评</a></li>
+  <li><a href="<%=path %>/counsellor/ratingScore.jsp">学生素质测评排名</a></li>
 <%}
 if(adminlogin.get(3).equals("学生")){
 %>

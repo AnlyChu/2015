@@ -322,9 +322,9 @@ public class AllBean {
 		return al;
 	}
 	
-	public ArrayList getEvaluating(){
-		String sql = "select * from evaluating order by id desc";
-		String args[] = {"id","name","pwd","truename","positions","sex","birthday","phone","address","postalcode","email"};
+	public ArrayList getEvaluating(String class_id){
+		String sql = "select * from evaluating where class_id='" + class_id + "' order by sum desc";
+		String args[] = {"student_id","school_year","daodesuyang","studying","suzhituozhan","doPlusOrSub","sum"};
 		al = sb.select(sql, args);
 		return al;
 	}

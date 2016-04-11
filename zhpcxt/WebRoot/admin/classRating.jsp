@@ -179,7 +179,7 @@
                 <td align="center"><%=classMgr%>
                 </td>
                 <td align="center">
-                    <a href="<%=basePath%>admin/classAllQualified.jsp?class_id=<%=allClass1.get(0)%>">查看及格率</a>
+                    <a href="<%=basePath%>counsellor/ratingScore.jsp?class_id=<%=allClass1.get(0)%>">查看测评分数</a>
                 </td>
             </tr>
             <%
@@ -209,7 +209,7 @@
                 <td align="center"><%=classMgr%>
                 </td>
                 <td align="center">
-                    <a href="<%=basePath%>admin/classAllQualified.jsp?class_id=<%=getClassofPro.get(0)%>">查看及格率</a>
+                    <a href="<%=basePath%>counsellor/ratingScore.jsp?class_id=<%=getClassofPro.get(0)%>">查看测评分数</a>
                 </td>
             </tr>
             <%
@@ -239,7 +239,7 @@
                 <td align="center"><%=classMgr%>
                 </td>
                 <td align="center">
-                    <a href="<%=basePath%>admin/classAllQualified.jsp?class_id=<%=getClassGrade.get(1)%>">查看及格率</a>
+                    <a href="<%=basePath%>counsellor/ratingScore.jsp?class_id=<%=getClassGrade.get(1)%>">查看测评分数</a>
                 </td>
             </tr>
             <%

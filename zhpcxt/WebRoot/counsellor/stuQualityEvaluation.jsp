@@ -5,14 +5,12 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
     boolean closed = false;
-    ArrayList verify = null;
     String student_id = request.getParameter("student_id");
     String school_year = request.getParameter("school_year");
     session.setAttribute("school_year",school_year);
     String class_id = (String) session.getAttribute("class_id");
     if (adminlogin != null && adminlogin.size() != 0) {
         closed = true;
-        verify = array.getVerify();
     }
     String message = (String) request.getAttribute("message");
 %>
