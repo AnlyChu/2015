@@ -78,8 +78,9 @@
                     <input type="file" name="fileUpload1"/>
                     <input type=submit value="上传文件"/>
                 </form>
-
-
+            </td>
+            <td>
+                <button onclick="window.open('<%=path%>/demo-xls/class-student-demo.xls')">下载成绩模板</button>
             </td>
         </tr>
         <%
@@ -110,7 +111,8 @@
 
             <td align="center"><%=alRow.get(0) %>
             </td>
-            <td align="center"><%=alRow.get(1) %>
+            <td align="center">
+                <a href="<%=basePath%>counsellor/stuScore.jsp?student_id=<%=alRow.get(0)%>&class_id=<%=alRow.get(3)%>"><%=alRow.get(1)%></a>
             </td>
             <td align="center"><%=alRow.get(2) %>
             </td>

@@ -109,9 +109,9 @@
 
             <td align="center"><%=alRow.get(0)%>
             </td>
-            <td align="center"><a
-                    href="<%=basePath%>counsellor/stuScore.jsp?student_id=<%=alRow.get(0)%>&class_id=<%=alRow.get(3)%>"><%=alRow.get(1)%>
-            </a></td>
+            <td align="center">
+                <a href="<%=basePath%>counsellor/stuScore.jsp?student_id=<%=alRow.get(0)%>&class_id=<%=alRow.get(3)%>"><%=alRow.get(1)%></a>
+            </td>
             <td align="center"><%=alRow.get(2)%>
             </td>
             <td align="center"><%=alRow.get(3)%>
