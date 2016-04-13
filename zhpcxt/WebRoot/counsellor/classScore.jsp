@@ -140,6 +140,9 @@
                         <input type=submit value="上传文件"/>
                     </form>
                 </td>
+                <td>
+                    <button onclick="window.open('<%=path%>/demo-xls/class-score-demo.xls')">下载成绩模板</button>
+                </td>
             </tr>
 
             </thead>

@@ -136,6 +136,24 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getStuScoreOfSchoolYear(String student_id,String class_score_table,String school_year){
+		String sql = "select * from `" + class_score_table + "` where student_id="+student_id + " and school_year = '" + school_year + "'";
+		String args[] = {"student_id","school_year","term","course_id","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getStuScoreOfTerm(String student_id,String class_score_table,String school_year,String term){
+		String sql = "select * from `" + class_score_table + "` where student_id="+student_id + " and school_year = '" + school_year + "' and term ='" + term + "'";
+		String args[] = {"student_id","school_year","term","course_id","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
+	public ArrayList getStuScoreOfclassId(String student_id,String class_score_table,String school_year,String term){
+		String sql = "select * from `" + class_score_table + "` where student_id="+student_id + " and school_year = '" + school_year + "' and term ='" + term + "'";
+		String args[] = {"student_id","school_year","term","course_id","score"};
+		al = sb.select(sql,args);
+		return al;
+	}
 	public ArrayList getStuScoreOfcourseId(String student_id,String course_id,String class_score_table){
 		String sql = "select score from `" + class_score_table + "` where student_id="+student_id + " and course_id="+course_id;
 		String args[] = {"score"};
@@ -325,6 +343,18 @@ public class AllBean {
 	public ArrayList getEvaluating(String class_id){
 		String sql = "select * from evaluating where class_id='" + class_id + "' order by sum desc";
 		String args[] = {"student_id","school_year","daodesuyang","studying","suzhituozhan","doPlusOrSub","sum"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	public ArrayList getAllclassId(){
+		String sql = "select distinct(class_id) from student";
+		String args[] = {"class_id"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	public ArrayList getAllSchoolYear(String class_id){
+		String sql = "select distinct(school_year) from `" + class_id + "`";
+		String args[] = {"school_year"};
 		al = sb.select(sql, args);
 		return al;
 	}

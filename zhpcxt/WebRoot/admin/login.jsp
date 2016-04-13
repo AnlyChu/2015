@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td>
       	<input type=radio name="status" value="辅导员" checked>辅导员
       	<input type=radio name="status" value="书记">书记
-      	<input type=radio name="status" value="学生">学生
+      	<%--<input type=radio name="status" value="学生">学生--%>
       </td>
     </tr>
   </table>

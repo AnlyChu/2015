@@ -19,7 +19,7 @@
 <div class="north-left" style="width:50%">计算机学院学生信息档案管理
     <span style="font-size: 10px;margin-left: 8%">
       <%
-          if (adminlogin.get(3).toString().equals("辅导员")) {
+          if (adminlogin != null && adminlogin.size() != 0 && adminlogin.get(3).toString().equals("辅导员")) {
       %>
          当前班级：
     <%
