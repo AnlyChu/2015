@@ -7,7 +7,7 @@
     boolean closed = false;
     ArrayList rating = null;
     String class_id = (String) session.getAttribute("class_id");
-    if (class_id == null){
+    if (class_id == null) {
         class_id = request.getParameter("class_id");
     }
     if (adminlogin != null && adminlogin.size() != 0) {
@@ -66,19 +66,70 @@
 <div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
     <table width="100%">
         <thead>
+            <%
+            //            if (student == null || student.size() == 0) {
+        %>
         <tr>
-            <td colspan="11" align="center" style="padding:5px;"><h3>班级学生素质测评排名</h3></td>
+            <td>上传班级学生综合测评信息:</td>
+            <td>
+                <form action="<%=path%>/Upload" method="post">
+                    <select name="schoolYear">
+                        <option>-请选择学年-</option>
+                        <option value="2012-2013">2012-2013</option>
+                        <option value="2013-2014">2013-2014</option>
+                        <option value="2014-2015">2014-2015</option>
+                        <option value="2015-2016">2015-2016</option>
+                        <option value="2016-2017">2016-2017</option>
+                        <option value="2017-2018">2017-2018</option>
+                        <option value="2018-2019">2018-2019</option>
+                        <option value="2019-2020">2019-2020</option>
+                    </select>
+                    <input type="file" name="rating"/>
+                    <input type=submit value="上传文件"/>
+                </form>
+            </td>
+            <td>
+                <button onclick="window.open('<%=path%>/demo-xls/class-student-demo.xls')">下载成绩模板</button>
+            </td>
         </tr>
+            <%
+            //            }
+        %>
+        <tr>
+            <td colspan="19" align="center" style="padding:5px;"><h3>班级学生素质测评排名</h3></td>
+        </tr>
+    </table>
+    <table width="100%">
         <tr class="thead">
             <td align="center">序号</td>
-            <td align="center">学号</td>
             <td align="center">姓名</td>
             <td align="center">学年</td>
-            <td align="center">道德素养</td>
-            <td align="center">学习能力</td>
-            <td align="center">素质拓展</td>
-            <td align="center">直接加减分</td>
+            <td align="center" colspan="4">道德素养</td>
+            <td align="center" colspan="4">学习能力</td>
+            <td align="center" colspan="4">素质拓展</td>
+            <td align="center" colspan="3">直接加减分</td>
             <td align="center">测评总分</td>
+        </tr>
+        <tr class="thead">
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center">基本分</td>
+            <td align="center">加分</td>
+            <td align="center">减分</td>
+            <td align="center">积分</td>
+            <td align="center">基本分</td>
+            <td align="center">加分</td>
+            <td align="center">减分</td>
+            <td align="center">积分</td>
+            <td align="center">基本分</td>
+            <td align="center">加分</td>
+            <td align="center">减分</td>
+            <td align="center">积分</td>
+            <td align="center">加分</td>
+            <td align="center">减分</td>
+            <td align="center">积分</td>
+            <td align="center">基本分</td>
         </tr>
         </thead>
         <tbody class="tbody">
@@ -86,16 +137,9 @@
             if (rating != null && rating.size() != 0) {
                 for (int i = 0; i < rating.size(); i++) {
                     ArrayList alRow = (ArrayList) rating.get(i);
-                    ArrayList name = array.getStudent(alRow.get(0).toString());
-                    for (int j = 0; j < name.size(); j++) {
-                        ArrayList studentName = (ArrayList) name.get(j);
         %>
         <tr>
-            <td align="center"><%=i+1 %>
-            </td>
-            <td align="center"><%=alRow.get(0) %>
-            </td>
-            <td align="center"><%=studentName.get(1) %>
+            <td align="center"><%=i + 1 %>
             </td>
             <td align="center"><%=alRow.get(1) %>
             </td>
@@ -109,10 +153,32 @@
             </td>
             <td align="center"><%=alRow.get(6) %>
             </td>
-
+            <td align="center"><%=alRow.get(7) %>
+            </td>
+            <td align="center"><%=alRow.get(8) %>
+            </td>
+            <td align="center"><%=alRow.get(9) %>
+            </td>
+            <td align="center"><%=alRow.get(10) %>
+            </td>
+            <td align="center"><%=alRow.get(11) %>
+            </td>
+            <td align="center"><%=alRow.get(12) %>
+            </td>
+            <td align="center"><%=alRow.get(13) %>
+            </td>
+            <td align="center"><%=alRow.get(14) %>
+            </td>
+            <td align="center"><%=alRow.get(15) %>
+            </td>
+            <td align="center"><%=alRow.get(16) %>
+            </td>
+            <td align="center"><%=alRow.get(17) %>
+            </td>
+            <td align="center"><%=alRow.get(18) %>
+            </td>
         </tr>
         <%
-                    }
                 }
             }
         %>

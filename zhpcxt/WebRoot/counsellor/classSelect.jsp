@@ -64,7 +64,7 @@
 											if (admin != null && admin.size() != 0) {
 												for (int j = 0; j < class1.size(); j++) {
 													ArrayList classMgr = (ArrayList) class1.get(j);
-													String className = classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+													String className = classMgr.get(1).toString() + "级" + classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
 													String classID = classMgr.get(0).toString();
 												
 										%>

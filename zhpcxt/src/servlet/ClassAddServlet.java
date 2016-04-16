@@ -80,7 +80,7 @@ public class ClassAddServlet extends HttpServlet {
 				"  `school_grades` float DEFAULT NULL,\n" +
 				"  `school_year` varchar(255) DEFAULT NULL,\n" +
 				"  `term` varchar(255) DEFAULT NULL,\n" +
-				"  `score` float DEFAULT NULL,\n" +
+				"  `score` varchar(255) DEFAULT NULL,\n" +
 				"  PRIMARY KEY (`id`)\n" +
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 

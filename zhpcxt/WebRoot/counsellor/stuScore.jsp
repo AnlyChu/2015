@@ -113,9 +113,6 @@
      style="background:#f7f7f7; padding:5px;">
     <form method="post" name="termSelect">
     <table width="100%">
-
-            学期:
-
         <thead>
         <tr>
             <td colspan="6" align="center" style="padding:5px;"><h3>学生成绩</h3></td>
@@ -144,7 +141,7 @@
             <td align="center">
                 <select name="term" onchange="getTerm(this.value);">
                     <%
-                        String showTerm = "学年";
+                        String showTerm = "学期";
                         if (schoolYear1 != null && term1 != null){
                             showTerm = term1;
                         }

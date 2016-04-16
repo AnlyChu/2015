@@ -198,7 +198,7 @@ public class AllBean {
 	}
 	public ArrayList getCourse(){
 		String sql = "select * from course ";
-		String args[] = {"course_id","courseName"};
+		String args[] = {"id","course_name"};
 		al = sb.select(sql,args);
 		return al;
 	}
@@ -290,8 +290,8 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
-	public ArrayList getScoreOfTerm(String term,String SchYear,String tableName){
-		String sql = "select * from `" + tableName + "` where term=" + term + " and school_year='"+SchYear+"'";
+	public ArrayList getScoreOfTerm(String term,String SchYear,String tableName,String student_id){
+		String sql = "select * from `" + tableName + "` where term=" + term + " and school_year='"+SchYear+"'and student_id = " + student_id;
 		String args[] = {"student_id","course_id","school_grades","school_year","term","score"};
 		al = sb.select(sql,args);
 		return al;
@@ -342,7 +342,7 @@ public class AllBean {
 	
 	public ArrayList getEvaluating(String class_id){
 		String sql = "select * from evaluating where class_id='" + class_id + "' order by sum desc";
-		String args[] = {"student_id","school_year","daodesuyang","studying","suzhituozhan","doPlusOrSub","sum"};
+		String args[] = {"student_id","name","school_year","daodesuyangBasic","daodesuyangPlus","daodesuyangSub","daodesuyang","studyBasic","studyPlus","studySub","studying","suzhituozhanBasic","suzhituozhanPlus","suzhituozhanSub","suzhituozhan","doPlus","doSub","doPlusOrSub","sum"};
 		al = sb.select(sql, args);
 		return al;
 	}

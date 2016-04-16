@@ -24,7 +24,10 @@
                 ArrayList theCourseInfo = (ArrayList) theCourseName.get(m);
     %>
     <tr class="thead theCourse">
-
+        <td align="center"><%=stuScore1.get(1)%>学年
+        </td>
+        <td align="center">第<%=stuScore1.get(2)%>学期
+        </td>
         <td align="center"><%=theCourseInfo.get(1)%>
         </td>
         <td align="center"><%=theCourseInfo.get(2)%>

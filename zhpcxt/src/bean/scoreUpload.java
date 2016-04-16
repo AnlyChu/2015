@@ -53,9 +53,13 @@ public class scoreUpload {
                                 a += course[m] + "','";
                             }
                         }
-                        String sql = "insert into `course`(" + b + ")" + "values" + "(" + a + ")";
-                        System.out.println("val=" + b + "\rstr=" + a);
-                        ib.insertANDupdateANDdel(sql);
+                        AllBean array = new AllBean();
+                        ArrayList courseEx = array.getCourseOfName(course[0]);
+                        if (courseEx.size() == 0) {
+                            String sql = "insert into `course`(" + b + ")" + "values" + "(" + a + ")";
+                            System.out.println("val=" + b + "\rstr=" + a);
+                            ib.insertANDupdateANDdel(sql);
+                        }
                     }
                 } else {
                     String a1 = "'";
@@ -70,7 +74,7 @@ public class scoreUpload {
                         String course_name = course[0];
                         AllBean array = new AllBean();
                         ArrayList courseQuery = array.getCourseOfName(course_name);
-                        ArrayList id = (ArrayList)courseQuery.get(0);
+                        ArrayList id = (ArrayList) courseQuery.get(0);
                         String course_id = id.get(0).toString();
                         a2 = row[1].getContents() + "','" + row[3].getContents() + "','";
                         a1 += a2 + row[i].getContents() + "','" + course_id + "','" + schoolYear + "','" + term + "'";
