@@ -34,8 +34,8 @@
     }
 </style>
 <form id="from_giveClassToMgr" method="post">
-    <table class="table-padding">
-        <tr align="center">
+    <table class="table-padding" align="left">
+        <tr>
             <input type="hidden" name="mgr" value="<%=mgr%>"/>
             <%
                 for (int i = 0; i < allClass.size(); i++) {

@@ -152,7 +152,7 @@
             <td>
                 <form method="post" name="termSelect">
                     学年:
-                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
+                    <select name="schoolYear" class="schoolYear" id="schoolYear" onchange="getSchoolYear(this.value);">
                         <option>
                             <script language="javascript">
                                 document.termSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
@@ -161,24 +161,31 @@
                         <%
                             if (student != null && student.size() != 0) {
                                 getAllclassId = array.getAllclassId();
+                                ArrayList schoolYear = null;
+                                List list = new ArrayList();
                                 for (int i = 0; i < getAllclassId.size(); i++) {
                                     ArrayList allClassId = (ArrayList) getAllclassId.get(i);
                                     for (int j = 0; j < allClassId.size(); j++) {
                                         classSchoolYear = array.getAllSchoolYear(allClassId.get(j).toString());
                                         for (int m = 0; m < classSchoolYear.size(); m++) {
-                                            ArrayList schoolYear = (ArrayList) classSchoolYear.get(m);
+                                            list.add(classSchoolYear.get(m));
+                                        }
+
+                                    }
+                                }
+                                List listNoDup = new ArrayList(new HashSet(list));
+                                for (int n = 0;n < listNoDup.size();n++){
+                                    schoolYear = (ArrayList) listNoDup.get(n);
                         %>
                         <option><%=schoolYear.get(0)%>
                         </option>
                         <%
-                                        }
-                                    }
                                 }
                             }
                         %>
                     </select>
                     学期:
-                    <select name="term" onchange="getTerm(this.value);">
+                    <select name="term" id="term" onchange="getTerm(this.value);">
                         <option>
                             <script language="javascript">
                                 document.termSelect.term.value = "<%=request.getParameter("term")%>";
@@ -196,7 +203,7 @@
                         %>
                     </select>
                     班级:
-                    <select name="classno" onchange="getClass(this.value);">
+                    <select name="classno" if="classno" onchange="getClass(this.value);">
                         <option>
                             <script language="javascript">
                                 document.termSelect.classno.value = "<%=request.getParameter("classno")%>";
@@ -210,7 +217,7 @@
                                     ArrayList class1 = array.getBjInfo(classNo.get(0).toString());
                                     for (int j = 0; j < class1.size(); j++) {
                                         ArrayList classMgr = (ArrayList) class1.get(j);
-                                        String className = classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+                                        String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
                                         String classID = classMgr.get(0).toString();
                         %>
                         <option value=<%=classID%>><%=className%>
@@ -264,7 +271,19 @@
                         ArrayList stuScore = array.getStuScore(alRow.get(0).toString(), alRow.get(3).toString());
                         for (int j = 0; j < stuScore.size(); j++) {
                             ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                            if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                            String scoreEx = stuScore1.get(4).toString();
+                            if (stuScore1.get(4).toString().equals("良好")) {
+                                scoreEx = "80";
+                            } else if (stuScore1.get(4).toString().equals("优秀")) {
+                                scoreEx = "90";
+                            } else if (stuScore1.get(4).toString().equals("中等")) {
+                                scoreEx = "70";
+                            } else if (stuScore1.get(4).toString().equals("合格")) {
+                                scoreEx = "60";
+                            } else if (stuScore1.get(4).toString().equals("不合格")) {
+                                scoreEx = "50";
+                            }
+                            if (Float.parseFloat(scoreEx) < 60.0) {
                                 sum[i]++;
                             }
                         }
@@ -285,8 +304,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>
@@ -308,7 +336,19 @@
                     ArrayList stuScore = array.getStuScoreOfSchoolYear(alRow.get(0).toString(), alRow.get(3).toString(), schoolYear1);
                     for (int j = 0; j < stuScore.size(); j++) {
                         ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                        if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                        String scoreEx = stuScore1.get(4).toString();
+                        if (stuScore1.get(4).toString().equals("良好")) {
+                            scoreEx = "80";
+                        } else if (stuScore1.get(4).toString().equals("优秀")) {
+                            scoreEx = "90";
+                        } else if (stuScore1.get(4).toString().equals("中等")) {
+                            scoreEx = "70";
+                        } else if (stuScore1.get(4).toString().equals("合格")) {
+                            scoreEx = "60";
+                        } else if (stuScore1.get(4).toString().equals("不合格")) {
+                            scoreEx = "50";
+                        }
+                        if (Float.parseFloat(scoreEx) < 60.0) {
                             sum[i]++;
                         }
                     }
@@ -329,8 +369,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>
@@ -352,7 +401,19 @@
                     ArrayList stuScore = array.getStuScoreOfTerm(alRow.get(0).toString(), alRow.get(3).toString(), schoolYear1, term1);
                     for (int j = 0; j < stuScore.size(); j++) {
                         ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                        if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                        String scoreEx = stuScore1.get(4).toString();
+                        if (stuScore1.get(4).toString().equals("良好")) {
+                            scoreEx = "80";
+                        } else if (stuScore1.get(4).toString().equals("优秀")) {
+                            scoreEx = "90";
+                        } else if (stuScore1.get(4).toString().equals("中等")) {
+                            scoreEx = "70";
+                        } else if (stuScore1.get(4).toString().equals("合格")) {
+                            scoreEx = "60";
+                        } else if (stuScore1.get(4).toString().equals("不合格")) {
+                            scoreEx = "50";
+                        }
+                        if (Float.parseFloat(scoreEx) < 60.0) {
                             sum[i]++;
                         }
                     }
@@ -373,8 +434,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>
@@ -399,7 +469,19 @@
                     ArrayList stuScore = array.getStuScoreOfTerm(alRow.get(0).toString(), alRow.get(3).toString(), schoolYear1, term1);
                     for (int j = 0; j < stuScore.size(); j++) {
                         ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                        if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                        String scoreEx = stuScore1.get(4).toString();
+                        if (stuScore1.get(4).toString().equals("良好")) {
+                            scoreEx = "80";
+                        } else if (stuScore1.get(4).toString().equals("优秀")) {
+                            scoreEx = "90";
+                        } else if (stuScore1.get(4).toString().equals("中等")) {
+                            scoreEx = "70";
+                        } else if (stuScore1.get(4).toString().equals("合格")) {
+                            scoreEx = "60";
+                        } else if (stuScore1.get(4).toString().equals("不合格")) {
+                            scoreEx = "50";
+                        }
+                        if (Float.parseFloat(scoreEx) < 60.0) {
                             sum[i]++;
                         }
                     }
@@ -420,8 +502,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>
@@ -446,7 +537,19 @@
                     ArrayList stuScore = array.getStuScore(alRow.get(0).toString(), alRow.get(3).toString());
                     for (int j = 0; j < stuScore.size(); j++) {
                         ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                        if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                        String scoreEx = stuScore1.get(4).toString();
+                        if (stuScore1.get(4).toString().equals("良好")) {
+                            scoreEx = "80";
+                        } else if (stuScore1.get(4).toString().equals("优秀")) {
+                            scoreEx = "90";
+                        } else if (stuScore1.get(4).toString().equals("中等")) {
+                            scoreEx = "70";
+                        } else if (stuScore1.get(4).toString().equals("合格")) {
+                            scoreEx = "60";
+                        } else if (stuScore1.get(4).toString().equals("不合格")) {
+                            scoreEx = "50";
+                        }
+                        if (Float.parseFloat(scoreEx) < 60.0) {
                             sum[i]++;
                         }
                     }
@@ -467,8 +570,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>
@@ -493,7 +605,19 @@
                     ArrayList stuScore = array.getStuScoreOfSchoolYear(alRow.get(0).toString(), alRow.get(3).toString(), schoolYear1);
                     for (int j = 0; j < stuScore.size(); j++) {
                         ArrayList stuScore1 = (ArrayList) stuScore.get(j);
-                        if (Float.parseFloat(stuScore1.get(4).toString()) > 60.0) {
+                        String scoreEx = stuScore1.get(4).toString();
+                        if (stuScore1.get(4).toString().equals("良好")) {
+                            scoreEx = "80";
+                        } else if (stuScore1.get(4).toString().equals("优秀")) {
+                            scoreEx = "90";
+                        } else if (stuScore1.get(4).toString().equals("中等")) {
+                            scoreEx = "70";
+                        } else if (stuScore1.get(4).toString().equals("合格")) {
+                            scoreEx = "60";
+                        } else if (stuScore1.get(4).toString().equals("不合格")) {
+                            scoreEx = "50";
+                        }
+                        if (Float.parseFloat(scoreEx) < 60.0) {
                             sum[i]++;
                         }
                     }
@@ -514,8 +638,17 @@
                 </a></td>
             <td align="center"><%=alRow.get(2)%>
             </td>
-            <td align="center"><%=alRow.get(3)%>
+            <%
+                ArrayList class1 = array.getBjInfo(alRow.get(3).toString());
+                for (int j = 0; j < class1.size(); j++) {
+                    ArrayList classMgr = (ArrayList) class1.get(j);
+                    String className = classMgr.get(1).toString() + "级" +  classMgr.get(2).toString() + classMgr.get(3).toString() + classMgr.get(4).toString() + "班";
+            %>
+            <td align="center"><%=className%>
             </td>
+            <%
+                }
+            %>
             <td align="center"><%=alRow.get(5)%>
             </td>
             <td align="center"><%=alRow.get(6)%>

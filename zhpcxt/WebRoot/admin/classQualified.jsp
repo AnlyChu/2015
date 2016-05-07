@@ -14,7 +14,7 @@
     ArrayList getBjofGrade1 = null;
     String classMgr = null;
     String classPro = (String) request.getParameter("pro");
-    String classGrade = (String) request.getParameter("garde");
+    String classGrade = (String) request.getParameter("grade");
     if (classPro == null) {
         classPro = null;
     } else {
@@ -82,13 +82,13 @@
         })
 
         function getPro(pro) {
-            document.classSelect.action = "<%=basePath%>admin/allClassInfo.jsp?pro="
+            document.classSelect.action = "<%=basePath%>admin/classQualified.jsp?pro="
             + pro;
             document.classSelect.submit();
 
         }
         function getGrade(grade) {
-            document.classSelect.action = "<%=basePath%>admin/allClassInfo.jsp?grade="
+            document.classSelect.action = "<%=basePath%>admin/classQualified.jsp?grade="
             + grade;
             document.classSelect.submit();
 

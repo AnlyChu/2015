@@ -243,13 +243,16 @@ function courseAdd(path) {
 }
 //列出未通过的课程信息
 function showTheCourseJS(path, student_id, class_id) {
+	var schoolYear = document.getElementById("schoolYear").value;
+	var term = document.getElementById("term").value;
 	$("body").append("<div id='dlg_flip' style='padding:20px;'></div>");
 	$('#dlg_flip').dialog({
-		href: path + '/admin/stuNoQualifiedCourse.jsp?student_id=' + student_id + '&class_id=' + class_id,
+		href: path + '/admin/stuNoQualifiedCourse.jsp?student_id=' + student_id + '&class_id=' + class_id + '&school_year=' + schoolYear + '&term=' + term,
 		modal: true,
 		closed: false,
 		title: '未通过课程',
-		width: 400
+		width: 400,
+		top:'($(window).height() - this.height())/2',
 	});
 	$('.panel-tool-close').bind("click", function () {
 		$('#dlg_flip').dialog('close');
@@ -299,14 +302,15 @@ function changeCmgr(path) {
 }
 //分配班级给辅导员
 function giveClassToMgr(path, mgr) {
-	$("body").append("<div id='dlg_giveClassToMgr' style='padding:20px;text-align: center;'></div>");
+	$("body").append("<div id='dlg_giveClassToMgr' style='padding:20px;text-align: left;'></div>");
 	$('#dlg_giveClassToMgr').dialog({
 		href: path + '/admin/giveClassToMgr.jsp?mgr=' + mgr,
 		modal: true,
 		closed: false,
 		title: '分配班级',
 		width: 350,
-		height: 200,
+		height: 'auto',
+		top:'($(window).height() - this.height())/2',
 		buttons: [{
 			text: '提交',
 			iconCls: 'icon-ok',

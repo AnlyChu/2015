@@ -14,7 +14,7 @@
     ArrayList getBjofGrade1 = null;
     String classMgr = null;
     String classPro = (String) request.getParameter("pro");
-    String classGrade = (String) request.getParameter("garde");
+    String classGrade = (String) request.getParameter("grade");
     if (classPro == null) {
         classPro = null;
     } else {
@@ -218,8 +218,9 @@
                 %>
                 <td align="center"><%=classMgr%>
                 </td>
-                <td align="center"><a
-                        href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassofPro.get(0)%>">查看</a></td>
+                <td align="center">
+                    <a href="<%=basePath%>admin/classStuInfo.jsp?class_id=<%=getClassofPro.get(0)%>">查看</a>
+                </td>
             </tr>
             <%
                 }

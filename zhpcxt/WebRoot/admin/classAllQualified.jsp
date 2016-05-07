@@ -123,7 +123,7 @@
                 if (student != null && student.size() != 0) {
                     for (int i = 0; i < course.size(); i++) {
                         int[] man = new int[course.size()];
-                        String[] rate = new String [course.size()];
+                        String[] rate = new String[course.size()];
                         ArrayList courseID = (ArrayList) course.get(i);
                         ArrayList courseName = array.getCourseName(courseID.get(0).toString());
                         for (int j = 0; j < courseName.size(); j++) {
@@ -140,7 +140,19 @@
                         ArrayList courseScore = array.getCourseScore(courseID.get(0).toString(), class_id);
                         for (int n = 0; n < courseScore.size(); n++) {
                             ArrayList courseScore1 = (ArrayList) courseScore.get(n);
-                            float score = Float.parseFloat(courseScore1.get(2).toString());
+                            String scoreEx = courseScore1.get(2).toString();
+                            if (courseScore1.get(2).toString().equals("良好")) {
+                                scoreEx = "80";
+                            } else if (courseScore1.get(2).toString().equals("优秀")) {
+                                scoreEx = "90";
+                            } else if (courseScore1.get(2).toString().equals("中等")) {
+                                scoreEx = "70";
+                            } else if (courseScore1.get(2).toString().equals("合格")) {
+                                scoreEx = "60";
+                            } else if (courseScore1.get(2).toString().equals("不合格")) {
+                                scoreEx = "50";
+                            }
+                            float score = Float.parseFloat(scoreEx);
                             if (score >= 60.0) {
                                 man[m]++;
                                 float qualified = (float) man[m] / student.size();
