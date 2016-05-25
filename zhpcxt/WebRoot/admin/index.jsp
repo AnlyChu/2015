@@ -54,8 +54,8 @@ $(document).ready(function(){
 <%--<div id="north" region="north" split="false" border="false">--%>
   <%--<jsp:include page="/admin/head.jsp"></jsp:include>--%>
 <%--</div>--%>
-<div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
-  <table width="100%" height="100%">
+<div id="mainPanle" region="center" border="true" style="padding:5px;">
+  <table width="100%" height="50%">
     <tr>
       <td align="center"> <h2 style="color:#03F">欢迎使用：</h2><br />
         <br />

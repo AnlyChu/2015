@@ -277,6 +277,12 @@ public class AllBean {
 		al = sb.select(sql,args);
 		return al;
 	}
+	public ArrayList getRatingSchYear(String class_id){
+		String sql = "select distinct(school_year) from evaluating where class_id =" + class_id;
+		String args[] = {"school_year"};
+		al = sb.select(sql,args);
+		return al;
+	}
 
 	public ArrayList getScoreOfSchYear(String SchYear,String tableName,String student_id){
 		String sql = "select * from `" + tableName + "` where school_year='"+SchYear+"' and student_id = " + student_id;
@@ -342,6 +348,12 @@ public class AllBean {
 	
 	public ArrayList getEvaluating(String class_id){
 		String sql = "select * from evaluating where class_id='" + class_id + "' order by sum desc";
+		String args[] = {"student_id","name","school_year","daodesuyangBasic","daodesuyangPlus","daodesuyangSub","daodesuyang","studyBasic","studyPlus","studySub","studying","suzhituozhanBasic","suzhituozhanPlus","suzhituozhanSub","suzhituozhan","doPlus","doSub","doPlusOrSub","sum"};
+		al = sb.select(sql, args);
+		return al;
+	}
+	public ArrayList getEvaluatingOfSchoolYear(String class_id,String schoolYear){
+		String sql = "select * from evaluating where class_id='" + class_id + "' and school_year ='" + schoolYear + "'order by sum desc";
 		String args[] = {"student_id","name","school_year","daodesuyangBasic","daodesuyangPlus","daodesuyangSub","daodesuyang","studyBasic","studyPlus","studySub","studying","suzhituozhanBasic","suzhituozhanPlus","suzhituozhanSub","suzhituozhan","doPlus","doSub","doPlusOrSub","sum"};
 		al = sb.select(sql, args);
 		return al;

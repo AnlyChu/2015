@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.SelectBean;
+import bean.MD5Util;
 
 public class AdminLoginServlet extends HttpServlet {
 
@@ -61,9 +62,10 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		MD5Util MD5 = new MD5Util();
 		String user_id = request.getParameter("user_id");
 		String name = request.getParameter("name");
-		String pwd = request.getParameter("pwd");
+		String pwd = MD5.MD5(request.getParameter("pwd"));
 		String status = request.getParameter("status");
 //		String table = "";
 		System.out.print("status="+status);
@@ -76,7 +78,7 @@ public class AdminLoginServlet extends HttpServlet {
 //		}
 		
 //		Integer classId = AdminLoginServlet.getClassId("admin");
-		
+
 		String sql = "select * from user where user_id='"+user_id+"' and pwd='"+pwd+"' and status = '" + status + "'";
 
 		String args[] = {"user_id","name","pwd","status"};

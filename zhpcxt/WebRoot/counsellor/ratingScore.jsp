@@ -6,13 +6,29 @@
     ArrayList adminlogin = (ArrayList) session.getAttribute("adminlogin");
     boolean closed = false;
     ArrayList rating = null;
+    ArrayList getScoreOfSchYear1 = null;
+    ArrayList classSchoolYear = null;
+    String schoolYear1 = request.getParameter("schoolYear");
     String class_id = (String) session.getAttribute("class_id");
     if (class_id == null) {
         class_id = request.getParameter("class_id");
     }
+    if (schoolYear1 == null) {
+        schoolYear1 = null;
+    } else {
+        try {
+            schoolYear1 = (new String(schoolYear1.getBytes("iso-8859-1"), "UTF-8")).trim();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+    }
     if (adminlogin != null && adminlogin.size() != 0) {
         closed = true;
-        rating = array.getEvaluating(class_id);
+//        rating = array.getEvaluating(class_id);
+        classSchoolYear = array.getRatingSchYear(class_id);
+        if (schoolYear1 != null) {
+            rating = array.getEvaluatingOfSchoolYear(class_id, schoolYear1);
+        }
     }
     String message = (String) request.getAttribute("message");
 %>
@@ -29,6 +45,8 @@
     <script type="text/javascript" src="<%=path %>/js/admin.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#londing").css('display', 'none');
+            $("#mainPanle").css('display', '');
             $('tbody tr:even').css({'background': '#ffffff'});
             $('tbody tr:odd').css({'background': '#eeeeff'});
             var message = <%=message %>;
@@ -47,11 +65,13 @@
             });
         })
 
-        /* function display_alert()
-         {
-         var lujing=document.form.fileUpload.value;
-         alert("路径="+lujing)
-         } */
+        function getSchoolYear(schoolYear) {
+            var cSchoolYear = schoolYear;
+            document.schoolYearSelect.action = "<%=basePath%>counsellor/ratingScore.jsp?schoolYear="
+            + cSchoolYear;
+            document.schoolYearSelect.submit();
+
+        }
     </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no" resizable="false">
@@ -63,12 +83,10 @@
         <jsp:include page="/admin/left.jsp"></jsp:include>
     </div>
 </div>
-<div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;">
+<div id="londing" style="display: block;margin-top: 10%" align="center">数据加载ing</div>
+<div id="mainPanle" region="center" border="true" style="background:#f7f7f7; padding:5px;display: none;">
     <table width="100%">
         <thead>
-            <%
-            //            if (student == null || student.size() == 0) {
-        %>
         <tr>
             <td>上传班级学生综合测评信息:</td>
             <td>
@@ -89,15 +107,40 @@
                 </form>
             </td>
             <td>
-                <button onclick="window.open('<%=path%>/demo-xls/class-student-demo.xls')">下载成绩模板</button>
+                <button onclick="window.open('<%=path%>/demo-xls/class-student-demo.xls')">下载素质测评成绩模板</button>
             </td>
         </tr>
-            <%
-            //            }
-        %>
         <tr>
             <td colspan="19" align="center" style="padding:5px;"><h3>班级学生素质测评排名</h3></td>
         </tr>
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <td><p>学年:</p></td>
+            <td>
+                <form action="<%=path%>/counsellor/ratingScore.jsp" method="post" name="schoolYearSelect">
+                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
+                        <option>
+                            <script language="javascript">
+                                document.schoolYearSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
+                            </script>
+                        </option>
+                        <%
+                            for (int j = 0; j < classSchoolYear.size(); j++) {
+                                ArrayList getSchoolYear = (ArrayList) classSchoolYear.get(j);
+                        %>
+                        <option><%=getSchoolYear.get(0)%>
+                        </option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </form>
+            </td>
+        </tr>
+
+        </thead>
     </table>
     <table width="100%">
         <tr class="thead">
