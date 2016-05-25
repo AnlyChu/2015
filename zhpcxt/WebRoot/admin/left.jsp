@@ -23,7 +23,7 @@ if(adminlogin.get(3).equals("辅导员")){ %>
   <li><a href="<%=path %>/counsellor/classInfo.jsp?class_id=<%=class_id%>">班级基本信息</a></li>
   <%--<li><a href="<%=path %>/counsellor/evaluating.jsp">班长管理</a></li>--%>
   <li><a href="<%=path %>/counsellor/studentInfoUpload.jsp">班级学生信息</a></li>
-  <li><a href="<%=path %>/counsellor/rateSchoolYearSelect.jsp">学生素质综合测评</a></li>
+  <%--<li><a href="<%=path %>/counsellor/rateSchoolYearSelect.jsp">学生素质综合测评</a></li>--%>
   <li><a href="<%=path %>/counsellor/ratingScore.jsp">学生素质测评排名</a></li>
 <%}
 if(adminlogin.get(3).equals("学生")){
