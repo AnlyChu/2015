@@ -6,9 +6,9 @@ import java.util.Date;
 
 
 public class Validate {
-	
+
 	/**
-	 * ÊÇ·ñÎªÊı×ÖºÍÓ¢ÎÄÑéÖ¤
+	 * æ˜¯å¦ä¸ºæ•°å­—å’Œè‹±æ–‡éªŒè¯
 	 *
 	 */
 	public int getIntAndChar(String str){
@@ -19,16 +19,16 @@ public class Validate {
 			if(!((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z'))){
 				break;
 			}
-		}//ÅĞ¶Ï×Ö·ûÊÇ·ñÔÚÄ³¸öÇø¼ä
+		}//åˆ¤æ–­å­—ç¬¦æ˜¯å¦åœ¨æŸä¸ªåŒºé—´
 		if(i < str.length()){
 			return -1;
 		}else{
 			return 0;
 		}
 	}
-	
+
 	/**
-	 * ÊÇ·ñÎªÕûÊıÑéÖ¤
+	 * æ˜¯å¦ä¸ºæ•´æ•°éªŒè¯
 	 *
 	 */
 	public int getInt(String str){
@@ -39,16 +39,16 @@ public class Validate {
 			if(!(c>='0' && c<='9')){
 				break;
 			}
-		}//ÅĞ¶Ï×Ö·ûÊÇ·ñÔÚÄ³¸öÇø¼ä
+		}//åˆ¤æ–­å­—ç¬¦æ˜¯å¦åœ¨æŸä¸ªåŒºé—´
 		if(i < str.length()){
 			return -1;
 		}else{
 			return 0;
 		}
 	}
-	
+
 	/**
-	 * ÊÇ·ñÎª·Ç·¨×Ö·ûÑéÖ¤
+	 * æ˜¯å¦ä¸ºéæ³•å­—ç¬¦éªŒè¯
 	 *
 	 */
 	public boolean getLawlessChar(String str){
@@ -57,18 +57,18 @@ public class Validate {
 		for(int i = 0;i < str.length();i++){
 			c = str.charAt(i);
 			switch(c){
-			case '<' : flag = true; break;
-			case '>' : flag = true; break;
-			case '"' : flag = true; break;
-			case '&' : flag = true; break;
-			case ' ' : flag = true; break;
+				case '<' : flag = true; break;
+				case '>' : flag = true; break;
+				case '"' : flag = true; break;
+				case '&' : flag = true; break;
+				case ' ' : flag = true; break;
 			}
 		}
 		return flag;
 	}
-	
+
 	/**
-	 * ´¦ÀíHTMLÎÄµµ
+	 * å¤„ç†HTMLæ–‡æ¡£
 	 *
 	 */
 	public String htmlspecialchars(String str) {
@@ -78,17 +78,17 @@ public class Validate {
 		str = str.replaceAll("\"", "&quot;");
 		return str;
 	}
-	
+
 	/**
-	 * ÖĞÎÄ×ª»»
-	 * ½«gb2312±àÂë×ª»»³Éunicode±àÂë
+	 * ä¸­æ–‡è½¬æ¢
+	 * å°†gb2312ç¼–ç è½¬æ¢æˆunicodeç¼–ç 
 	 */
 	public String getUnicode(String str) {
 		if(str != null){
 			try {
 				return new String(str.getBytes("iso8859_1"),"gb2312");
 			} catch (UnsupportedEncodingException e) {
-				// TODO ×Ô¶¯Éú³É catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆ catch å—
 				e.printStackTrace();
 				return str;
 			}
@@ -96,17 +96,17 @@ public class Validate {
 			return null;
 		}
 	}
-	
+
 	/**
-	 * ÖĞÎÄ×ª»»
-	 * ½«unicode±àÂë×ª»»³Égb2312±àÂë
+	 * ä¸­æ–‡è½¬æ¢
+	 * å°†unicodeç¼–ç è½¬æ¢æˆgb2312ç¼–ç 
 	 */
 	public String getGb2312(String str) {
 		if(str != null){
 			try {
 				return new String(str.getBytes("gb2312"),"iso8859_1");
 			} catch (UnsupportedEncodingException e) {
-				// TODO ×Ô¶¯Éú³É catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆ catch å—
 				e.printStackTrace();
 				return str;
 			}
@@ -114,19 +114,19 @@ public class Validate {
 			return null;
 		}
 	}
-	
+
 	/**
-	 * ¸ñÊ½»¯ÈÕÆÚ Äê-ÔÂ-ÈÕ Ğ¡Ê±£¨0-23£©:·ÖÖÓ:Ãë
+	 * æ ¼å¼åŒ–æ—¥æœŸ å¹´-æœˆ-æ—¥ å°æ—¶ï¼ˆ0-23ï¼‰:åˆ†é’Ÿ:ç§’
 	 */
 	public String getSystemDate(){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		return df.format(date);
 	}
-	
+
 	/**
-	 * ËÄÉáÎåÈë
-	 * precision ¾«¶È£¬±ØĞëÊÇ´óÓÚ0µÄÕûÊı£¬±£ÁôĞ¡Êıµãºó¼¸Î»(ÀıÈç£º1Î»Ìî1£¬2Î»Ìî2£¬ÒÔ´ËÀàÍÆ)
+	 * å››èˆäº”å…¥
+	 * precision ç²¾åº¦ï¼Œå¿…é¡»æ˜¯å¤§äº0çš„æ•´æ•°ï¼Œä¿ç•™å°æ•°ç‚¹åå‡ ä½(ä¾‹å¦‚ï¼š1ä½å¡«1ï¼Œ2ä½å¡«2ï¼Œä»¥æ­¤ç±»æ¨)
 	 */
 	public float getRround(float f,int precision){
 		int n = 1;

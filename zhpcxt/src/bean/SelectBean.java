@@ -36,7 +36,6 @@ public class SelectBean {
 				//System.out.println(al);
 			}
 		} catch (SQLException e) {
-			// TODO �Զ���� catch ��
 			e.printStackTrace();
 		} finally{
 			DBConn.close(conn,st,rs);

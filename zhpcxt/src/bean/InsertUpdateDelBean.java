@@ -22,7 +22,6 @@ public class InsertUpdateDelBean {
 			st = conn.createStatement();
 			temp = st.executeUpdate(sql);
 		} catch (SQLException e) {
-			// TODO 自动生成 catch 块
 			e.printStackTrace();
 			temp = -1;
 		} finally{

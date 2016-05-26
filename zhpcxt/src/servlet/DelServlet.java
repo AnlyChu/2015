@@ -196,6 +196,11 @@ public class DelServlet extends HttpServlet {
             ib.insertANDupdateANDdel(sql);
             str = "/admin/evaluating.jsp";
         }
+        if(admin != null && !admin.equals("")){
+            sql = "delete from user where user_id="+admin;
+            ib.insertANDupdateANDdel(sql);
+            str = "/admin/systemuser.jsp";
+        }
         request.getRequestDispatcher(str).forward(request, response);
     }
 

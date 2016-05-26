@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.InsertUpdateDelBean;
+import bean.MD5Util;
 
 public class PwdUpdateServlet extends HttpServlet {
 
@@ -59,8 +60,8 @@ public class PwdUpdateServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		
-		String newpwd = request.getParameter("newpwd");
+		MD5Util MD5 = new MD5Util();
+		String newpwd = MD5.MD5(request.getParameter("newpwd"));
 		HttpSession session = request.getSession();
 		
 		ArrayList adminlogin = (ArrayList)session.getAttribute("adminlogin");
