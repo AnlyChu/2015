@@ -65,10 +65,11 @@
             });
         })
 
-        function getSchoolYear(schoolYear) {
+        function getSchoolYear(schoolYear,class_id) {
             var cSchoolYear = schoolYear;
+            var cId = class_id;
             document.schoolYearSelect.action = "<%=basePath%>counsellor/ratingScore.jsp?schoolYear="
-            + cSchoolYear;
+            + cSchoolYear + "&class_id=" + cId;
             document.schoolYearSelect.submit();
 
         }
@@ -120,7 +121,7 @@
             <td><p>学年:</p></td>
             <td>
                 <form action="<%=path%>/counsellor/ratingScore.jsp" method="post" name="schoolYearSelect">
-                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value);">
+                    <select name="schoolYear" class="schoolYear" onchange="getSchoolYear(this.value,<%=class_id %>);">
                         <option>
                             <script language="javascript">
                                 document.schoolYearSelect.schoolYear.value = "<%=request.getParameter("schoolYear")%>";
